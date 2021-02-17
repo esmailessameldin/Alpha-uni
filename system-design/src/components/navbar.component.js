@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import { Dropdown } from 'react-bootstrap';
 export default class Navbar extends Component {
 
   render() {
@@ -21,9 +21,16 @@ export default class Navbar extends Component {
           <li className="navbar-item">
           <Link to="/user" className="nav-link">Master Schedule Fall</Link>
           </li>
-          <li className="navbar-item">
-          <a href={"https://www.oldwestbury.edu/academics/registrar/catalogs"}>Catalog</a>
-          </li>
+          <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+    Catalog
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item href="https://www.oldwestbury.edu/academics/registrar/catalogs/undergraduate-catalog">Undergraduate Catalogs</Dropdown.Item>
+    <Dropdown.Item href="https://www.oldwestbury.edu/academics/registrar/catalogs/graduate-catalog">Graduate Catalogs</Dropdown.Item>
+  </Dropdown.Menu>
+    </Dropdown>
         </ul>
         </div>
       </nav>
