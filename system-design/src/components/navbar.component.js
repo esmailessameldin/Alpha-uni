@@ -22,7 +22,7 @@ export default class Navbar extends Component {
           <Link to="/user" className="nav-link">Master Schedule Fall</Link>
           </li>
           <li className="navbar-item">
-          <Link to="https://www.oldwestbury.edu/academics/registrar/catalogs" className="nav-link">Catalog</Link>
+          <Link to="google.com" className="nav-link">Catalog</Link>
           </li>
         </ul>
         </div>
