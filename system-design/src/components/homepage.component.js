@@ -18,7 +18,7 @@ export default class Navbar extends Component {
           <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '50%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>Password: </label>
-            <input  type="text"
+            <input  input type="password" name="password"
                 required
                 className="form-control"
                 />
