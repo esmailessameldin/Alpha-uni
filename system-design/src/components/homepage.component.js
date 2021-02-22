@@ -41,7 +41,7 @@ export default class Navbar extends Component {
       .then(res =>{ 
         return JSON.stringify(res.data);
       }).then(data=>{
-        window.location = `/student/${data}`;
+        window.location = `/student/${data}`
 
       });
 

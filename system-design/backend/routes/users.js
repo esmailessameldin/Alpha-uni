@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { useReducer } = require('react');
 let user = require('../models/user.js');
 var x = 700000001;
 
@@ -43,10 +44,21 @@ router.route('/login').post((req,res)=>{
             if(flag2){
                 return res.send("passs ghlt")
             }else{
-               return res.status(200).send(user.name)
+                console.log(user)
+               return res.status(200).send(user.id+"")
             }
         }
     }).catch(err=>console.log(err));
 })
+
+router.route('/:id').get((req, res) => {
+    var x=req.params.id
+    
+    console.log(x)
+       user.findOne({id:x})
+      .then(user => res.json(user))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
+
 
 module.exports = router;
