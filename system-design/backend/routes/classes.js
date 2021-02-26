@@ -10,7 +10,8 @@ router.route('/add').post((req, res) => {
         id:req.body.id,
         description:req.body.description,
         teacher:req.body.teacher,
-        time:req.body.time
+        time:req.body.time,
+        major:req.body.major
 
         });
 
@@ -19,8 +20,8 @@ router.route('/add').post((req, res) => {
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/:id').get((req, res) => {
-  classu.findById(req.params.id)
+router.route('/findbymajor').get((req, res) => {
+  classu.find({major:req.params.major})
     .then(classu => res.json(classu))
     .catch(err => res.status(400).json('Error: ' + err));
 });

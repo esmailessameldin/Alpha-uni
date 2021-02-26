@@ -22,9 +22,7 @@ export default class Navbar extends Component {
           <li className="navbar-item">
           <Link to="/user" className="nav-link">Master Schedule Fall</Link>
           </li>
-          <li className="navbar-item">
-          <Link to="/login" className="nav-link">Login</Link>
-          </li>
+          
           <Dropdown>
   <Dropdown.Toggle variant="success" id="dropdown-basic">
     Catalog
