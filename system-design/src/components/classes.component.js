@@ -2,33 +2,21 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Table}from 'react-bootstrap'
 import { Button, Icon } from 'semantic-ui-react';
-
+import {  Image, List } from 'semantic-ui-react'
+import { left } from '@popperjs/core';
 export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
-    this.onSubmit1 = this.onSubmit1.bind(this);
-    this.onSubmit2=this.onSubmit2.bind(this);
-    this.state = {
-      name: 'asdasd',
-      email: '',
-      id: '',
-      major:''
-     
-    }
+    
+    this.onClick=this.onClick.bind(this);
+   
   }
+  
+onClick(e){
+  window.location='/'+e
 
 
-   onSubmit1(e){
-    e.preventDefault();
-    window.location='/'
-   }
-
-   onSubmit2(e){
-    e.preventDefault();
-    window.location='/'
-
-   }
-
+}
 
 
   componentDidMount() {
@@ -64,58 +52,48 @@ render() {
   
     return (
       <div onSubmit={this.onSubmit}>
-      <Table striped bordered hover size="sm"style = {{width:"100vh",position: 'absolute', left: '50%', top: '30%',
-      transform: 'translate(-50%, -50%)'}}>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th>{this.state.name}</th>
-          
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>email</td>
-          <td>{this.state.email}</td>
-        
-        </tr>
-        <tr>
-          <td>ID</td>
-          <td>{this.state.id}</td>
-        
-        </tr>
-        <tr>
-          <td>major</td>
-          <td>{this.state.major}</td>
-        
-        </tr>
-       
-      </tbody>
-    </Table>
-              
-               
-              <form    onSubmit1={this.onSubmit1}>
-    <Button onSubmit={this.onSubmit}    animated  style = {{width:"10vh",position: 'absolute', left: '50%', top: '70%',
-        transform: 'translate(-50%, -50%)'}} type="submit" value="Logout" >
-      <Button.Content onSubmit={this.onSubmit} visible>Logout</Button.Content>
-      <Button.Content hidden>
-        <Icon name='arrow right' />
-      </Button.Content>
-    </Button>
-    </form>
-    
      
-    <form    onSubmit2={this.onSubmit2}>
-    <Button onSubmit={this.onSubmit}    animated  style = {{width:"10vh",position: 'absolute', left: '40%', top: '70%',
-        transform: 'translate(-50%, -50%)'}} type="submit" value="Classes" >
-      <Button.Content onSubmit={this.onSubmit} visible>Classes</Button.Content>
-      <Button.Content hidden>
-        <Icon name='arrow right' />
-      </Button.Content>
-    </Button>
-    </form>
-    
+              
+           
+     <ul>
+    {['Adolescence Education: Chemistry (7-12)', 
+'Adolescence Education: Social Studies (7-12)',
+  'Biological Sciences', 
+'Chemistry',
+'English', 
+'History', 
+ 'Industrial and Labor Relations',
+'Liberal Arts', 
+ 'Media and Communications',
+'Philosophy and Religion',
+  'Politics & Economics & Law', 
+'Spanish Language',
+ 'Visual Arts', 
+'Adolescence Education: Biology (7-12)', 
+'Adolescence Education: Mathematics (7-12)', 
+'Biochemistry',
+'Business Administration',
+ 'Childhood Education (1-6)', 
+'Computer & Information Science', 
+'Criminology', 
+'Finance',
+'General Studies', 
+'Health and Society', 
+'Industrial and Labor Relations',
+'Management Information Systems', 
+ 'Marketing', 
+'Mathematics', 
+'Psychology', 
+'Sociology', 
+'Special Education and Childhood Education (1-6)', 
+ 'Visual Arts: Electronic Media'].map(function(item) {
 
+      return <li key={item}>{item}<button type="button"  type="button"
+      onClick={()=>this.onClick(item)} style = {{position: 'absolute', left: '50%'}} >
+      Click to view courses
+    </button> </li> ;
+    })}
+  </ul>
 
 
 

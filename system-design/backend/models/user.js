@@ -5,7 +5,8 @@ const studentSchema= new schema({
   id:{type:Number,unique:true},
   password:{type:String,required:true},
   email:{type:String,unique:true,required:true,default:""},
- major:{type:String,default:"Undecided"}
+ major:{type:String,default:"Undecided"},
+   courses:{type:[]}
 });
 
 
