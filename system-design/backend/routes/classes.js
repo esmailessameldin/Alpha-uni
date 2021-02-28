@@ -20,18 +20,16 @@ router.route('/add').post((req, res) => {
   .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/findbymajor').post((req, res) => {
-  classu.find({major:req.body.major}).then(user=>{
-    if(!user){
-        res.status(404).send("user does not exist please try again")
-    }else{
-            console.log(user)
-           return res.status(200).send(user)
-        
-    }
-}).catch(err=>console.log(err));
+router.route('/findbymajor/:name').get((req, res) =>  {
+  var x=req.params.name
+  
+  console.log(x)
+     classu.find({major:x})
+    .then(classu => res.json(classu))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
+  
 router.route('/:id').delete((req, res) => {
   classu.findByIdAndDelete(req.params.id)
     .then(() => res.json('Class deleted.'))

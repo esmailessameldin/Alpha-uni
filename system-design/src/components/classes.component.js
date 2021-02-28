@@ -13,7 +13,7 @@ export default class CreateExercise extends Component {
   }
   
 onClick(e){
-  window.location='/'+e
+  window.location='/majors'+e
 
 
 }
@@ -89,7 +89,7 @@ render() {
  'Visual Arts: Electronic Media'].map(function(item) {
 
       return <li key={item}>{item}<button type="button"  type="button"
-      onClick={()=>this.onClick(item)} style = {{position: 'absolute', left: '50%'}} >
+      onClick={()=>this.onClick()} style = {{position: 'absolute', left: '50%'}} >
       Click to view courses
     </button> </li> ;
     })}
