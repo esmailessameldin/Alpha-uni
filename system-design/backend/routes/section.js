@@ -31,4 +31,14 @@ router.route('/add').post((req, res) => {
 
 });
 
+router.route('/findbyclass/:name').get((req, res) =>  {
+    var x=req.params.name
+    
+    console.log(x)
+       sections.find({name:x})
+      .then(sections => res.json(sections))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
+
+
 module.exports = router;

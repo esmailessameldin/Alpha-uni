@@ -25,7 +25,7 @@ onClick(e){
 
   componentDidMount() {
     console.log(this.props.match.params.name)
-    axios.get('http://localhost:5000/classes/findbymajor/'+this.props.match.params.name)
+    axios.get('http://localhost:5000/section/findbyclass/'+this.props.match.params.name)
       .then(response => {
          response.data.map(({name}) => {if(name) this.state.names.push(name)})
       this.setState({
@@ -61,7 +61,7 @@ render() {
      <ul>
     {this.state.names.map(function(item) {return <li key={item}>{item}<button type="button"  type="button"
        style = {{position: 'absolute', left: '50%'}} >
-      Click to view sections
+      Click to add Section
     </button> </li> ;
     })}
   </ul>
