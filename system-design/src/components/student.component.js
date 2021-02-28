@@ -6,7 +6,7 @@ import { Button, Icon } from 'semantic-ui-react';
 export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handClickLogout = this.handClickLogout.bind(this);
     this. onClick = this. onClick.bind(this);
     this.state = {
       name: '',
@@ -18,7 +18,7 @@ export default class CreateExercise extends Component {
   }
 
 
-   onSubmit(e){
+   handClickLogout(e){
     e.preventDefault();
     window.location='/'
    }
@@ -59,7 +59,7 @@ export default class CreateExercise extends Component {
 render() {
   
     return (
-      <div onSubmit={this.onSubmit}  onClick={this. onClick}>
+      <div handClickLogout={this.handClickLogout}>
       <Table striped bordered hover size="sm"style = {{width:"100vh",position: 'absolute', left: '50%', top: '30%',
       transform: 'translate(-50%, -50%)'}}>
       <thead>
@@ -90,23 +90,21 @@ render() {
     </Table>
               
                
-              <form    onSubmit={this.onSubmit}  onClick={this.onClick}>
-    <Button onSubmit={this.onSubmit}    animated  style = {{width:"10vh",position: 'absolute', left: '50%', top: '70%',
-        transform: 'translate(-50%, -50%)'}} type="submit" value="Logout" >
-      <Button.Content onSubmit={this.onSubmit} visible>Logout</Button.Content>
+    <form onClick={this. handClickLogout}>
+    <Button  onClick={this. handClickLogout}    animated  style = {{width:"10vh",position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
+      <Button.Content  onClick={this.handClickLogout} visible>Logout</Button.Content>
       <Button.Content hidden>
-        <Icon name='arrow right' />
       </Button.Content>
     </Button>
     </form>
         
           
-    <form  onSubmit={this.onSubmit}    onClick={this. onClick}>
+    <form onClick={this. onClick}>
     <Button  onClick={this. onClick}    animated  style = {{width:"10vh",position: 'absolute', left: '50%', top: '62%',
-        transform: 'translate(-50%, -50%)'}} type="submit" value="classes" >
+        transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
       <Button.Content  onClick={this.onClick} visible>Classes</Button.Content>
       <Button.Content hidden>
-        <Icon name='arrow right' />
       </Button.Content>
     </Button>
     </form>

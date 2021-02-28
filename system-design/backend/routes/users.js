@@ -24,17 +24,6 @@ router.route('/add').post((req, res) => {
 
 router.route('/login').post((req,res)=>{
 
-    // const u = await user.findOne({email:req.body.email});
-    // if(!u)
-    // return res.status(404).send("user does not exist please try again");
-    // const l=await req.body.password
-    
-    //  flag2 = l.localeCompare(u.password);
-        
-    // if(flag2){
-    // return res.send("passs ghlt")}
-    // response = flag2;
-    //  return res.send({bname:u.name})
     user.findOne({email:req.body.email}).then(user=>{
         if(!user){
             res.status(404).send("user does not exist please try again")
