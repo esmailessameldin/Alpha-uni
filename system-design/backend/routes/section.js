@@ -11,17 +11,11 @@ router.route('/add').post((req, res) => {
 
     const u = new sections({
         name:req.body.name,
-        credit01:req.body.credit1,
-        day01:req.body.day1,
-        time01:req.body.time1,
-        cap01:req.body.cap1,
-        stud01:req.body.stud1,
-        credit02:req.body.credit2,
-        day02:req.body.day2,
-        time02:req.body.time2,
-        cap02:req.body.cap2,
-        stud02:req.body.stud2,
-
+        credit:req.body.credit,
+        day:req.body.day,
+        time:req.body.time,
+        cap:req.body.cap,
+        stud:req.body.stud,
         });
 
 

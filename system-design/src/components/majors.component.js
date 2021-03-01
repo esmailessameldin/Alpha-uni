@@ -8,7 +8,7 @@ export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
     
-    this.onClick=this.onClick.bind(this);
+    this.handleClick=this.handleClick.bind(this);
     this.state = {
         names:[],
         list:[]
@@ -16,11 +16,10 @@ export default class CreateExercise extends Component {
    
   }
   
-onClick(e){
-  window.location='/majors'+e
-
-
-}
+  handleClick(e) {
+    console.log(e);
+    window.location = '/sections/'+e
+  }
 
 
   componentDidMount() {
@@ -54,22 +53,20 @@ onClick(e){
 render() {
   
     return (
-      <div>
-     
-              
-           
-     <ul>
-    {this.state.names.map(function(item) {return <li key={item}>{item}<button type="button"  type="button"
-       style = {{position: 'absolute', left: '50%'}} >
-      Click to view sections
-    </button> </li> ;
-    })}
-  </ul>
-
-
-
-    </div>
-    
+     <div>
+                <ul>
+                  {this.state.names.map((item, key) => {
+                    return (
+                      <li key={key}>
+                        {item}
+                        <button type="button" onClick={() => this.handleClick(item)}>
+                          Click to view courses
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
 
   
     

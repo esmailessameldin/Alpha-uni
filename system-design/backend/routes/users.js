@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { useReducer } = require('react');
 let user = require('../models/user.js');
+let section=require('../models/sections.js')
+const mongoose = require('mongoose');
+const sections = require('../models/sections.js');
 var x = 700000001;
 
 
@@ -48,6 +51,23 @@ router.route('/:id').get((req, res) => {
       .then(user => res.json(user))
       .catch(err => res.status(400).json('Error: ' + err));
   });
+
+  router.route('/addsection').post(async(req,res)=>{
+    mongoose.set('useFindAndModify', false);
+    const o= await section.findOne({name:req.body.name})
+    console.log(o)
+    let u =  await user.findOneAndUpdate({id:req.body.id}, {
+        $push: { sections: o } ,
+        name:"nono",
+    }, {
+        new: true
+      });
+     
+      res.send("section added")
+
+})
+
+
 
 
 module.exports = router;
