@@ -7,7 +7,7 @@ import classes from "./components/classes.component"
 import studentscreen from "./components/student.component"
 import majors from "./components/majors.component"
 import sections from "./components/sections.components"
-
+import passerror from "./components/passerror.component"
 function App() {
   return (
     <Router>
@@ -19,6 +19,7 @@ function App() {
     <Route path="/classes/:id" exact component={classes} />
     <Route path="/majors/:name" exact component={majors} />
     <Route path="/sections/:name" exact component={sections} />
+    <Route path="/passerror" exact component={passerror} />
     </div>
     </Router>
 

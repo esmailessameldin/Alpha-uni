@@ -29,6 +29,8 @@ export default class CreateExercise extends Component {
    }
   componentDidMount() {
     console.log(this.props.match.params.id)
+    if(this.props.match.params.id==='100')
+    window.location='/passerror'
     axios.get('http://localhost:5000/users/'+this.props.match.params.id)
       .then(response => {
         console.log(response.data.name)
@@ -46,7 +48,7 @@ export default class CreateExercise extends Component {
         
       })
       .catch((error) => {
-        console.log(error);
+        console.log(this.props.match.params.id);
       })
 
   }

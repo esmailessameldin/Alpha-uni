@@ -34,7 +34,7 @@ router.route('/login').post((req,res)=>{
             const l= req.body.password;
             flag2 = l.localeCompare(user.password);
             if(flag2){
-                return res.send("wrong password")
+                return res.send("100")
             }else{
                 console.log(user)
                return res.status(200).send(user.id+"")
