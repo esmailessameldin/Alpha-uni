@@ -7,6 +7,8 @@ export default class CreateExercise extends Component {
     
     this.Add1stHandleClick=this.Add1stHandleClick.bind(this);
     this.Add2ndHandleClick=this.Add2ndHandleClick.bind(this);
+    this.Drop1stHandleClick=this.Drop1stHandleClick.bind(this)
+    this.Drop2ndHandleClick=this.Drop2ndHandleClick.bind(this)
     this.onChangeID=this.onChangeID.bind(this);
     this.state = {
         names:[],
@@ -24,7 +26,7 @@ export default class CreateExercise extends Component {
     })
   }
 
-  
+        
 Add1stHandleClick(e){
  
   e.preventDefault();
@@ -33,6 +35,8 @@ Add1stHandleClick(e){
         console.log(response.data)
         const user ={
           name:response.data.[0].name,
+          time:response.data.[0].time,
+          day:response.data.[0].day,
           id:this.state.id
         
 
@@ -44,7 +48,7 @@ Add1stHandleClick(e){
       .catch((error) => {
         console.log(error);
       })
-
+      window.location='/student/'+this.state.id
   
 }
 Add2ndHandleClick(e){
@@ -55,6 +59,7 @@ Add2ndHandleClick(e){
         const user ={
           name:response.data.[1].name,
           time:response.data.[1].time,
+          day:response.data.[1].day,
           id:this.state.id
         
 
@@ -66,16 +71,68 @@ Add2ndHandleClick(e){
       .catch((error) => {
         console.log(error);
       })
-
+      window.location='/student/'+this.state.id
   
 }
+Drop1stHandleClick(e){
+  e.preventDefault();
+  axios.get('http://localhost:5000/section/findbyclass/'+this.props.match.params.name)
+      .then(response => {
+        console.log(response.data)
+        const user ={
+          name:response.data.[0].name,
+          time:response.data.[0].time,
+          day:response.data.[0].day,
+          id:this.state.id
+        
+
+        }
+
+      axios.post('http://localhost:5000/users/deletesection/',user)
+          
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+
+      window.location='/student/'+this.state.id
+
+} 
+Drop2ndHandleClick(e){
+  e.preventDefault();
+  axios.get('http://localhost:5000/section/findbyclass/'+this.props.match.params.name)
+      .then(response => {
+        console.log(response.data)
+        const user ={
+          name:response.data.[1].name,
+          time:response.data.[1].time,
+          day:response.data.[1].day,
+          id:this.state.id
+        
+
+        }
+
+      axios.post('http://localhost:5000/users/deletesection/',user)
+          
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+      
+            window.location='/student/'+this.state.id
+
+} 
+
+
 
   componentDidMount() {
     console.log(this.props.match.params.name)
     axios.get('http://localhost:5000/section/findbyclass/'+this.props.match.params.name)
       .then(response => {
         console.log(response.data)
-         this.state.names.push((response.data.[0].name),("time: "+response.data.[0].time),("day: "+response.data.[0].day),("capacity: "+response.data.[0].capacity),("students: "+0))
+         this.state.names.push((response.data.[0].name),("time: "+response.data.[0].time),("day: "+response.data.[0].day),("capacity: "+response.data.[0].capacity),("students: "+response.data.[0].stud))
          this.state.times.push((response.data.[1].name),("time: "+response.data.[1].time),("day: "+response.data.[1].day),("capacity: "+response.data.[1].capacity),("students: "+response.data.[1].stud))
         
       this.setState({
@@ -108,7 +165,7 @@ render() {
     style = {{position: 'absolute', left: '50%'}} >
     Add 
  </button>
- <button type="button"  type="button"
+ <button onClick={this.Drop1stHandleClick} type="button"  type="button"
     style = {{position: 'absolute', left: '55%'}} >
      Drop 
  </button>
@@ -122,7 +179,7 @@ render() {
     style = {{position: 'absolute', left: '50%'}} >
    Add 
  </button>
- <button  type="button"  type="button"
+ <button onClick={this.Drop2ndHandleClick} type="button"  type="button"
     style = {{position: 'absolute', left: '55%'}} >
    Drop
  </button>

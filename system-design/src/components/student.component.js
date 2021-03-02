@@ -6,6 +6,7 @@ import { Button, Icon } from 'semantic-ui-react';
 export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
+    this.handleClickCalendar=this.handleClickCalendar.bind(this)
     this.handClickLogout = this.handClickLogout.bind(this);
     this.onClick = this. onClick.bind(this);
     this.state = {
@@ -17,6 +18,10 @@ export default class CreateExercise extends Component {
     }
   }
 
+  handleClickCalendar(e){
+
+
+  }
 
    handClickLogout(e){
     e.preventDefault();
@@ -93,7 +98,7 @@ render() {
               
                
     <form onClick={this. handClickLogout}>
-    <Button  onClick={this. handClickLogout}    animated  style = {{width:"10vh",position: 'absolute', left: '50%', top: '50%',
+    <Button  onClick={this. handClickLogout}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '50%',
         transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
       <Button.Content  onClick={this.handClickLogout} visible>Logout</Button.Content>
       <Button.Content hidden>
@@ -103,17 +108,26 @@ render() {
         
           
     <form onClick={this. onClick}>
-    <Button  onClick={this. onClick}    animated  style = {{width:"10vh",position: 'absolute', left: '50%', top: '62%',
+    <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '62%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
       <Button.Content  onClick={this.onClick} visible>Classes</Button.Content>
       <Button.Content hidden>
       </Button.Content>
     </Button>
-    </form>
+        </form>
+ 
+        <form onClick={this. handleClickCalendar}>
+    <Button  onClick={this. handleClickCalendar}    animated  style = {{width:"15vh",position: 'absolute', left: '50%', top: '74%',
+        transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
+      <Button.Content  onClick={this.handleClickCalendar} visible>Calendar</Button.Content>
+      <Button.Content hidden>
+      </Button.Content>
+    </Button>
+        </form>
 
 
 
-
+  
     </div>
     
 
