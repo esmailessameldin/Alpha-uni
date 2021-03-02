@@ -7,7 +7,7 @@ export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
     this.handClickLogout = this.handClickLogout.bind(this);
-    this. onClick = this. onClick.bind(this);
+    this.onClick = this. onClick.bind(this);
     this.state = {
       name: '',
       email: '',

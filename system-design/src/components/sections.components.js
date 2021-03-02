@@ -1,44 +1,89 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Table}from 'react-bootstrap'
-import { Button, Icon } from 'semantic-ui-react';
-import {  Image, List } from 'semantic-ui-react'
-import { left } from '@popperjs/core';
+import {Form} from 'semantic-ui-react';
 export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
     
-    this.onClick=this.onClick.bind(this);
+    this.Add1stHandleClick=this.Add1stHandleClick.bind(this);
+    this.Add2ndHandleClick=this.Add2ndHandleClick.bind(this);
+    this.onChangeID=this.onChangeID.bind(this);
     this.state = {
         names:[],
-        list:[]
+        times:[],
+        name:'',
+        id:'',
+        day:''
       }
    
   }
   
-onClick(e){
-  window.location='/majors'+e
+  onChangeID(e) {
+    this.setState({
+      id:e.target.value
+    })
+  }
 
+  
+Add1stHandleClick(e){
+ 
+  e.preventDefault();
+  axios.get('http://localhost:5000/section/findbyclass/'+this.props.match.params.name)
+      .then(response => {
+        console.log(response.data)
+        const user ={
+          name:response.data.[0].name,
+          id:this.state.id
+        
 
+        }
+
+      axios.post('http://localhost:5000/users/addsection/',user)
+          
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+  
 }
+Add2ndHandleClick(e){
+  e.preventDefault();
+  axios.get('http://localhost:5000/section/findbyclass/'+this.props.match.params.name)
+      .then(response => {
+        console.log(response.data)
+        const user ={
+          name:response.data.[1].name,
+          time:response.data.[1].time,
+          id:this.state.id
+        
 
+        }
+
+      axios.post('http://localhost:5000/users/addsection/',user)
+          
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
+  
+}
 
   componentDidMount() {
     console.log(this.props.match.params.name)
     axios.get('http://localhost:5000/section/findbyclass/'+this.props.match.params.name)
       .then(response => {
-         response.data.map(({name}) => {if(name) this.state.names.push(name)})
+        console.log(response.data)
+         this.state.names.push((response.data.[0].name),("time: "+response.data.[0].time),("day: "+response.data.[0].day),("capacity: "+response.data.[0].capacity),("students: "+0))
+         this.state.times.push((response.data.[1].name),("time: "+response.data.[1].time),("day: "+response.data.[1].day),("capacity: "+response.data.[1].capacity),("students: "+response.data.[1].stud))
+        
       this.setState({
-               
-              list:this.state.names
-
+            
 
       })
            
-            
           
-          console.log(this.state.list)
-        
       })
       .catch((error) => {
         console.log(error);
@@ -59,14 +104,38 @@ render() {
               
            
      <ul>
-    {this.state.names.map(function(item) {return <li key={item}>{item}<button type="button"  type="button"
-       style = {{position: 'absolute', left: '50%'}} >
-      Click to add Section
-    </button> </li> ;
+     <button onClick={this.Add1stHandleClick} type="button"  type="button"
+    style = {{position: 'absolute', left: '50%'}} >
+    Add 
+ </button>
+ <button type="button"  type="button"
+    style = {{position: 'absolute', left: '55%'}} >
+     Drop 
+ </button>
+    {this.state.names.map(function(item) {return <li key={item}>{item} </li> ;
     })}
+
+     <h> ________________________________________________________________________________________________________________________________ </h>
+
+ {this.state.times.map(function(item) {return <li key={item}>{item} </li> ;
+    })}<button onClick={this.Add2ndHandleClick} type="button"  type="button"
+    style = {{position: 'absolute', left: '50%'}} >
+   Add 
+ </button>
+ <button  type="button"  type="button"
+    style = {{position: 'absolute', left: '55%'}} >
+   Drop
+ </button>
+
   </ul>
 
-
+  < Form   style = {{position: 'absolute', left: '2%'}}>
+    <Form.Field>
+      <  label>Enter your ID </label>
+      <input  required  onChange={this.onChangeID}  placeholder='Enter your ID' />
+      
+    </Form.Field>
+  </Form>
 
     </div>
     

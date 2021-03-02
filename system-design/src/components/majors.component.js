@@ -59,8 +59,8 @@ render() {
                     return (
                       <li key={key}>
                         {item}
-                        <button type="button" onClick={() => this.handleClick(item)}>
-                          Click to view courses
+                        <button type="button" style={{width:"25vh",position: 'absolute', left: '28%'}} onClick={() => this.handleClick(item)}>
+                         View sections
                         </button>
                       </li>
                     );

@@ -54,11 +54,10 @@ router.route('/:id').get((req, res) => {
 
   router.route('/addsection').post(async(req,res)=>{
     mongoose.set('useFindAndModify', false);
-    const o= await section.findOne({name:req.body.name})
+    const o= await section.findOneAndUpdate({name:req.body.name,time:req.body.time}, {$inc: {'stud': 1}},{new:true})
     console.log(o)
     let u =  await user.findOneAndUpdate({id:req.body.id}, {
-        $push: { sections: o } ,
-        name:"nono",
+        $push: { sections: o } 
     }, {
         new: true
       });
