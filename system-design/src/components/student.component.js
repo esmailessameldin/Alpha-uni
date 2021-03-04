@@ -13,13 +13,18 @@ export default class CreateExercise extends Component {
       name: '',
       email: '',
       id: '',
-      major:''
+      major:'',
+      birthday:'',
+      address:'',
+      year:'',
+      status:''
      
     }
   }
 
   handleClickCalendar(e){
-
+    e.preventDefault();
+ window.location='/calendar/'+this.props.match.params.id
 
   }
 
@@ -46,7 +51,11 @@ export default class CreateExercise extends Component {
             name: response.data.name,
             email:response.data.email,
             id:response.data.id,
-            major:response.data.major
+            major:response.data.major,
+            birthday:response.data.birthday,
+            address:response.data.address,
+            year:response.data.year,
+            status:response.data.status,
             
           })
           console.log(this.state.name)
@@ -67,18 +76,18 @@ render() {
   
     return (
       <div handClickLogout={this.handClickLogout}>
-      <Table striped bordered hover size="sm"style = {{width:"100vh",position: 'absolute', left: '50%', top: '30%',
+      <Table striped bordered hover size="sm"style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',
       transform: 'translate(-50%, -50%)'}}>
       <thead>
         <tr>
-          <th>name</th>
+          <th>Name</th>
           <th>{this.state.name}</th>
           
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>email</td>
+          <td>Email</td>
           <td>{this.state.email}</td>
         
         </tr>
@@ -88,8 +97,28 @@ render() {
         
         </tr>
         <tr>
-          <td>major</td>
+          <td>Major</td>
           <td>{this.state.major}</td>
+        
+        </tr>
+        <tr>
+          <td>Birthday</td>
+          <td>{this.state.birthday}</td>
+        
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>{this.state.address}</td>
+        
+        </tr>
+        <tr>
+          <td>Year</td>
+          <td>{this.state.year}</td>
+        
+        </tr>
+        <tr>
+          <td>status</td>
+          <td>{this.state.status}</td>
         
         </tr>
        
@@ -98,7 +127,7 @@ render() {
               
                
     <form onClick={this. handClickLogout}>
-    <Button  onClick={this. handClickLogout}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '50%',
+    <Button  onClick={this. handClickLogout}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '69%',
         transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
       <Button.Content  onClick={this.handClickLogout} visible>Logout</Button.Content>
       <Button.Content hidden>
@@ -108,7 +137,7 @@ render() {
         
           
     <form onClick={this. onClick}>
-    <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '62%',
+    <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
       <Button.Content  onClick={this.onClick} visible>Classes</Button.Content>
       <Button.Content hidden>
@@ -116,8 +145,8 @@ render() {
     </Button>
         </form>
  
-        <form onClick={this. handleClickCalendar}>
-    <Button  onClick={this. handleClickCalendar}    animated  style = {{width:"15vh",position: 'absolute', left: '50%', top: '74%',
+        <form onClick={this.handleClickCalendar}>
+    <Button  onClick={this.handleClickCalendar}    animated  style = {{width:"15vh",position: 'absolute', left: '50%', top: '89%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
       <Button.Content  onClick={this.handleClickCalendar} visible>Calendar</Button.Content>
       <Button.Content hidden>

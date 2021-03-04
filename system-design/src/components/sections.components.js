@@ -48,7 +48,7 @@ Add1stHandleClick(e){
       .catch((error) => {
         console.log(error);
       })
-      window.location='/student/'+this.state.id
+     
   
 }
 Add2ndHandleClick(e){
@@ -71,7 +71,7 @@ Add2ndHandleClick(e){
       .catch((error) => {
         console.log(error);
       })
-      window.location='/student/'+this.state.id
+  
   
 }
 Drop1stHandleClick(e){
@@ -96,7 +96,6 @@ Drop1stHandleClick(e){
       })
 
 
-      window.location='/student/'+this.state.id
 
 } 
 Drop2ndHandleClick(e){
@@ -121,7 +120,7 @@ Drop2ndHandleClick(e){
       })
 
       
-            window.location='/student/'+this.state.id
+
 
 } 
 

@@ -8,6 +8,8 @@ import studentscreen from "./components/student.component"
 import majors from "./components/majors.component"
 import sections from "./components/sections.components"
 import passerror from "./components/passerror.component"
+import calendar from "./components/calendar.component"
+import spring from "./components/spring.component"
 function App() {
   return (
     <Router>
@@ -20,6 +22,8 @@ function App() {
     <Route path="/majors/:name" exact component={majors} />
     <Route path="/sections/:name" exact component={sections} />
     <Route path="/passerror" exact component={passerror} />
+    <Route path="/calendar/:id" exact component={calendar} />
+    <Route path="/spring" exact component={spring} />
     </div>
     </Router>
 

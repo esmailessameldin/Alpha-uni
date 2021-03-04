@@ -6,7 +6,11 @@ const studentSchema= new schema({
   password:{type:String,required:true},
   email:{type:String,unique:true,required:true,default:""},
  major:{type:String,default:"Undecided"},
- sections:{type:[],default:[]}
+ sections:{type:[],default:[]},
+ birthday:{type:String},
+ address:{type:String},
+ year:{type:String},
+ status:{type:String}
 });
 
 
