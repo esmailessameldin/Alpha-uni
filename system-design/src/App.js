@@ -15,7 +15,7 @@ function App() {
     <Router>
           <Navbar />
           <br/>
-    <div className="btngan">
+    <div className="Pineapple">
     <Route path="/" exact component={login} />
     <Route path="/student/:id" exact component={studentscreen} />
     <Route path="/classes/:id" exact component={classes} />
