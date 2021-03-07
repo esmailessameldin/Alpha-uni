@@ -9,7 +9,7 @@ const studentSchema= new schema({
  sections:{type:[],default:[]},
  birthday:{type:String},
  address:{type:String},
- year:{type:String},
+ year:{type:String,default:"Freshman"},
  status:{type:String}
 });
 

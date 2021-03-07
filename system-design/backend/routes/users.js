@@ -12,8 +12,11 @@ router.route('/add').post((req, res) => {
     const u = new user({
 
         name: req.body.name,
+        address:req.body.address,
         email:req.body.email,
+        birthday:req.body.birthday,
         id:x,
+        status:req.body.status,
         password:req.body.password,
 
         });
@@ -21,7 +24,8 @@ router.route('/add').post((req, res) => {
 
   u .save()
     .then(() => res.json('User added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json('Error: ' + err)); 
+    console.log(u)
 });
 
 router.route('/login').post((req,res)=>{

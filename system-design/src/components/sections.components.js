@@ -34,9 +34,9 @@ Add1stHandleClick(e){
       .then(response => {
         console.log(response.data)
         const user ={
-          name:response.data.[0].name,
-          time:response.data.[0].time,
-          day:response.data.[0].day,
+          name:response.data[0].name,
+          time:response.data[0].time,
+          day:response.data[0].day,
           id:this.state.id
         
 
@@ -48,7 +48,7 @@ Add1stHandleClick(e){
       .catch((error) => {
         console.log(error);
       })
-     
+      alert("Section added !")
   
 }
 Add2ndHandleClick(e){
@@ -57,9 +57,9 @@ Add2ndHandleClick(e){
       .then(response => {
         console.log(response.data)
         const user ={
-          name:response.data.[1].name,
-          time:response.data.[1].time,
-          day:response.data.[1].day,
+          name:response.data[1].name,
+          time:response.data[1].time,
+          day:response.data[1].day,
           id:this.state.id
         
 
@@ -72,7 +72,7 @@ Add2ndHandleClick(e){
         console.log(error);
       })
   
-  
+      alert("Section added !")
 }
 Drop1stHandleClick(e){
   e.preventDefault();
@@ -80,9 +80,9 @@ Drop1stHandleClick(e){
       .then(response => {
         console.log(response.data)
         const user ={
-          name:response.data.[0].name,
-          time:response.data.[0].time,
-          day:response.data.[0].day,
+          name:response.data[0].name,
+          time:response.data[0].time,
+          day:response.data[0].day,
           id:this.state.id
         
 
@@ -96,7 +96,7 @@ Drop1stHandleClick(e){
       })
 
 
-
+      alert("Section dropped !")
 } 
 Drop2ndHandleClick(e){
   e.preventDefault();
@@ -104,9 +104,9 @@ Drop2ndHandleClick(e){
       .then(response => {
         console.log(response.data)
         const user ={
-          name:response.data.[1].name,
-          time:response.data.[1].time,
-          day:response.data.[1].day,
+          name:response.data[1].name,
+          time:response.data[1].time,
+          day:response.data[1].day,
           id:this.state.id
         
 
@@ -120,7 +120,7 @@ Drop2ndHandleClick(e){
       })
 
       
-
+alert("Section dropped !")
 
 } 
 
@@ -131,8 +131,8 @@ Drop2ndHandleClick(e){
     axios.get('http://localhost:5000/section/findbyclass/'+this.props.match.params.name)
       .then(response => {
         console.log(response.data)
-         this.state.names.push((response.data.[0].name),("time: "+response.data.[0].time),("day: "+response.data.[0].day),("capacity: "+response.data.[0].capacity),("students: "+response.data.[0].stud))
-         this.state.times.push((response.data.[1].name),("time: "+response.data.[1].time),("day: "+response.data.[1].day),("capacity: "+response.data.[1].capacity),("students: "+response.data.[1].stud))
+         this.state.names.push((response.data[0].name),("time: "+response.data[0].time),("day: "+response.data[0].day),("capacity: "+response.data[0].capacity),("students: "+response.data[0].stud),("Building: "+response.data[0].building),("Room: "+response.data[0].room),("Teacher: "+response.data[0].teacher))
+         this.state.times.push((response.data[1].name),("time: "+response.data[1].time),("day: "+response.data[1].day),("capacity: "+response.data[1].capacity),("students: "+response.data[1].stud),("Building: "+response.data[1].building),("Room: "+response.data[1].room),("Teacher: "+response.data[1].teacher))
         
       this.setState({
             
@@ -171,7 +171,7 @@ render() {
     {this.state.names.map(function(item) {return <li key={item}>{item} </li> ;
     })}
 
-     <h> ________________________________________________________________________________________________________________________________ </h>
+     <ul> ________________________________________________________________________________________________________________________________ </ul>
 
  {this.state.times.map(function(item) {return <li key={item}>{item} </li> ;
     })}<button onClick={this.Add2ndHandleClick} type="button"  type="button"

@@ -10,6 +10,7 @@ import sections from "./components/sections.components"
 import passerror from "./components/passerror.component"
 import calendar from "./components/calendar.component"
 import spring from "./components/spring.component"
+import register from "./components/register.component"
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
     <Route path="/passerror" exact component={passerror} />
     <Route path="/calendar/:id" exact component={calendar} />
     <Route path="/spring" exact component={spring} />
+    <Route path="/register" exact component={register} />
     </div>
     </Router>
 

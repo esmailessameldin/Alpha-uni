@@ -6,6 +6,7 @@ import { Button, Icon } from 'semantic-ui-react';
 export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
+    this.handleClickDegree=this.handleClickDegree.bind(this)
     this.handleClickCalendar=this.handleClickCalendar.bind(this)
     this.handClickLogout = this.handClickLogout.bind(this);
     this.onClick = this. onClick.bind(this);
@@ -25,6 +26,10 @@ export default class CreateExercise extends Component {
   handleClickCalendar(e){
     e.preventDefault();
  window.location='/calendar/'+this.props.match.params.id
+
+  }
+  handleClickDegree(e){
+    e.preventDefault(); 
 
   }
 

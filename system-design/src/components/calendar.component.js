@@ -46,10 +46,10 @@ export default class CreateExercise extends Component {
             listA:response.data.sections.map(sections => sections)
           })
           console.log(this.state.listA) 
-          setTimeout(  this.setState({
+          this.setState({
             loading:false
 
-         }), 5000)
+         })
          
           
       })

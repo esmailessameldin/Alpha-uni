@@ -8,6 +8,7 @@ export default class Navbar extends Component {
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.register=this.register.bind(this)
     this.onChangePassword=this.onChangePassword.bind(this)
 
     this.state = {
@@ -15,7 +16,10 @@ export default class Navbar extends Component {
       password:''
     }
   }
+register(e){
+window.location='/register'
 
+}
   onChangeEmail(e) {
     this.setState({
       email: e.target.value
@@ -87,6 +91,10 @@ render() {
         <Icon name='arrow right' />
       </Button.Content>
     </Button>
+  <button onClick={this.register} type="button"  type="button"
+    style = {{position: 'absolute', left: '38%',top:'67.8%'}} >
+   Register 
+ </button>
   </div>
   
         </form>
