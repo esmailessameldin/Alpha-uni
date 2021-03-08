@@ -6,6 +6,7 @@ import { Button, Icon } from 'semantic-ui-react';
 export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
+    this.handleClickAudit=this.handleClickAudit.bind(this)
     this.handleClickDegree=this.handleClickDegree.bind(this)
     this.handleClickCalendar=this.handleClickCalendar.bind(this)
     this.handClickLogout = this.handClickLogout.bind(this);
@@ -33,6 +34,10 @@ export default class CreateExercise extends Component {
 
   }
 
+  handleClickAudit(e){
+    e.preventDefault();
+    window.location='/audit/'+this.state.major
+  }
    handClickLogout(e){
     e.preventDefault();
     window.location='/'
@@ -159,7 +164,14 @@ render() {
     </Button>
         </form>
 
-
+        <form onClick={this. handleClickAudit}>
+    <Button  onClick={this. handleClickAudit}    animated  style = {{width:"11vh",position: 'absolute', left: '40%', top: '69%',
+        transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
+      <Button.Content  onClick={this.handleClickAudit} visible>audit</Button.Content>
+      <Button.Content hidden>
+      </Button.Content>
+    </Button>
+    </form>
 
   
     </div>

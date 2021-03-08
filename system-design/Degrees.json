@@ -1,0 +1,116 @@
+
+[
+{ "major": "Accounting",
+"classes":["BU 3502Principles of Accounting I","BU 3511Principles of Accounting II","BU 4500 Intermediate Accounting I","BU 4510   Intermediate Accounting II","BU 4570 Federal Income Tax I","BU 4590 Cost Accounting","BU 5505 Essentials-Gov't&Non-ProfAcctg","BU 5525 International Accounting","BU 5540 Advanced Accounting","BU 5550 Auditing","BU 5520 Financial Accounting Research","BU 3600  Principles of Business Law","BU 3605 Intermediate Business Law","BU 3610 Advanced Business Law","BU 3800 Marketing Principles","BU 4110 Organizational Behavior & Management","BU 4762 Financial Management I","BU 5115 Operations Management","BU 5190 Business Strategy & Policy","MA 2000 Applied Statistics","BU 3010 Information Systems for Managers or Information Technology and Applications","BU 3905 Business Communications","MA 2300 Calculus for Business & Economics","PE 2420 Principles of Microeconomics","PE 2430 Principles of Macroeconomics"]
+},
+{ "major": "Adolescence Education: Biology (7-12)",
+"classes":["ED 6000 Foundations of Education","ED 6001 Human Growth&Dvlpmnt MAT","ED 6002 Foundations of Literacy MAT","ED 6003 The Exceptional Learner MAT","ED 6900 Student Teaching: Science","CP 6560 Topics:Molecular Bio & BioChem","BS 6590 Topics: Environmental Science","BS 6630  Developmental Biology/MAT","ED 6092 Literacy","ED 6250 Teachng Ntr&Dvlmnt Science MAT"]
+},
+
+{ "major": "Adolescence Education: Chemistry (7-12)",
+"classes":["CP 6590 Topics: Environmental Science","CP 6740 Topics in Earth&Space Science","CP 6500 Science and the Community"]
+},
+
+{ "major": "Adolescence Education: Mathematics (7-12)",
+"classes":["ED 6084 Method/Mtrls Teaching Math MAT","ED 6094 Literacy","ED 6902 Student Teaching Mathematics","MA 6100 Probability and Statistics","MA 6200 Algebra","MA 6150 Geometry","MA 6250 Analysis","MA 6400 Topics in Advanced Math & Tech","MA 7500 Topics in Math & Math Ed"]
+},
+
+
+{ "major": "Adolescence Education: Social Studies (7-12)",
+"classes":["ED 6085 Mthd/Mtrls Teach Socl Stds MAT","ED 6095 Literacy","ED 6903 Student Teaching:Social Stds","HI 6510 Topics in US History","HI 6520 US Constitutional&Polticl Hist","HI 6530 Econ:Theories","HI 6540 Topics in European History","HI 6565 Topics in the History of India","HI 7500 Questioning Global History"]
+},
+
+{ "major": "Biochemistry",
+"classes":["CP 2120 Principles of Chemistry I","CP 2121 Principles of Chemistry Lab I","CP 2130 Principles of Chemistry II","CP 2131 Principles Chemistry Lab II","CP 3300 Organic Chemistry I","CP 3302 Organic Chemistry Lab I","CP 3310 Organic Chemistry II","CP 3312 Organic Chemistry Lab II","CP 3400 Analytical Chemistry-Lect/Lab","CP 4700 Physical Chemistry I","CP 5920 Seminar I","CP 5921 Seminar II","CP 4510 Biochemistry I","CP 4515 Biochemistry II","CP 4520 Biochemistry Lab","BS 2400 Basic Bio Sciences I","BS 2410 Basic Bio Sciences II","BS 4400 Cell Biology","BS 4460 Genetics","BS 4560 Molecular Biology","CP 2220 Structure of Physics I","CP 2221 Structure of Physics I Lab","CP 2230 Structure of Physics II","MA 2310 Calc & Analytic Geometry I","MA 2320 Calc & Analytic Geometry II"]
+},
+
+{ "major": "Biological Sciences",
+"classes":["BS4400 Cell Biology","BS4460 Genetics","BS4440 Evolution","BS2490 Environmental Science","BS3400 Vertebrate Physiology","BS3450 Plant Biology","BS3510 Parasitology","BS3520 Comparative Anatomy","BS3530 Comparative Genomics","BS3531 Comparative Genomics Lab","BS3710 Environmental Physiology","BS3810  Biological Aspects of Aging","BS4400  Cell Biology","BS4410  Histology","BS4420  Microbiology","BS4430  Developmental Biology","BS4440  Evolution","BS4460  Genetics","BS4461  Immunology","BS4470  Ecology"]
+},
+{ "major": "Business Administration",
+"classes":["BU 3010 Information Systems for Managers","BU 3502 Principles of Accounting I","BU 4110 Organizational Behavior & Mgmt","MA 2300 Calc/Business & Economics","BU 4120  Global Business","BU 5171 Human Resource Management","BU 5196 Leadership","BU 4035 Web Sys & Electronic Commerce","BU 4130 Entrepreneurship","BU 5195 Management Seminar"]
+},
+
+{ "major": "Chemistry",
+"classes":["CP 2121Principles of Chemistry Lab I","CP 2130  Principles of Chemistry II","CP 3302  Organic Chemistry Lab I","CP 4700  Physical Chemistry I","CP 4710 Physical Chemistry II","CP 4720  Physical Chemistry Lab","CP 4800 Adv Chemical Methods: Lect/Lab","CP 2240  General Physics I","CP 2250 General Physics II","CP 2251 General Physics II Lab","CP 3230  Math Methods: Physical Science","MA 3160  Linear Algebra","MA 3330  Calc & Analyt Geometry III","MA 4360  Differential Equations"]
+},
+{ "major": "Childhood Education (1-6)",
+"classes":["ED3700 Child Development for Teachers","ED3820 Foundations of Special Education","ED3950 Creating Schools for a Just Society","ED4050 Innovative Instructional Design and Assessment","ED4121 Methods & Materials of Teaching Elementary Science Methods","ED4122 Methods & Materials of Teaching Elementary Math Methods","ED4200 Literacy for All Students","ED4220 Language Arts in the Context of Childhood Education","ED5925 Building a Classroom Community for All Learners"]
+},
+{ "major": "Computer & Information Science",
+"classes":["CS 2510 Computer Programming I","CS 2511 Computer Programming II","CS 3620 Computer Architecture I","CS 3810  Data Structures & Algorithms","CS 3911 C++in Object Oriented Design","CS 4100 Technical Communications","CS 4501 Software Engineering","CS 4550 Database Management Systems","CS 4720 Internet & Web Tech","CS 5910 Systems Design & Implement","CS 5710 Computer Networks","CS 4400  Artificial Intelligence","CS 4705 Intro to Computer Security","CS 5610  Operating Systems","CS 5730  Computer Network Security","CS 5810  Data Mining","MA 3030  Discrete Mathematics","MA 3210  Intro to Prob & Statistics","MA 4100  Number Theory"]
+},
+{ "major": "Criminology",
+"classes":["SY 1500  Intro Sociology","CR 1500 Intro to Criminology","CR 2090  Juvenile Delinquency","CR 3092 Victimology","CR 3093  Criminal Justice Admin","CR 3094 Drugs and Society","CR 3117  Policing Bodies","CR 3200  Crime","CR 4000 Gender","CR 4091 Punishment & Corrections","CR 4099 Sociology of Violence","CR 4999 Issues in Criminology","SY 2600  Social Deviance","SY 4810 Law & Justice","SY 4520 Research Methods I","SY 4530 Sociological Theory I","SY 4570 Research Methods II","CR 4550 Theories of Crime"]
+},
+
+{ "major": "English",
+"classes":["SY 5990  Senior Seminar","EL 1000 English Comp I: Exposition","EL 2239 Horror Literature","EL 3010  Structure & Grammar of English","EL 3500  Lit Across Cultures I:Analysis","EL 3510  Lit Across Cultures II:Theory","EL 4400  Critical Theory","EL 3600 US Literature I","EL 3610  US Literature II","EL 3800 Eng Lit I:Beowulf-18th Century","EL 3810  Eng Lit II:Romantics - Present","EL 3560  Literatures of Europe:Part I","EL 3561 Literatures of Europe:Part II","EL 3950  Creative Non-Fiction","EL 4311 Greek Drama","EL 4312 Greek Mythology","EL 4325 Shakespeare: Selected Plays","EL 4402 Sin & Sexuality in Literature","EL 4500 Topics in British/US Lit","EL 4510  Modern Drama & Theatre","EL 4540  Epic: East and West","EL 4800  Major Authors","EL 3811  Survey of African-American Lit","EL 4000 Native American Literature","EL 4010 Harlem Renaissance"]
+},
+{ "major": "Finance",
+"classes":["BU 3010 Info Systems For Mgrs","BU 3511 Principles of Accounting II","BU 5115  Operations Management","BU 5190  Business Strategy & Policy","BU 5771 Global Financial Markets","BU 4720   Global Financial Markets","BU 4774   Financial Markets & Inst","BU 5740  Invest Mgmt & Securities Anal","BU 5710   Fin. Modeling & Forecasting","BU 5760  Corporate Finance","BU 5789 Futures & Options Markets"]
+},
+{ "major": "Health and Society",
+"classes":["BS 2100 Biology for Non-Science Majors","BS 2300  Anatomy&Physiology I Lecture","BS 2310  Anatomy&Physiology II Lecture","BS 2410  Basic Bio Sciences II","PH 3600  Social Determinants of Health","PH 3610 Intro.-U.S.Health Care System","PH 4670 Biostatistics","PH 4800 Epidemiology","PH 4900 Community Health Field Placmt","PH 5900 Research Methods","PH 4450 Human Sexuality","PH 3200  Nutrition & Society","PH 3700  Medical Anthropology","PH 4600  Health Program Planning & Eval","PH 4610 Women's Health","PH 4631  Mental Health","PH 4661  Health Education","PH 4680 Environmental Health","PH 4750  Aging & Social Policy","PH 4760  Health Administration","PH 4770  Occupational Health","PH 4790 Health Care Policy","PH 4810  Ethics in Public Health","PH 4820  Health Law","PH 4890  Environmental Justice"]
+},
+
+{ "major": "History",
+"classes":["HI 2681 Intro to Europe Hist:1350-Present","AS 2112 American People I","AS 2122 American People II","HI 3080   Asian Cultures","HI 3091 African Cultures","HI 3110 Latin American Culture","HI 3640  African History","HI 3835 Islamic Cultures","HI 4308 History Modern Middle East","HI 4632 Japanese History Through Literature","HI 4800  History of India","HI 4900 Modern China-Study Abroad","HI 4905 Chinese Civilization","PE 4690 Politics of Lat Amer/Caribbean","HI 4001 19th Century","HI 4011  20th Century","HI 4700  Modern Global Environments","HI 3610  America's African Heritage","HI 3840 Crescent and Cross","HI 4650   History of African Enslavement","HI 4910  Chinese Diaspora","HI 2810  Geography","HI 4600 World Regional Geography","AS 4212  Early America","AS 4218  Civil War & Reconstruction","AS 4290  Youth in America: A History"]
+},
+{ "major": "Industrial and Labor Relations",
+"classes":["PE 2650 Intro to U.S. Politics","IR 2210 Unions & Management: An Intro","IR 3140 Unions & Public Policy","IR 3300 CollectiveBarg & GrievanceProc","IR 4320 Labor & Employment Law","IR 3330 Women","IR 3415 Labor Economics","IR 3860 Development of the Modern Corp","BU 5125  Business Ethics","BU 5171  Human Resource Managemen","HS 4770  Occupational Health","IR 3120  History:AmericanLaborRelations","IR 3260  Comparative Labor Relations","IR 3500 Arbitration & Mediation","IR 4200  Strategic Research/Organizers","IR 4600 Topics in Labor Studies","PE 4430  Health Economics","PE 2300 Introduction to Law"]
+},
+{ "major": "Liberal Arts",
+"classes":["EL 8998 Elec(Interpersonal Comm)", "MA 1020 College Algebra"]
+},
+{ "major": "Management Information Systems",
+"classes":["CS 3611 Advanced C#","BU 3800 Marketing: Principles&Concepts","BU3010 Information Systems for Managers","MA2000 Applied Statistics"]
+},
+
+
+
+
+{ "major": "Marketing",
+"classes":["MA2300 Calculus for Business & Economics","BU3600 Principles Business Law","BU3800 Marketing: Principles & Concepts","BU3905 Business Communication","BU4110 Organizational Behavior & Management","BU4762 Financial Management","BU5115 Operations Management","BU5190 Business Strategy & Policy","BU4800 Marketing Research","BU4820 International Marketing","BU4851 Consumer Behavior","BU5841 Strategic Marketing","BU5880 Brand Theory & Strategy"]
+},
+{ "major": "Mathematics",
+"classes":["MA2310 Calculus and Analytic Geometry I","MA2320 Calculus and Analytic Geometry II","MA3030 Discrete Mathematics","MA3160 Linear Algebra","MA3210 Intro. To Probability & Statistics","MA3330 Calculus and Analytic Geometry III","MA3520 Transition to Advanced Mathematics","MA4360 Differential Equations","MA5120 Abstract Algebra I","MA5320 Advanced Calculus I","CS2510 Computer Programming I","MA4100 Number Theory","MA4200 Probability","MA4510 Geometry","MA4910 Operations Research I","MA4920 Operations Research II","MA5230 Mathematical Statistics","MA5380 Complex Analysis","MA5510 Topology","CS2511 Computer Programming II","CS3810 Data Structures & Algorithms"]
+},
+{ "major": "Media and Communications",
+"classes":["AS2020 New Media CE","AS2652 Media Studies","AS2700 The Engaged Eye","AS3310 From Citizen to Consumer","AS3632 History of U.S. Film","AS3712 American Film Genres","AS3722 History of Mass Media","AS3732 Politics of Media","AS3735 Documentary Media Studies","AS3742 Myths and Images in Film","AS3745 Feminine and Masculine in Film","AS3810 Music and Media","AS3830 Public Relations and Society","AS3842 African-Americans and the Mass Media","AS3852 Women and the Media","AS4160 Special Topics in Media Studies","AS4280 Global Media","AS4722 Film: Ideas and Aesthetics","AS4725 The Photograph and American Culture","AS4732 Political Film","AS4850 Digital Revolution","SY4651 Sociology of Communications and Media"]
+},
+
+
+
+
+
+
+{ "major": "Philosophy and Religion",
+"classes":["HI1010 World Religions: West","HI1020 World Religions: East","HI2720 Introduction to Philosophy","HI2155 Introduction to Comparative Religion","HI2700 Introduction to Logic","HI3011 Foundations of Judeo-Christian Tradition","HI3080 Asian Cultures","HI3091 African Cultures","HI3835 Islamic Cultures","HI3840 Crescent and Cross","HI4905 Chinese Civilization","HI3323 Buddhism","HI3525 Ancient Greek Philosophy","HI3703 Modern Philosophy","HI3704 African Religions and Philosophy","HI3710 Contemporary Philosophical Issues","HI3950 Philosophy of Religion","HI4051 Logic and Scientific Reasoning","HI4318 Islamic Philosophy and Mysticism","HI4395 20th & 21st Century Philosophy","PE4620 Political Thought","PE4665 Human Rights","PE4658 Law and Civil Liberties","PE4659 Law and Civil Rights","HI3040 Analysis of Cultures"]
+},
+{ "major": "Politics & Economics & Law",
+"classes":["PE2300 Introduction to Law","PE2650 Introduction to U.S. Politics","IR2210 Unions and Management: An Introduction","PE2220 Introduction to Urban Issues","PE2400 Introduction to Political Economy","PE3100 International Relations","PE4320 Jurisprudence: Legal Thought","PE4470 History of Economic Thought","PE4620 Political and Social Thought","PE4580 Origins of the Capitalist Economy","PE4590 Global Economy in the 20th Century"]
+},
+{ "major": "Psychology",
+"classes":["PY2010 Introduction to Psychology","PY3110 Research Methods I: (Orientation)","PY3120 Research Methods II: (Statistics)","PY4100 Research Methods III (Advanced Research Skills)","PY4130 Field Experience and Research","PY3410 Cognitive Psychology","PY3420 Learning & Motivation","PY3610 Brain & Behavior","PY3620 Drugs & Behavior","PY3215 Foundations of Child Development","PY3310 Abnormal Human Behavior","PY3311 Theories of Personality","PY3510 Social Psychology","PY2340 Community Psychology","PY2530 Psychology of Prejudice","PY2720 Psychology of Gender","PY3710 Psychology & Social Justice"]
+},
+
+{ "major": "Spanish Language",
+"classes":["ML2100 Intermediate Spanish Conversation I","ML2110 Intermediate Spanish Conversation II OR ML2500 Spanish Language and Culture","ML3100 Advanced Spanish Conversation and Composition","ML3362 Advanced Spanish Grammar and Composition","ML3200 Translation Workshop","ML3250 Spanish Linguistics","ML3260 Spanish Linguistics: Universals of Grammar","ML3500 Critical Writing and Textual Analysis","ML4100 The Spanish Golden Age","ML4500 Culture and Literature of Spain from the Middle Ages to the 18th century","ML4510 Civilization and Culture of Spain","ML3300 Artistic Expressions of Spain","ML3310 Topics in Hispanic Cultural Studies","ML3410 Latino/a Writers in the US","ML3650 Latin American Cinema","ML3880 Masterpieces of Hispanic Literature","ML4325 Contemporary Theatre of the Hispanic World","ML4350 Recurrent Themes in Latin American Painting and Literature","ML4450 Hispanic Women Writers","ML4515 Recent Narrative from Spain","ML4520 Culture and Literature of the Spanish Caribbean","ML/EL4630 Latin American Literature","ML4700 Studies in Spanish Literature of the Nineteenth and Twentieth Centuries","ML4725 The Novel and the City","ML4750 Fiction into Film: the Spanish and Latin American Cinema","ML5400 Contemporary Literary Theory and its Applications"]
+},
+{ "major": "Special Education and Childhood Education (1-6)",
+"classes":["ED3700 Child Development","ED4121 Methods and Materials for Teaching Elementary Science Majors","ED4122 Methods and Materials for Teaching Elementary Math Methods","ED4850 Instructional Design & Delivery for Students with Disabilities","ED4300 Assessment and Evidence-based Decision Making in Special Education","ED4810 Positive Behavior Supports and Interventions for Students with Disabilities","ED4890 Effective Practices for Students with Low Incidence Disabilities","ED5930 Internship: Meeting the Needs of Diverse Learners","ED5960 Student Teaching and Seminar"]
+},
+{ "major": "Sociology",
+"classes":["SY2400 Sociology Through the Arts","SY2550 Social Problems","SY2600 Social Deviance","SY2800 Race","SY3160 Sociology of Culture","SY3280 Social Inequality","SY3630 Political Sociology","SY3700 Family and Society","SY3750 Medical Sociology","SY3800 Race and Ethnicity","SY3900 Social Movements","SY3910 Sociology of Work","SY4260 Social Work: Theory and Practice","SY4270 Internship in Social Work","Sociology and Criminology","SY4400 Social Psychology","SY4500 Global Sociology","SY4600 Social Programs","SY4810 Law and Justice","SY4830 Gender and Society","SY4850 Urban and Suburban Sociology","SY4950 Sociology of Music","SY4999 Issues in Sociology","CR2090 Juvenile Delinquency","CR3092 Victimology","CR3093 Criminal Justice Administration","CR3094 Drugs and Society"]
+},
+{ "major": "Visual Arts: Electronic Media",
+"classes":["VA2010 Intro. to Creative Thinking","VA2020 Basic Design","VA2030 Drawing","VA2045 Introduction to Color","VA2500 Art History I: 19th Century Art","VA3100 Visual Culture","VA3200 Art Tutorials I","VA3400 Digital Imaging","VA4200 Art Tutorials II","VA5200 Art Tutorials III","VA4900 Internship","VA2320 Graphic Design I","VA3380 Digital Video 4","VA4260 Interactive Web Design","VA4320 Graphic Design II","VA4460 Digital Animation","VA4265 3D Digital Desig","VA4360 Advanced Electronic and Animation"]
+},
+
+{ "major": "Undecided",
+"classes":["BU 3502Principles of Accounting I", "CP 2120 Principles of Chemistry I", "CP 4510 Biochemistry I", "CS 2510 Computer Programming I", "EL 3600 US Literature I",
+	"EL 3610  US Literature II", "AS 2112 American People I", "AS 2122 American People II", "BU4110 Organizational Behavior & Management"
+	, "PY2010 Introduction to Psychology", "VA2010 Intro. to Creative Thinking", "VA2020 Basic Design", "VA2030 Drawing"]
+}
+]

@@ -6,4 +6,4 @@ const degreeSchema= new schema({
 });
 
 
-module.exports= mongoose.model('degree', degreeSchema);
+module.exports= mongoose.model('degrees', degreeSchema);

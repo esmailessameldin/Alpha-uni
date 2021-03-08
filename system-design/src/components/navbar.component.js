@@ -17,10 +17,10 @@ export default class Navbar extends Component {
           <Link to="/create" className="nav-link">Academic Calendar for Fall</Link>
           </li>
           <li className="navbar-item">
-          <Link to="/user" className="nav-link">Master Schedule Spring</Link>
+          <Link to="/masterspring" className="nav-link">Master Schedule Spring</Link>
           </li>
           <li className="navbar-item">
-          <Link to="/user" className="nav-link">Master Schedule Fall</Link>
+          <Link to="/masterfall" className="nav-link">Master Schedule Fall</Link>
           </li>
           
           <Dropdown>

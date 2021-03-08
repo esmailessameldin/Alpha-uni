@@ -10,6 +10,9 @@ import sections from "./components/sections.components"
 import passerror from "./components/passerror.component"
 import calendar from "./components/calendar.component"
 import spring from "./components/spring.component"
+import audit from "./components/audit.component"
+import masterspring from "./components/masterspring.component"
+import masterfall from "./components/masterfall.component"
 import register from "./components/register.component"
 function App() {
   return (
@@ -25,6 +28,9 @@ function App() {
     <Route path="/passerror" exact component={passerror} />
     <Route path="/calendar/:id" exact component={calendar} />
     <Route path="/spring" exact component={spring} />
+    <Route path="/audit/:major" exact component={audit} />
+    <Route path="/masterfall" exact component={masterfall} />
+    <Route path="/masterspring" exact component={masterspring} />
     <Route path="/register" exact component={register} />
     </div>
     </Router>
