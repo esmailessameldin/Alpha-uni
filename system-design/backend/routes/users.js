@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { useReducer } = require('react');
 let user = require('../models/user.js');
-let section=require('../models/sections.js')
+let sections=require('../models/sections.js')
 const mongoose = require('mongoose');
 var x = 700000001;
 
@@ -71,7 +71,7 @@ router.route('/:id').get((req, res) => {
 
 router.route('/deletesection').post(async(req,res)=>{
     mongoose.set('useFindAndModify', false);
-    const o= await section.findOneAndUpdate({name:req.body.name,time:req.body.time}, {$inc: {'stud': -1}},{new:true})
+    const o= await sections.findOneAndUpdate({crn:req.body.crn}, {$inc: {'stud': -1}},{new:true})
     console.log(o)
     let u =  await user.findOneAndUpdate({id:req.body.id}, {
         $pull: { sections:{name:o.name,time:o.time} }

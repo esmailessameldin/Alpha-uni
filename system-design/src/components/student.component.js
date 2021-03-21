@@ -9,6 +9,7 @@ export default class CreateExercise extends Component {
     this.handleClickAudit=this.handleClickAudit.bind(this)
     this.handleClickDegree=this.handleClickDegree.bind(this)
     this.handleClickCalendar=this.handleClickCalendar.bind(this)
+    this.handeClickAdd=this.handeClickAdd.bind(this)
     this.handClickLogout = this.handClickLogout.bind(this);
     this.onClick = this. onClick.bind(this);
     this.state = {
@@ -22,6 +23,10 @@ export default class CreateExercise extends Component {
       status:''
      
     }
+  }
+  handeClickAdd(e){
+    e.preventDefault();
+    window.location='/adddrop/'+this.props.match.params.id
   }
 
   handleClickCalendar(e){
@@ -172,7 +177,16 @@ render() {
       </Button.Content>
     </Button>
     </form>
-
+    
+    <form onClick={this. handeClickAdd}>
+    <Button  onClick={this. handeClickAdd}    animated  style = {{width:"15vh",position: 'absolute', left: '65%', top: '80%',
+        transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
+      <Button.Content  onClick={this.handeClickAdd} visible>Add/Drop</Button.Content>
+      <Button.Content hidden>
+      </Button.Content>
+    </Button>
+    </form>
+    
   
     </div>
     

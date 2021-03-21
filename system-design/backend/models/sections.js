@@ -4,7 +4,14 @@ const sectionsSchema= new schema({
   name:{type:String,unique:true,required:true},
   day:{type:String},
   time:{type:String},
-  stud:{type:Number,default:0},
+  students:{type:Number,default:0},
+  capacity:{type:Number,default:20},
+  credits:{type:Number,default:4},
+  building:{type:String},
+  room:{type:Number},
+  teacher:{type:String},
+  crn:{type:String}
+
  
 });
 

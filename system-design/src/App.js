@@ -14,6 +14,7 @@ import audit from "./components/audit.component"
 import masterspring from "./components/masterspring.component"
 import masterfall from "./components/masterfall.component"
 import register from "./components/register.component"
+import mark from "./components/add.component"
 function App() {
   return (
     <Router>
@@ -29,6 +30,7 @@ function App() {
     <Route path="/calendar/:id" exact component={calendar} />
     <Route path="/spring" exact component={spring} />
     <Route path="/audit/:major" exact component={audit} />
+    <Route path="/adddrop/:id" exact component={mark}/>
     <Route path="/masterfall" exact component={masterfall} />
     <Route path="/masterspring" exact component={masterspring} />
     <Route path="/register" exact component={register} />

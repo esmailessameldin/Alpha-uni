@@ -1,6 +1,8 @@
 const router = require('express').Router();
 let sections = require('../models/sections.js');
 let audit =require('../models/Degrees.js')
+let users =require('../models/user.js')
+const mongoose=require('mongoose')
 
 
 router.route('/viewaudit/:major').get(async(req,res)=>{
@@ -12,7 +14,22 @@ router.route('/viewaudit/:major').get(async(req,res)=>{
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/findbycrn/:id').post(async(req,res)=>{
+  console.log("you are here")
+    mongoose.set('useFindAndModify', false);
+   var x= req.params.id
+ const u= await sections.findOneAndUpdate({crn:req.body.crn}, {$inc: {'stud': 1}},{new:true})
 
+const w =  await users.findOneAndUpdate({id:x}, {
+    $push: { sections:u } 
+}, {
+    new: true
+  });
+ console.log(u.name)
+ console.log(w.name)
+  res.send("section added")
+
+})
 
 
 router.route('/add').post((req, res) => { 
