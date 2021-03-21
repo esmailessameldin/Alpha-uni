@@ -55,23 +55,10 @@ router.route('/:id').get((req, res) => {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 
-  router.route('/addsection').post(async(req,res)=>{
-    mongoose.set('useFindAndModify', false);
-    const o= await section.findOneAndUpdate({name:req.body.name,time:req.body.time}, {$inc: {'stud': 1}},{new:true})
-    console.log(o)
-    let u =  await user.findOneAndUpdate({id:req.body.id}, {
-        $push: { sections:o } 
-    }, {
-        new: true
-      });
-     
-      res.send("section added")
-
-})
 
 router.route('/deletesection').post(async(req,res)=>{
     mongoose.set('useFindAndModify', false);
-    const o= await sections.findOneAndUpdate({crn:req.body.crn}, {$inc: {'stud': -1}},{new:true})
+    const o= await sections.findOneAndUpdate({crn:req.body.crn},{$inc: {'students': -1,'capacity':1}},{new:true})
     console.log(o)
     let u =  await user.findOneAndUpdate({id:req.body.id}, {
         $pull: { sections:{name:o.name,time:o.time} }

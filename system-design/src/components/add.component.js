@@ -5,6 +5,7 @@ import {Button} from 'semantic-ui-react'
 export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
+    this.onClickClasses=this.onClickClasses.bind(this);
     this.Drop1stHandleClick=this.Drop1stHandleClick.bind(this);
     this.handleClick=this.handleClick.bind(this);
     this.onChangeID=this.onChangeID.bind(this);
@@ -36,10 +37,14 @@ export default class CreateExercise extends Component {
           console.log(error);
         })
   
-  
+        document.getElementById("form").reset()
         alert("Section dropped !")
   } 
+onClickClasses(e){
+  e.preventDefault()
+  window.location='/classes/'+this.props.match.params.id
 
+}
   onChangeID(e) {
     this.setState({
       crn2: e.target.value
@@ -57,9 +62,8 @@ export default class CreateExercise extends Component {
     console.log(user);
 
     axios.post('http://localhost:5000/section/findbycrn/'+this.props.match.params.id, user)
-     
-
-    
+    document.getElementById("form").reset()
+    alert("Section added  !")
     
     
   }
@@ -74,7 +78,7 @@ export default class CreateExercise extends Component {
 render() {
   
     return (
-     <div><Form>
+     <div><Form id="form">
      <Form.Group onChange={this.onChangeID} style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',
       transform: 'translate(-50%, -50%)'}} controlId="formBasicPassword">
        <Form.Label>Enter the crn for the Course</Form.Label>
@@ -87,6 +91,9 @@ render() {
      
      <Button onClick={this.Drop1stHandleClick} style = {{width:"11vh",position: 'absolute', left: '46%', top: '50%'}} variant="Primary" type="submit">
        Drop
+     </Button>
+     <Button onClick={this.onClickClasses} style = {{width:"20vh",position: 'absolute', left: '52%', top: '50%'}} variant="Primary" type="submit">
+       Class Search
      </Button>
    </Form>
               </div>

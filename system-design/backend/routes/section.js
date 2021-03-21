@@ -18,7 +18,7 @@ router.route('/findbycrn/:id').post(async(req,res)=>{
   console.log("you are here")
     mongoose.set('useFindAndModify', false);
    var x= req.params.id
- const u= await sections.findOneAndUpdate({crn:req.body.crn}, {$inc: {'stud': 1}},{new:true})
+ const u= await sections.findOneAndUpdate({crn:req.body.crn},{$inc: {'students': 1,'capacity':-1}},{new:true})
 
 const w =  await users.findOneAndUpdate({id:x}, {
     $push: { sections:u } 
