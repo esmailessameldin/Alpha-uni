@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { useReducer } = require('react');
 let user = require('../models/user.js');
 let sections=require('../models/sections.js')
+let faculty=require('../models/faculty.js')
 const mongoose = require('mongoose');
 var x = 700000001;
 
@@ -28,7 +29,7 @@ router.route('/add').post((req, res) => {
     console.log(u)
 });
 
-router.route('/login').post((req,res)=>{
+router.route('/login').post(async(req,res)=>{
 
     user.findOne({email:req.body.email}).then(user=>{
         if(!user){
@@ -45,6 +46,7 @@ router.route('/login').post((req,res)=>{
         }
     }).catch(err=>console.log(err));
 })
+
 
 router.route('/:id').get((req, res) => {
     var x=req.params.id

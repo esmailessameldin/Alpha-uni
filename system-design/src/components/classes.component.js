@@ -15,6 +15,7 @@ import React, { Component } from "react";
 
           render() {
             const exerciseArray = [
+              "Accounting",
               "Adolescence Education: Chemistry (7-12)",
               "Adolescence Education: Social Studies (7-12)",
               "Biological Sciences",

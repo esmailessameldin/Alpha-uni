@@ -75,6 +75,9 @@ render() {
                 </th>
                 </tr>
                 </Table>
+                <ul>You need to take 3 of the english major classes </ul>
+                <ul>you need to take 3 of the history major classes</ul>
+                <ul> you need to take 6 of the visual arts major classes</ul>
               </div>
 
   

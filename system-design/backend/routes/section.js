@@ -2,6 +2,7 @@ const router = require('express').Router();
 let sections = require('../models/sections.js');
 let audit =require('../models/Degrees.js')
 let users =require('../models/user.js')
+let faculty=require('../models/faculty.js')
 const mongoose=require('mongoose')
 
 
@@ -25,6 +26,8 @@ const w =  await users.findOneAndUpdate({id:x}, {
 }, {
     new: true
   });
+  console.log(u.name)
+  const n= await faculty.findOneAndUpdate({class:u.name},{$push: {enrolled:w.name+" "+u.time}},{new:true})
  console.log(u.name)
  console.log(w.name)
   res.send("section added")

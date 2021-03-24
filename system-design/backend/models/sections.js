@@ -10,7 +10,8 @@ const sectionsSchema= new schema({
   building:{type:String},
   room:{type:Number},
   teacher:{type:String},
-  crn:{type:String}
+  crn:{type:String},
+  enrolled:{type:[],default:[]}
 
  
 });
