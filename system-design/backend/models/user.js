@@ -10,7 +10,8 @@ const studentSchema= new schema({
  birthday:{type:String},
  address:{type:String},
  year:{type:String,default:"Freshman"},
- status:{type:String}
+ status:{type:String},
+ transcript:{type:[]}
 });
 
 

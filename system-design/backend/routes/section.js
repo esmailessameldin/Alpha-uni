@@ -34,7 +34,24 @@ const w =  await users.findOneAndUpdate({id:x}, {
 
 })
 
+router.route('/deletesection').post(async(req,res)=>{
+  console.log("here")
+  mongoose.set('useFindAndModify', false);
+  const o= await sections.findOneAndUpdate({crn:req.body.crn},{$inc: {'students': -1,'capacity':1}},{new:true})
+  console.log("done")
+  let u =  await users.findOneAndUpdate({id:req.body.id}, {
+      $pull: { sections:{name:o.name,time:o.time} }
+  }, {
+      new: true
+    });
+   console.log(u.name+" "+o.time)
+     const n= await faculty.findOneAndUpdate({class:o.name},{$pull: {enrolled:u.name+" "+o.time}},{new:true})
+     console.log(n)
+    res.send("section removed")
 
+
+
+})
 router.route('/add').post((req, res) => { 
 
  

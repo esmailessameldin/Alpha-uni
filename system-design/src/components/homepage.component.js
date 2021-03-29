@@ -9,6 +9,7 @@ export default class Navbar extends Component {
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.register=this.register.bind(this)
+    this.faculty=this.faculty.bind(this)
     this.onChangePassword=this.onChangePassword.bind(this)
 
     this.state = {
@@ -19,6 +20,9 @@ export default class Navbar extends Component {
 register(e){
 window.location='/register'
 
+}
+faculty(e){
+  window.location="/faculty"
 }
   onChangeEmail(e) {
     this.setState({
@@ -92,8 +96,12 @@ render() {
       </Button.Content>
     </Button>
   <button onClick={this.register} type="button"  type="button"
-    style = {{position: 'absolute', left: '38%',top:'67.8%'}} >
+    style = {{position: 'absolute', left: '38%',top:'67.3%'}} >
    Register 
+ </button>
+ <button onClick={this.faculty} type="button"  type="button"
+    style = {{position: 'absolute', left: '58%',top:'67.3%'}} >
+   Teacher login
  </button>
   </div>
   

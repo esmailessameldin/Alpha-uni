@@ -58,21 +58,7 @@ router.route('/:id').get((req, res) => {
   });
 
 
-router.route('/deletesection').post(async(req,res)=>{
-    mongoose.set('useFindAndModify', false);
-    const o= await sections.findOneAndUpdate({crn:req.body.crn},{$inc: {'students': -1,'capacity':1}},{new:true})
-    console.log(o)
-    let u =  await user.findOneAndUpdate({id:req.body.id}, {
-        $pull: { sections:{name:o.name,time:o.time} }
-    }, {
-        new: true
-      });
-     
-      res.send("section removed")
 
-
-
-})
 
 
 module.exports = router;

@@ -186,7 +186,14 @@ render() {
       </Button.Content>
     </Button>
     </form>
-    
+    <form onClick={this. handeClickAdd}>
+    <Button  onClick={this. handeClickAdd}    animated  style = {{width:"15vh",position: 'absolute', left: '72%', top: '80%',
+        transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
+      <Button.Content  onClick={this.handeClickAdd} visible>Transcript</Button.Content>
+      <Button.Content hidden>
+      </Button.Content>
+    </Button>
+    </form>
   
     </div>
     
