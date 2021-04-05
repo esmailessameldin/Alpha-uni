@@ -56,7 +56,11 @@ router.route('/:id').get((req, res) => {
       .then(user => res.json(user))
       .catch(err => res.status(400).json('Error: ' + err));
   });
-
+ router.route('/transcript/:id').get(async(req,res)=>{
+     const u= await user.findOne({id:req.params.id})
+     console.log(u.transcript)
+res.json(u.transcript)
+ })
 
 
 

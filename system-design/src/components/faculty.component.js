@@ -91,10 +91,7 @@ render() {
         <Icon name='arrow right' />
       </Button.Content>
     </Button>
-  <button onClick={this.register} type="button"  type="button"
-    style = {{position: 'absolute', left: '38%',top:'67.8%'}} >
-   Register 
- </button>
+  
   </div>
   
         </form>

@@ -41,7 +41,7 @@ router.route('/deletesection').post(async(req,res)=>{
   console.log("done")
   let u =  await users.findOneAndUpdate({id:req.body.id}, {
       $pull: { sections:{name:o.name,time:o.time} }
-  }, {
+  }, {  
       new: true
     });
    console.log(u.name+" "+o.time)
@@ -80,6 +80,11 @@ router.route('/findbyclass/:name').get((req, res) =>  {
       .then(sections => res.json(sections))
       .catch(err => res.status(400).json('Error: ' + err));
   });
+
+  router.route('/all').get(async(req,res)=>{
+const u=await sections.find()
+res.json(u)
+  })
 
 
 module.exports = router;

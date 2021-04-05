@@ -12,6 +12,7 @@ export default class CreateExercise extends Component {
     this.handeClickAdd=this.handeClickAdd.bind(this)
     this.handClickLogout = this.handClickLogout.bind(this);
     this.onClick = this. onClick.bind(this);
+    this.handleClickTranscript=this.handleClickTranscript.bind(this)
     this.state = {
       name: '',
       email: '',
@@ -23,6 +24,10 @@ export default class CreateExercise extends Component {
       status:''
      
     }
+  }
+  handleClickTranscript(e){
+e.preventDefault();
+window.location='/transcript/'+this.props.match.params.id
   }
   handeClickAdd(e){
     e.preventDefault();
@@ -186,10 +191,10 @@ render() {
       </Button.Content>
     </Button>
     </form>
-    <form onClick={this. handeClickAdd}>
-    <Button  onClick={this. handeClickAdd}    animated  style = {{width:"15vh",position: 'absolute', left: '72%', top: '80%',
+    <form onClick={this. handleClickTranscript}>
+    <Button  onClick={this. handleClickTranscript}    animated  style = {{width:"15vh",position: 'absolute', left: '72%', top: '80%',
         transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
-      <Button.Content  onClick={this.handeClickAdd} visible>Transcript</Button.Content>
+      <Button.Content  onClick={this.handleClickTranscript} visible>Transcript</Button.Content>
       <Button.Content hidden>
       </Button.Content>
     </Button>

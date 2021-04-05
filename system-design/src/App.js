@@ -17,6 +17,7 @@ import masterspring from "./components/masterspring.component"
 import masterfall from "./components/masterfall.component"
 import register from "./components/register.component"
 import mark from "./components/add.component"
+import transcript from "./components/transcript.component"
 function App() {
   return (
     <Router>
@@ -38,6 +39,7 @@ function App() {
     <Route path="/register" exact component={register} />
     <Route path="/faculty" exact component={faculty}/>
     <Route path="/facultyhome/:id" exact component={facultyhome}/>
+    <Route path="/transcript/:id" exact component={transcript}/>
     </div>
     </Router>
 
