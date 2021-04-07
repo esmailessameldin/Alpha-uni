@@ -1,0 +1,1 @@
+{this.state.names.map(function(item) {return console.log({item}), <li key={item}>{item} </li> ;
