@@ -1,12 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-
 require('dotenv').config();
-
 const app = express();
-const port = process.env.PORT || 5000;
-
+const port = process.env.PORT || 5000
+console.log(port)
 app.use( (req, response, next)=> {
   response.setHeader("Access-Control-Allow-Origin", "*");
 response.setHeader("Access-Control-Allow-Credentials", "true");
@@ -20,6 +18,7 @@ app.use(cors())
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
+console.log(uri)
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;

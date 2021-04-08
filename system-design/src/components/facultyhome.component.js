@@ -92,8 +92,8 @@ render() {
   
     return (
       <div handClickLogout={this.handClickLogout}>
-      <Table striped bordered hover size="sm"style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',
-      transform: 'translate(-50%, -50%)'}}>
+      <Table striped bordered  style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',
+      transform: 'translate(-50%, -20%)'}}>
       <thead>
         <tr>
           <th>Name</th>
@@ -158,7 +158,7 @@ render() {
               
                
     <form onClick={this. handClickLogout}>
-    <Button  onClick={this. handClickLogout}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '69%',
+    <Button  onClick={this. handClickLogout}    animated  style = {{width:"11vh",position: 'absolute', left: '20%', top: '69%',
         transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
       <Button.Content  onClick={this.handClickLogout} visible>Logout</Button.Content>
       <Button.Content hidden>
@@ -168,7 +168,7 @@ render() {
         
           
     <form onClick={this. onClick}>
-    <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '79%',
+    <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '20%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
       <Button.Content  onClick={this.onClick} visible>Classes</Button.Content>
       <Button.Content hidden>

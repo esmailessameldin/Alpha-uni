@@ -14,7 +14,8 @@ export default class CreateExercise extends Component {
          id:0,
         crn:0,
         crn2:'',
-        id2:''
+        id2:'',
+        message:''
       }
    
   }
@@ -31,6 +32,7 @@ export default class CreateExercise extends Component {
           }
   
         axios.post('http://localhost:5000/section/deletesection/',user)
+      
             
        
         .catch((error) => {
@@ -62,8 +64,19 @@ onClickClasses(e){
     console.log(user);
 
     axios.post('http://localhost:5000/section/findbycrn/'+this.props.match.params.id, user)
+    
+    .then(data=>{
+      console.log(data)
+      this.setState({
+        message:data.data
+
+      })
+
+      console.log(this.state.message)
+      alert(this.state.message)
+   } )
     document.getElementById("form").reset()
-    alert("Section added  !")
+   
     
     
   }
