@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"cd system-design && npm run build",
-    "install-system":"cd system-design && npm install",
+    "build": "cd system-design && npm run build",
+    "install-system": "cd system-design && npm install",
     "heroku-postbuild": "npm run install-system && npm run build",
     "start": "node server.js"
   },
