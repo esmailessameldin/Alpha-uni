@@ -3,6 +3,7 @@ const { useReducer } = require('react');
 let user = require('../models/user.js');
 let sections=require('../models/sections.js')
 let faculty=require('../models/faculty.js')
+let admin=require('../models/admin.js')
 const mongoose = require('mongoose');
 var x = 700000001;
 
