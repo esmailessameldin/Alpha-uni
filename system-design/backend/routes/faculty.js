@@ -39,7 +39,12 @@ router.route('/add').post((req, res) => {
         email:req.body.email,
         id:x,
         password:req.body.password,
-        course:req.body.course
+        class:req.body.class,
+        birthday:req.body.birthday,
+        address:req.body.address,
+        office_building:req.body.office,
+        office_room_number:req.body.number,
+
 
         });
  x = x+1;

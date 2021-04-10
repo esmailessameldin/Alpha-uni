@@ -97,7 +97,11 @@ router.route('/add').post((req, res) => {
         day:req.body.day,
         time:req.body.time,
         cap:req.body.cap,
-        stud:req.body.stud,
+        students:req.body.stud,
+        buidling:req.body.buidling,
+        room:req.body.room,
+        teacher:req.body.teacher,
+        crn:req.body.crn
         });
 
 

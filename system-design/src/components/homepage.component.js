@@ -17,6 +17,7 @@ export default class Navbar extends Component {
       password:''
     }
   }
+  
 register(e){
 window.location='/register'
 
@@ -34,7 +35,9 @@ faculty(e){
       password: e.target.value
     })
   }
-
+componentDidMount(){
+  console.log(window.location.hostname)
+}
   onSubmit(e) {
     e.preventDefault();
 

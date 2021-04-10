@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
+app.get('/', (req, res) => { res.send('Hello from Express!')})
 const port = process.env.PORT || 5000
 console.log(port)
 app.use( (req, response, next)=> {
@@ -19,11 +20,11 @@ app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 console.log(uri)
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
+mongoose.connect(  uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
 const connection = mongoose.connection;
 connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
+  console.log("MongoDB database connection established successfully"+" "+connection.toString());
 })
 
 const classesRouter = require('./routes/classes');
@@ -42,3 +43,4 @@ app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
 
+module.exports = app;
