@@ -48,7 +48,7 @@ componentDidMount(){
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/login', user)
+    axios.post('http://192.168.1.4:5000/users/login', user)
       .then(res =>{ 
         return JSON.stringify(res.data);
       }).then(data=>{
