@@ -45,12 +45,13 @@ faculty(e){
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/login', user)
+    axios.post('http://localhost:5000/admins/loginAdmin', user)
       .then(res =>{ 
+        console.log(res)
         return JSON.stringify(res.data);
       }).then(data=>{
         console.log(data)
-        window.location = `/student/${data}`
+        window.location = `/adminhome`
 
       });
 
@@ -95,14 +96,7 @@ render() {
         <Icon name='arrow right' />
       </Button.Content>
     </Button>
-  <button onClick={this.register} type="button"  type="button"
-    style = {{position: 'absolute', left: '38%',top:'67.3%'}} >
-   Register 
- </button>
- <button onClick={this.faculty} type="button"  type="button"
-    style = {{position: 'absolute', left: '58%',top:'67.3%'}} >
-   Teacher login
- </button>
+  
   </div>
   
         </form>

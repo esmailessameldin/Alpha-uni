@@ -16,7 +16,7 @@ router.route('/loginAdmin').post(async(req,res)=>{
     
     user.findOne({email:req.body.email}).then(user=>{
         if(!user){
-            res.status(404).send("user does not exist please try again")
+            res.send("user does not exist please try again")
         }else{
             const l= req.body.password;
             flag2 = l.localeCompare(user.password);

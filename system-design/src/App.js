@@ -12,6 +12,8 @@ import calendar from "./components/calendar.component"
 import faculty from "./components/faculty.component"
 import facultyhome from "./components/facultyhome.component"
 import spring from "./components/spring.component"
+import admin from"./components/adminlogin.component"
+import adminhome from "./components/adminhome.component"
 import audit from "./components/audit.component"
 import masterspring from "./components/masterspring.component"
 import masterfall from "./components/masterfall.component"
@@ -38,8 +40,10 @@ function App() {
     <Route path="/masterspring" exact component={masterspring} />
     <Route path="/register" exact component={register} />
     <Route path="/faculty" exact component={faculty}/>
+    <Route path="/adminhome" exact component={adminhome} />
     <Route path="/facultyhome/:id" exact component={facultyhome}/>
     <Route path="/transcript/:id" exact component={transcript}/>
+    <Route path="/adminLogin" exact component={admin}/>
     </div>
     </Router>
 
