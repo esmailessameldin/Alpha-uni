@@ -35,6 +35,7 @@ const adminRouter = require('./routes/admins');
 
 app.use('/classes', classesRouter);
 app.use('/users', usersRouter);
+app.use('/users/login', usersRouter);
 app.use('/faculty', facultyRouter);
 app.use('/section', sectionsRouter);
 app.use('/admins', adminRouter);
