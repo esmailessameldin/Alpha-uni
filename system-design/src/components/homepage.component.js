@@ -10,6 +10,7 @@ export default class Navbar extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.register=this.register.bind(this)
     this.faculty=this.faculty.bind(this)
+    this.admin=this.admin.bind(this);
     this.onChangePassword=this.onChangePassword.bind(this)
 
     this.state = {
@@ -17,7 +18,9 @@ export default class Navbar extends Component {
       password:''
     }
   }
-  
+  admin(e){
+    window.location='/adminLogin'
+  }
 register(e){
 window.location='/register'
 
@@ -48,7 +51,7 @@ componentDidMount(){
 
     console.log(user);
 
-    axios.post('http://192.168.1.4:5000/users/login', user)
+    axios.post('http//localhost:5000/api/users/login', user)
       .then(res =>{ 
         return JSON.stringify(res.data);
       }).then(data=>{
@@ -105,6 +108,10 @@ render() {
  <button onClick={this.faculty} type="button"  type="button"
     style = {{position: 'absolute', left: '58%',top:'67.3%'}} >
    Teacher login
+ </button>
+ <button onClick={this.admin} type="button"  type="button"
+    style = {{position: 'absolute', left: '70%',top:'67.3%'}} >
+   Admin login
  </button>
   </div>
   

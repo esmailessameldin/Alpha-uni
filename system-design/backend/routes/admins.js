@@ -41,7 +41,7 @@ res.send("section deleted")
 })
 router.route('/viewallcourses').get(async(req,res)=>{
 const u=await students.find({},{"_id": 0,sections:1})
-console.log(u)
+
 
 res.send(u)
 

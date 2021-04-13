@@ -19,6 +19,9 @@ import masterspring from "./components/masterspring.component"
 import masterfall from "./components/masterfall.component"
 import register from "./components/register.component"
 import mark from "./components/add.component"
+import adminclasses from "./components/adminclasses.components"
+import adminhomepage from "./components/adminhomepage.component"
+import adminfaculty from "./components/adminfaculty.component"
 import transcript from "./components/transcript.component"
 function App() {
   return (
@@ -44,6 +47,9 @@ function App() {
     <Route path="/facultyhome/:id" exact component={facultyhome}/>
     <Route path="/transcript/:id" exact component={transcript}/>
     <Route path="/adminLogin" exact component={admin}/>
+    <Route path="/adminHomepage" exact component={adminhomepage}/>
+    <Route path="/adminfaculty" exact component={adminfaculty}/>
+    <Route path="/adminclasses" exact component={adminclasses}/>
     </div>
     </Router>
 

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const proxy = require("http-proxy-middleware");
 require('dotenv').config();
 const app = express();
 app.get('/', (req, res) => { res.send('Hello from Express!')})
@@ -14,6 +15,8 @@ response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers
 
   next();
 });
+
+
 
 app.use(cors())
 app.use(express.json());
@@ -35,7 +38,6 @@ const adminRouter = require('./routes/admins');
 
 app.use('/classes', classesRouter);
 app.use('/users', usersRouter);
-app.use('/users/login', usersRouter);
 app.use('/faculty', facultyRouter);
 app.use('/section', sectionsRouter);
 app.use('/admins', adminRouter);
@@ -44,4 +46,7 @@ app.listen(port, () => {
     console.log(`Server is running on port:`+" "+port);
 });
 
-module.exports = app;
+module.exports = function() {
+  app.use(proxy('/api/**', { target: 'http://localhost:5000' }));
+  app.use(proxy('/otherApi/**', { target: 'http://localhost:5000' }));
+};

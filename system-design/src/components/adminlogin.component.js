@@ -51,7 +51,7 @@ faculty(e){
         return JSON.stringify(res.data);
       }).then(data=>{
         console.log(data)
-        window.location = `/adminhome`
+        window.location = `/adminhomepage`
 
       });
 
@@ -67,7 +67,7 @@ render() {
     return (
         <div style = {{width:"100vh"}}>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group" style = {{width:"100vh",position: 'absolute', left: '50%', top: '30%',
+          <div className="form-group" style = {{position: 'absolute', left: '30%', top: '50%',
         transform: 'translate(-50%, -50%)'}}> 
             <label>Email: </label>
             <input  type="text"
@@ -78,7 +78,7 @@ render() {
                
                 />
           </div>
-          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '50%',
+          <div  style = {{position: 'absolute', left: '50%', top: '50%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>Password: </label>
             <input  input type="password" name="password"
@@ -89,9 +89,9 @@ render() {
                 />
           </div>
           <div>
-    <Button  animated  style = {{width:"10vh",position: 'absolute', left: '50%', top: '70%',
+    <Button  animated  style = {{position: 'absolute', left: '70%', top: '50%',
         transform: 'translate(-50%, -50%)'}} type="submit" value="login" >
-      <Button.Content visible>login</Button.Content>
+      <Button.Content visible>Login</Button.Content>
       <Button.Content hidden>
         <Icon name='arrow right' />
       </Button.Content>
