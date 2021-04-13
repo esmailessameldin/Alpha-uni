@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
+app.get('/', (req, res) => { res.send('Hello from Express!')})
 const port = process.env.PORT || 5000
 console.log(port)
 app.use( (req, response, next)=> {
@@ -19,30 +20,28 @@ app.use(express.json());
 
 const uri = process.env.MONGOLAB_URI;
 console.log(uri)
-
-
-const connection = "mongodb+srv://lila:lila@cluster0.vtbxz.mongodb.net/General?retryWrites=true&w=majority";
-mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
-    .then(() => console.log("Database Connected Successfully"))
-    .catch(err => console.log(err));
+mongoose.connect(  uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+);
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully"+" "+connection.toString());
+})
 
 const classesRouter = require('./routes/classes');
 const usersRouter = require('./routes/users');
 const facultyRouter = require('./routes/faculty');
 const sectionsRouter = require('./routes/section');
 const adminRouter = require('./routes/admins');
-const usersLoginRouter = require('./routes/users');
 
 app.use('/classes', classesRouter);
 app.use('/users', usersRouter);
+app.use('/users/login', usersRouter);
 app.use('/faculty', facultyRouter);
 app.use('/section', sectionsRouter);
 app.use('/admins', adminRouter);
-app.use('/users/login', usersLoginRouter);
-
 
 app.listen(port, () => {
-    console.log('Server is running on port: ${port}');
+    console.log(`Server is running on port:`+" "+port);
 });
 
 module.exports = app;
