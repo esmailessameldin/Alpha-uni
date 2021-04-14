@@ -77,8 +77,7 @@ setTimeout(function() {
                            <li> Office_Building: {item.office_building}</li>
                            <li>Office_Room_Number:  {item.office_room_number}</li>
                            <li> Class: {item.class}</li>
-                           <li> Teacher: {item.teacher}</li>
-                           <li> CRN: {item.crn}</li>
+                          
                            <ul style={{color:'white'}}>     end    </ul>
                         </div>
                     );

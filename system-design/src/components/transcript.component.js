@@ -25,7 +25,7 @@ export default class CreateExercise extends Component {
 
   componentDidMount() {
     console.log(this.props.match.params.id)
-    axios.get('http://localhost:5000/users/transcript/'+this.props.match.params.id)
+    axios.get('/api/users/transcript/'+this.props.match.params.id)
       .then(response => {
         console.log(response.data)
        

@@ -31,7 +31,9 @@ axios.get('http://localhost:5000/admins/viewallcourses').then(
     res=>{
         console.log(res.data)
         for(let i=0;i<res.data.length;i++)
-       this.state. students.push(res.data[i].sections)
+        if(res.data[i].sections.length>0){
+            for(let j=0;j<res.data[i].sections.length;j++)
+       this.state. students.push(res.data[i].sections[j])}
         
 
     }
@@ -45,7 +47,7 @@ setTimeout(function() {
         loading:false
     })
     console.log(this.state.loading)
-}.bind(this), 15000)
+}.bind(this), 10000)
     
 
  
@@ -73,14 +75,15 @@ setTimeout(function() {
                     return (
                         
                     <div>
+                        
                           <h5 key={key} style={{ color: 'navy' }}>{item.name}</h5>
-                          {console.log(item)}
-                            <li>
-                           Name: {item.name} </li>
+                       
+                          
                            <li> Time: {item.time}</li>
                            <li>  Day: {item.day}</li>
                            <li> Capacity: {item.capacity}</li>
-                           <li>credits: {item.credits}</li>
+                           <li>Credits: {item.credits}</li>
+                           <li>Teacher: {item.teacher}</li>
                            <li> Students: {item.students}</li>
                            <li>Building:  {item.building}</li>
                            <li> Room: {item.room}</li>

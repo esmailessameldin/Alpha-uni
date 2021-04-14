@@ -61,9 +61,9 @@ window.location='/transcript/'+this.props.match.params.id
     console.log(this.props.match.params.id)
     if(this.props.match.params.id==='100')
     window.location='/passerror'
-    axios.get('http://localhost:5000/users/'+this.props.match.params.id)
+    axios.get('/api/users/'+this.props.match.params.id)
       .then(response => {
-        console.log(response.data.name)
+        console.log(response)
     
           
           this.setState({
@@ -100,7 +100,7 @@ render() {
       transform: 'translate(-50%, -50%)'}}>
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Namasdase</th>
           <th>{this.state.name}</th>
           
         </tr>
