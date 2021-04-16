@@ -19,12 +19,32 @@ const loading = () => (
           constructor(props) {
             super(props);
             this.handleClick = this.handleClick.bind(this);
+            this.smiteStudent=this.smiteStudent.bind(this)
             this.state = {
               students: [],
-              loading:true
+              loading:true,
+              id:''
             };
           }
+          editStudent(e){
+            e.preventdefault()
+            window.location='/updatestudent/'+this.props.match.params.id
+          }
+smiteStudent(e){
+  console.log(e)
+  let studentid=e
+ console.log(studentid)
+ axios({
+  method: 'DELETE',
+  url: 'http://localhost:5000/admins/smitestudent',
+  data: {
+    id:studentid
+  }
+}).then(alert("user "+studentid+" deleted"))
 
+
+
+}
 componentDidMount(){
 
 axios.get('http://localhost:5000/admins/viewallstudents').then(
@@ -68,7 +88,7 @@ setTimeout(function() {
                     return (
                     <div>
                           <h5 key={key} style={{ color: 'navy' }}>{item.name}</h5>
-                         
+                        
                             <li>
                            ID: {item.id} </li>
                            <li> Email: {item.email}</li>
@@ -76,8 +96,14 @@ setTimeout(function() {
                            <li> Birthday: {item.birthday}</li>
                            <li>Address: {item.address}</li>
                            <li> Year: {item.year}</li>
-                           <li>Status:  {item.status}</li>
+                           <li>Status:  {item.status}</li> 
                            <ul style={{color:'white'}}>     end    </ul>
+                           <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.smiteStudent(item.id)}>
+                         Delete User
+                        </button>
+                        <ul style={{color:'white'}}>     end    </ul>
+                        <ul style={{color:'white'}}>     end    </ul>
+                      
                         </div>
                     );
                   })}

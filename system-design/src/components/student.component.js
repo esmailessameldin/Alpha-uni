@@ -100,7 +100,7 @@ render() {
       transform: 'translate(-50%, -50%)'}}>
       <thead>
         <tr>
-          <th>Namasdase</th>
+          <th>name</th>
           <th>{this.state.name}</th>
           
         </tr>

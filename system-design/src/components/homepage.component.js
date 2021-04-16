@@ -51,12 +51,22 @@ componentDidMount(){
 
     console.log(user);
 
-    axios.post('/api/users/login', user)
+    axios.post('http://localhost:5000/users/login', user)
       .then(res =>{ 
+        if(res.data==="user does not exist please try again"){
+          alert("User does not exist please try again")
+          return
+        }
+        if(res.data==="wrong password"){
+          alert("Wrong password")
+          return
+        }
         return JSON.stringify(res.data);
       }).then(data=>{
-        console.log(data)
-        window.location = `/student/${data}`
+        console.log(data) 
+      
+        window.location = '/student/'+data
+       
 
       });
 

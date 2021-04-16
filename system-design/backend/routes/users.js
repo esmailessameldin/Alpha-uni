@@ -31,18 +31,21 @@ router.route('/add').post((req, res) => {
 });
 
 router.route('/login').post(async(req,res)=>{
+    let status=""
 
     user.findOne({email:req.body.email}).then(user=>{
         if(!user){
-            res.status(404).send("user does not exist please try again")
+           status="user does not exist please try again"
+           res.send(status)
         }else{
             const l= req.body.password;
             flag2 = l.localeCompare(user.password);
             if(flag2){
-                return res.send("100")
+             status="wrong password"
+             res.send(status)
             }else{
                 console.log(user)
-               return res.status(200).send(user.id+"")
+               return res.send(user.id+""+status)
             }
         }
     }).catch(err=>console.log(err));
