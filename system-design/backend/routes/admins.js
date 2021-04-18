@@ -2,9 +2,11 @@ const router = require('express').Router();
 let user = require('../models/admin.js');
 let sections=require('../models/sections')
 const { findOneAndDelete } = require('../models/user');
+const mongoose = require('mongoose');
 let faculty=require('../models/faculty')
 let students=require('../models/user')
 var x = 800000001;
+var y=700000001;
 
 router.route('/viewallfaculty').get(async(req,res)=>{
 
@@ -13,18 +15,21 @@ router.route('/viewallfaculty').get(async(req,res)=>{
 })
 router.route('/loginAdmin').post(async(req,res)=>{
 
-    
+    let status=""
+
     user.findOne({email:req.body.email}).then(user=>{
         if(!user){
-            res.send("user does not exist please try again")
+           status="user does not exist please try again"
+           res.send(status)
         }else{
             const l= req.body.password;
             flag2 = l.localeCompare(user.password);
             if(flag2){
-                return res.send("100")
+             status="wrong password"
+             res.send(status)
             }else{
                 console.log(user)
-               return res.status(200).send(user.id+"")
+               return res.send(user.id+""+status)
             }
         }
     }).catch(err=>console.log(err));
@@ -40,7 +45,7 @@ res.send("section deleted")
 
 })
 router.route('/viewallcourses').get(async(req,res)=>{
-const u=await students.find({},{"_id": 0,sections:1})
+const u=await sections.find({})
 
 
 res.send(u)
@@ -58,32 +63,43 @@ router.route('/smitefaculty').delete(async(req,res)=>{
     res.send("he ded")
     })
 
-router.route('/updatestudents/:id').post(async(req,res)=>{
+router.route('/updatestudent/:id').post(async(req,res)=>{
+   await mongoose.set('useFindAndModify', false);
 const u=await students.findOneAndUpdate({id:req.params.id},{
-name:req.body.name,
-email:req.body.email,
-major:req.body.major,
-password:req.body.password,
-address:req.body.adress,
+    email: req.body.email,
+    password: req.body.password,
+    name:req.body.name,
+    birthday:req.body.birthday,
+    status:req.body.status,
+    major:req.body.major,
+    address:req.body.address,
+    year:req.body.year
 },{new:true})
 
-
+console.log(u)
 
 })
+
 router.route('/add').post((req, res) => {
   
-    const u = new user({
+    const u = new students({
 
-        name: req.body.name,
-        email:req.body.email,
-        id:x,
-        password:req.body.password,
+        email: req.body.email,
+        id:y,
+        password: req.body.password,
+        name:req.body.name,
+        birthday:req.body.birthday,
+        status:req.body.status,
+        major:req.body.major,
+        address:req.body.address,
+        year:req.body.year
 
         });
- x = x+1;
+ y= y+1;
+ console.log(u)
 
   u .save()
-    .then(() => res.json('admin added!'))
+    .then(() => res.json('student added!'))
     .catch(err => res.status(400).json('Error: ' + err));
 })
 

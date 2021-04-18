@@ -18,8 +18,8 @@ const loading = () => (
             
           constructor(props) {
             super(props);
-            this.handleClick = this.handleClick.bind(this);
-            this.smiteStudent=this.smiteStudent.bind(this)
+            this.smiteStudent=this.smiteStudent.bind(this);
+            this.update=this.update.bind(this);
             this.state = {
               students: [],
               loading:true,
@@ -43,8 +43,14 @@ smiteStudent(e){
 }).then(alert("user "+studentid+" deleted"))
 
 
-
 }
+update(e){console.log(e)
+  let studentid=e
+ console.log(studentid)
+ window.location="/studentupdate/"+studentid
+  
+}
+
 componentDidMount(){
 
 axios.get('http://localhost:5000/admins/viewallstudents').then(
@@ -70,10 +76,7 @@ setTimeout(function() {
 
 
 
-          handleClick(e) {
-            console.log(e);
-            window.location = "/majors/" + e;
-          }
+      
 
           render() {
               if(this.state.loading){
@@ -101,6 +104,12 @@ setTimeout(function() {
                            <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.smiteStudent(item.id)}>
                          Delete User
                         </button>
+                        <ul style={{color:'white'}}>     end    </ul>
+                        <ul style={{color:'white'}}>     end    </ul>
+                        <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.update(item.id)}>
+                         Update User
+                        </button>
+                        <ul style={{color:'white'}}>     end    </ul>
                         <ul style={{color:'white'}}>     end    </ul>
                         <ul style={{color:'white'}}>     end    </ul>
                       

@@ -61,7 +61,7 @@ window.location='/transcript/'+this.props.match.params.id
     console.log(this.props.match.params.id)
     if(this.props.match.params.id==='100')
     window.location='/passerror'
-    axios.get('/api/users/'+this.props.match.params.id)
+    axios.get('/users/'+this.props.match.params.id)
       .then(response => {
         console.log(response)
     

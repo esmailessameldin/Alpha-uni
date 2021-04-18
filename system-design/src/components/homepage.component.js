@@ -57,17 +57,13 @@ componentDidMount(){
           alert("User does not exist please try again")
           return
         }
-        if(res.data==="wrong password"){
+        else if(res.data==="wrong password"){
           alert("Wrong password")
           return
+        }else{
+          window.location='/student/'+res.data
         }
-        return JSON.stringify(res.data);
-      }).then(data=>{
-        console.log(data) 
       
-        window.location = '/student/'+data
-       
-
       });
 
     this.setState({

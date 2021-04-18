@@ -9,6 +9,7 @@ export default class CreateExercise extends Component {
    this.students=this.students.bind(this)
    this.faculty=this.faculty.bind(this)
    this.classes=this.classes.bind(this)
+   this.newstudent=this.newstudent.bind(this)
     this.state = {
      
      
@@ -29,6 +30,10 @@ export default class CreateExercise extends Component {
        e.preventDefault()
        window.location='/adminclasses'
 
+   }
+   newstudent(e){
+    e.preventDefault()
+    window.location='/addstudent'
    }
  
 
@@ -75,9 +80,20 @@ render() {
       <Button.Content hidden>
       </Button.Content>
     </Button>
+
+    
         </form>
 
-        
+        <form onClick={this.newstudent}>
+    <Button  onClick={this.newstudent}    animated  style = {{position: 'absolute', left: '74%', top: '50%',
+        transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
+      <Button.Content  onClick={this.newstudent} visible>Register a New student </Button.Content>
+      <Button.Content hidden>
+      </Button.Content>
+    </Button>
+
+    
+        </form>
     
     
     </div>

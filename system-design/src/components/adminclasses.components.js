@@ -29,12 +29,11 @@ componentDidMount(){
 
 axios.get('http://localhost:5000/admins/viewallcourses').then(
     res=>{
-        console.log(res.data)
-        for(let i=0;i<res.data.length;i++)
-        if(res.data[i].sections.length>0){
-            for(let j=0;j<res.data[i].sections.length;j++)
-       this.state. students.push(res.data[i].sections[j])}
-        
+        console.log(res.data[0].name)
+       
+       this.setState({
+      students:res.data
+       })
 
     }
 ) 
@@ -47,6 +46,7 @@ setTimeout(function() {
         loading:false
     })
     console.log(this.state.loading)
+    console.log(this.state.students[0].name)
 }.bind(this), 10000)
     
 

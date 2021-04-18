@@ -19,7 +19,9 @@ import masterspring from "./components/masterspring.component"
 import masterfall from "./components/masterfall.component"
 import register from "./components/register.component"
 import mark from "./components/add.component"
+import addstudent from "./components/addstudent.components"
 import adminclasses from "./components/adminclasses.components"
+import studentupdate from "./components/studentupdate.component"
 import adminhomepage from "./components/adminhomepage.component"
 import adminfaculty from "./components/adminfaculty.component"
 import transcript from "./components/transcript.component"
@@ -50,6 +52,8 @@ function App() {
     <Route path="/adminHomepage" exact component={adminhomepage}/>
     <Route path="/adminfaculty" exact component={adminfaculty}/>
     <Route path="/adminclasses" exact component={adminclasses}/>
+    <Route path="/studentupdate/:id" exact component={studentupdate}/>
+    <Route path="/addstudent" exact component={addstudent}/>
     </div>
     </Router>
 
