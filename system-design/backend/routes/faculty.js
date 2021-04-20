@@ -48,7 +48,7 @@ router.route('/add').post((req, res) => {
 
         });
  x = x+1;
-
+console.log(u)
   u .save()
     .then(() => res.json('User added!'))
     .catch(err => res.status(400).json('Error: ' + err));

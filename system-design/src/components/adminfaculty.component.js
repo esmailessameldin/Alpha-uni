@@ -19,12 +19,38 @@ const loading = () => (
           constructor(props) {
             super(props);
             this.handleClick = this.handleClick.bind(this);
+            this.smiteFaculty=this.smiteFaculty.bind(this);
+            this.updatefaculty=this.updatefaculty.bind(this)
             this.state = {
               students: [],
               loading:true
             };
           }
+ 
+updatefaculty(e){
+  let studentid=e
+  console.log(studentid)
 
+  window.location='/updatefaculty/'+studentid
+}
+
+
+
+
+          smiteFaculty(e){
+            console.log(e)
+            let studentid=e
+           console.log(studentid)
+           axios({
+            method: 'DELETE',
+            url: 'http://localhost:5000/admins/smitefaculty',
+            data: {
+              id:studentid
+            }
+          }).then(alert("Faculty Member "+studentid+" deleted"))
+          
+          
+          }
 componentDidMount(){
 
 axios.get('http://localhost:5000/admins/viewallfaculty').then(
@@ -79,6 +105,17 @@ setTimeout(function() {
                            <li> Class: {item.class}</li>
                           
                            <ul style={{color:'white'}}>     end    </ul>
+                           <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.smiteFaculty(item.id)}>
+                         Delete User
+                        </button>
+                        <ul style={{color:'white'}}>     end    </ul>
+                        <ul style={{color:'white'}}>     end    </ul>
+                        <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.updatefaculty(item.id)}>
+                         Update User
+                        </button>
+                        <ul style={{color:'white'}}>     end    </ul>
+                        <ul style={{color:'white'}}>     end    </ul>
+                        <ul style={{color:'white'}}>     end    </ul>
                         </div>
                     );
                   })}

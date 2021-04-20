@@ -16,9 +16,11 @@ import admin from"./components/adminlogin.component"
 import adminhome from "./components/adminhome.component"
 import audit from "./components/audit.component"
 import masterspring from "./components/masterspring.component"
+import updatefaculty from "./components/updatefaculty.component"
 import masterfall from "./components/masterfall.component"
 import register from "./components/register.component"
 import mark from "./components/add.component"
+import addfaculty from "./components/addfaculty.component"
 import addstudent from "./components/addstudent.components"
 import adminclasses from "./components/adminclasses.components"
 import studentupdate from "./components/studentupdate.component"
@@ -54,6 +56,9 @@ function App() {
     <Route path="/adminclasses" exact component={adminclasses}/>
     <Route path="/studentupdate/:id" exact component={studentupdate}/>
     <Route path="/addstudent" exact component={addstudent}/>
+    <Route path="/addfaculty" exact component={addfaculty}/>
+    <Route path="/updatefaculty/:id" exact component={updatefaculty}/>
+    
     </div>
     </Router>
 

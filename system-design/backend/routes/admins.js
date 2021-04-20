@@ -80,6 +80,23 @@ console.log(u)
 
 })
 
+
+router.route('/updatefaculty/:id').post(async(req,res)=>{
+    await mongoose.set('useFindAndModify', false);
+ const u=await faculty.findOneAndUpdate({id:req.params.id},{
+     email: req.body.email,
+     password: req.body.password,
+     name:req.body.name,
+     birthday:req.body.birthday,
+     office_room_number:req.body.number,
+     office_buidling:req.body.office,
+     address:req.body.address,
+     class:req.body.class
+ },{new:true})
+ 
+ console.log(u)
+ 
+ })
 router.route('/add').post((req, res) => {
   
     const u = new students({
