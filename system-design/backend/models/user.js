@@ -12,7 +12,8 @@ const studentSchema= new schema({
  address:{type:String},
  year:{type:String,default:"Freshman"},
  status:{type:String},
- transcript:{type:[]}
+ transcript:{type:[]},
+ minor:{type:String}
 });
 
 

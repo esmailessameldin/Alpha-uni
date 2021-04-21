@@ -21,7 +21,8 @@ export default class CreateExercise extends Component {
       birthday:'',
       address:'',
       year:'',
-      status:''
+      status:'',
+      minor:''
      
     }
   }
@@ -46,7 +47,7 @@ window.location='/transcript/'+this.props.match.params.id
 
   handleClickAudit(e){
     e.preventDefault();
-    window.location='/audit/'+this.state.major
+    window.location='/audit/'+this.state.major+","+this.state.minor
   }
    handClickLogout(e){
     e.preventDefault();
@@ -61,7 +62,7 @@ window.location='/transcript/'+this.props.match.params.id
     console.log(this.props.match.params.id)
     if(this.props.match.params.id==='100')
     window.location='/passerror'
-    axios.get('/users/'+this.props.match.params.id)
+    axios.get('http://localhost:5000/users/'+this.props.match.params.id)
       .then(response => {
         console.log(response)
     
@@ -76,6 +77,7 @@ window.location='/transcript/'+this.props.match.params.id
             address:response.data.address,
             year:response.data.year,
             status:response.data.status,
+            minor:response.data.minor
             
           })
           console.log(this.state.name)
@@ -137,8 +139,13 @@ render() {
         
         </tr>
         <tr>
-          <td>status</td>
+          <td>Status</td>
           <td>{this.state.status}</td>
+        
+        </tr>
+        <tr>
+          <td>Minor</td>
+          <td>{this.state.minor}</td>
         
         </tr>
        
@@ -147,7 +154,7 @@ render() {
               
                
     <form onClick={this. handClickLogout}>
-    <Button  onClick={this. handClickLogout}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '69%',
+    <Button  onClick={this. handClickLogout}    animated  style = {{width:"11vh",position: 'absolute', left: '29%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
       <Button.Content  onClick={this.handClickLogout} visible>Logout</Button.Content>
       <Button.Content hidden>
@@ -157,7 +164,7 @@ render() {
         
           
     <form onClick={this. onClick}>
-    <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '79%',
+    <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '36%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
       <Button.Content  onClick={this.onClick} visible>Classes</Button.Content>
       <Button.Content hidden>
@@ -166,7 +173,7 @@ render() {
         </form>
  
         <form onClick={this.handleClickCalendar}>
-    <Button  onClick={this.handleClickCalendar}    animated  style = {{width:"15vh",position: 'absolute', left: '50%', top: '89%',
+    <Button  onClick={this.handleClickCalendar}    animated  style = {{width:"15vh",position: 'absolute', left: '44%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
       <Button.Content  onClick={this.handleClickCalendar} visible>Calendar</Button.Content>
       <Button.Content hidden>
@@ -175,16 +182,16 @@ render() {
         </form>
 
         <form onClick={this. handleClickAudit}>
-    <Button  onClick={this. handleClickAudit}    animated  style = {{width:"11vh",position: 'absolute', left: '40%', top: '69%',
+    <Button  onClick={this. handleClickAudit}    animated  style = {{width:"11vh",position: 'absolute', left: '52%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
-      <Button.Content  onClick={this.handleClickAudit} visible>audit</Button.Content>
+      <Button.Content  onClick={this.handleClickAudit} visible>Audit</Button.Content>
       <Button.Content hidden>
       </Button.Content>
     </Button>
     </form>
     
     <form onClick={this. handeClickAdd}>
-    <Button  onClick={this. handeClickAdd}    animated  style = {{width:"15vh",position: 'absolute', left: '65%', top: '80%',
+    <Button  onClick={this. handeClickAdd}    animated  style = {{width:"15vh",position: 'absolute', left: '60%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
       <Button.Content  onClick={this.handeClickAdd} visible>Add/Drop</Button.Content>
       <Button.Content hidden>
@@ -192,7 +199,7 @@ render() {
     </Button>
     </form>
     <form onClick={this. handleClickTranscript}>
-    <Button  onClick={this. handleClickTranscript}    animated  style = {{width:"15vh",position: 'absolute', left: '72%', top: '80%',
+    <Button  onClick={this. handleClickTranscript}    animated  style = {{width:"15vh",position: 'absolute', left: '69%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
       <Button.Content  onClick={this.handleClickTranscript} visible>Transcript</Button.Content>
       <Button.Content hidden>

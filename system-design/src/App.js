@@ -10,6 +10,8 @@ import sections from "./components/sections.components"
 import passerror from "./components/passerror.component"
 import calendar from "./components/calendar.component"
 import faculty from "./components/faculty.component"
+import calendar2 from "./components/calender2.component"
+import mark2 from "./components/addnext.components"
 import facultyhome from "./components/facultyhome.component"
 import spring from "./components/spring.component"
 import admin from"./components/adminlogin.component"
@@ -58,6 +60,8 @@ function App() {
     <Route path="/addstudent" exact component={addstudent}/>
     <Route path="/addfaculty" exact component={addfaculty}/>
     <Route path="/updatefaculty/:id" exact component={updatefaculty}/>
+    <Route path="/calendarnext/:id" exact component={calendar2} />
+    <Route path="/adddropnext/:id" exact component={mark2}/>
     
     </div>
     </Router>

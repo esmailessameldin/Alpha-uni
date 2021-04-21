@@ -35,20 +35,21 @@ export default class CreateExercise extends Component {
     }
   }
   handleClickCalendar(e){
-    e.preventDefault();
- window.location='/calendarnext/'+this.props.match.params.id
+    e.preventdefault()
+    window.location='/'
   }
+
   async componentDidMount() {
     console.log(this.props.match.params.id)
     if(this.props.match.params.id==='100')
     window.location='/passerror'
      axios.get('http://localhost:5000/users/'+this.props.match.params.id)
       .then(async response => {
-        console.log(response.data.sections)
+        console.log(response.data.sections_next_semster)
     
           
           this.setState({
-            listA:response.data.sections.map(sections => sections)
+            listA:response.data.sections_next_semster.map(sections_next_semster => sections_next_semster)
           })
           console.log(this.state.listA) 
           this.setState({
@@ -202,15 +203,7 @@ render() {
   </Table>
             
              
-  
-  <form onClick={this.handleClickCalendar}>
-    <Button  onClick={this.handleClickCalendar}    animated  style = {{position: 'absolute', left: '49.5%', top: '89.9%',
-        transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
-      <Button.Content  onClick={this.handleClickCalendar} visible>Next Semster Calendar</Button.Content>
-      <Button.Content hidden>
-      </Button.Content>
-    </Button>
-        </form>
+ 
 
 
 

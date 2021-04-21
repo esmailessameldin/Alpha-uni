@@ -3,9 +3,95 @@ let sections = require('../models/sections.js');
 let audit =require('../models/Degrees.js')
 let users =require('../models/user.js')
 let faculty=require('../models/faculty.js')
+let minor=require('../models/minor.js')
+let nextsections=require('../models/nextsections')
 const mongoose=require('mongoose')
+router.route('/adds').post((req, res) => { 
+
+ 
+
+  const u = new nextsections({
+      name:req.body.name,
+     
+      });
 
 
+u .save()
+  .then(() => res.json(u.name +' Section added!'))
+  .catch(err => res.status(400).json('Error: ' + err));
+
+});
+
+router.route('/findbycrnnext/:id').post(async(req,res)=>{
+  console.log("you are here")
+    mongoose.set('useFindAndModify', false);
+   var x= req.params.id
+   var m=req.body.crn
+ 
+
+const w =  await users.findOne({id:x})
+
+if(w.status==="Part Time" && w.sections_next_semster.length===2){
+res.send("You have reached the maximum amount of classes that you are allowed to take based on your Status. No class has been added.")
+return
+}
+if(w.status==="Full Time" && w.sections_next_semster.length===4){
+  res.send("You have reached the maximum amount of classes that you are allowed to take based on your Status. No class has been added.")
+  return
+  }
+  const j=await nextsections.findOne({crn:m})
+  const y= await faculty.findOne({class:j.name})
+  console.log(j)
+  if(!j){
+    console.log("not found")
+    return
+  }
+if(j.capacity==0){
+  res.send("Maximum Capacity reached. No more students can enroll in this section. Section not added.")
+  return
+}
+for(let i=0;i<y.enrolled.length;i++){
+if(y.enrolled[i]===w.name+" "+j.time){
+  res.send("You are already enrolled in this section. Section not added.")
+  return
+
+}
+
+}
+  const u= await nextsections.findOneAndUpdate({crn:m},{
+   
+    $inc: {'students': 1,'capacity':-1} 
+  
+  
+  },{new:true})
+const k= await users.findOneAndUpdate({id:x},{
+  $push :{sections_next_semster:u}
+},{new:true})
+  console.log(u.name)
+  const n= await faculty.findOneAndUpdate({class:u.name},{$push: {enrolled:w.name+" "+u.time}},{new:true})
+ console.log(u.name)
+ console.log(w.name)
+ console.log(n)
+  res.send("section added")
+
+})
+
+
+router.route('/addminor').post((req, res) => { 
+
+ 
+
+  const u = new minor({
+      name:req.body.name,
+      
+      });
+
+
+u .save()
+  .then(() => res.json(u.name +' Section added!'))
+  .catch(err => res.status(400).json('Error: ' + err));
+
+});
 router.route('/viewaudit/:major').get(async(req,res)=>{
     var x=req.params.major
     
@@ -15,6 +101,14 @@ router.route('/viewaudit/:major').get(async(req,res)=>{
       .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/viewminor/:minor').get(async(req,res)=>{
+  var x=req.params.minor
+  
+  console.log(x)
+     minor.findOne({name:x})
+    .then(minor => res.json(minor.classes))
+    .catch(err => res.send([]));
+});
 router.route('/findbycrn/:id').post(async(req,res)=>{
   console.log("you are here")
     mongoose.set('useFindAndModify', false);
@@ -125,5 +219,6 @@ const u=await sections.find()
 res.json(u)
   })
 
+  
 
 module.exports = router;

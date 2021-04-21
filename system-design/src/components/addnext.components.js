@@ -10,7 +10,6 @@ export default class CreateExercise extends Component {
     this.Drop1stHandleClick=this.Drop1stHandleClick.bind(this);
     this.handleClick=this.handleClick.bind(this);
     this.onChangeID=this.onChangeID.bind(this);
-    this.onClickNext=this.onClickNext.bind(this)
     this.wrapper = React.createRef();
     this.state = {
          id:0,
@@ -18,7 +17,7 @@ export default class CreateExercise extends Component {
         crn2:'',
         id2:'',
         message:'',
-        open:true,
+        open:false,
         closed : (
           <div><Form id="form">
              <Form.Group onChange={this.onChangeID} style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',
@@ -29,9 +28,6 @@ export default class CreateExercise extends Component {
              <Button onClick={this.Drop1stHandleClick} style = {{position: 'absolute', left: '46%', top: '50%'}} variant="Primary" type="submit">
                Withdraw
              </Button>
-             <Button onClick={this.onClickNext} style = {{position: 'absolute', left: '33%', top: '50%'}} variant="Primary" type="submit">
-       Add to next semster
-     </Button>
             
            </Form>
                       </div>
@@ -83,7 +79,7 @@ onClickClasses(e){
 
     console.log(user);
 
-    axios.post('http://localhost:5000/section/findbycrn/'+this.props.match.params.id, user)
+    axios.post('http://localhost:5000/section/findbycrnnext/'+this.props.match.params.id, user)
     
     .then(data=>{
       console.log(data)
@@ -101,10 +97,7 @@ onClickClasses(e){
     
   }
 
-onClickNext(e){
-  e.preventDefault()
-  window.location='/adddropnext/'+this.props.match.params.id
-}
+
 
 
 
@@ -124,18 +117,15 @@ render() {
        <Form.Control type="ID" />
      </Form.Group>
      
-     <Button onClick={this.handleClick} style = {{width:"11vh",position: 'absolute', left: '32%', top: '50%'}} variant="Primary" type="submit">
+     <Button onClick={this.handleClick} style = {{width:"11vh",position: 'absolute', left: '40%', top: '50%'}} variant="Primary" type="submit">
        Add
      </Button>
      
-     <Button onClick={this.Drop1stHandleClick} style = {{width:"11vh",position: 'absolute', left: '38%', top: '50%'}} variant="Primary" type="submit">
+     <Button onClick={this.Drop1stHandleClick} style = {{width:"11vh",position: 'absolute', left: '46%', top: '50%'}} variant="Primary" type="submit">
        Drop
      </Button>
-     <Button onClick={this.onClickClasses} style = {{position: 'absolute', left: '44%', top: '50%'}} variant="Primary" type="submit">
+     <Button onClick={this.onClickClasses} style = {{width:"20vh",position: 'absolute', left: '52%', top: '50%'}} variant="Primary" type="submit">
        Class Search
-     </Button>
-     <Button onClick={this.onClickNext} style = {{position: 'absolute', left: '52%', top: '50%'}} variant="Primary" type="submit">
-       Add to next semster
      </Button>
    </Form>
               </div>
