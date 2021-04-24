@@ -31,11 +31,11 @@ router.route('/findbycrnnext/:id').post(async(req,res)=>{
 
 const w =  await users.findOne({id:x})
 
-if(w.status==="Part Time" && w.sections_next_semster.length===2){
+if(w.status==="Part Time" && w.sections_next_semester.length===2){
 res.send("You have reached the maximum amount of classes that you are allowed to take based on your Status. No class has been added.")
 return
 }
-if(w.status==="Full Time" && w.sections_next_semster.length===4){
+if(w.status==="Full Time" && w.sections_next_semester.length===4){
   res.send("You have reached the maximum amount of classes that you are allowed to take based on your Status. No class has been added.")
   return
   }
@@ -65,7 +65,7 @@ if(y.enrolled[i]===w.name+" "+j.time){
   
   },{new:true})
 const k= await users.findOneAndUpdate({id:x},{
-  $push :{sections_next_semster:u}
+  $push :{sections_next_semester:u}
 },{new:true})
   console.log(u.name)
   const n= await faculty.findOneAndUpdate({class:u.name},{$push: {enrolled:w.name+" "+u.time}},{new:true})
@@ -162,7 +162,24 @@ const k= await users.findOneAndUpdate({id:x},{
   res.send("section added")
 
 })
+router.route('/deletenextsection').post(async(req,res)=>{
+  console.log("here")
+  mongoose.set('useFindAndModify', false);
+  const o= await nextsections.findOneAndUpdate({crn:req.body.crn},{$inc: {'students': -1,'capacity':1}},{new:true})
+  console.log(o)
+  let u =  await users.findOneAndUpdate({id:req.body.id}, {
+      $pull: { sections_next_semester:{name:o.name,time:o.time} }
+  }, {  
+      new: true
+    });
+   console.log(u.name+" "+o.time)
+     const n= await faculty.findOneAndUpdate({class:o.name},{$pull: {enrolled:u.name+" "+o.time}},{new:true})
+     console.log(n)
+    res.send("section removed")
 
+
+
+})
 router.route('/deletesection').post(async(req,res)=>{
   console.log("here")
   mongoose.set('useFindAndModify', false);

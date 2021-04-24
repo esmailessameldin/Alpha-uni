@@ -8,7 +8,7 @@
     "build": "cd system-design && npm run build",
     "install-system": "cd system-design && npm install",
     "heroku-postbuild": "npm run install-system && npm run build",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",

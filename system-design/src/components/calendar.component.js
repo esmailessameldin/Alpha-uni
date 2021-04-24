@@ -206,7 +206,7 @@ render() {
   <form onClick={this.handleClickCalendar}>
     <Button  onClick={this.handleClickCalendar}    animated  style = {{position: 'absolute', left: '49.5%', top: '89.9%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
-      <Button.Content  onClick={this.handleClickCalendar} visible>Next Semster Calendar</Button.Content>
+      <Button.Content  onClick={this.handleClickCalendar} visible>Next semester Calendar</Button.Content>
       <Button.Content hidden>
       </Button.Content>
     </Button>

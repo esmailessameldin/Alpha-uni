@@ -30,7 +30,7 @@ export default class CreateExercise extends Component {
                Withdraw
              </Button>
              <Button onClick={this.onClickNext} style = {{position: 'absolute', left: '33%', top: '50%'}} variant="Primary" type="submit">
-       Add to next semster
+       Add to next semester
      </Button>
             
            </Form>
@@ -135,7 +135,7 @@ render() {
        Class Search
      </Button>
      <Button onClick={this.onClickNext} style = {{position: 'absolute', left: '52%', top: '50%'}} variant="Primary" type="submit">
-       Add to next semster
+       Add to next semester
      </Button>
    </Form>
               </div>

@@ -45,11 +45,11 @@ export default class CreateExercise extends Component {
     window.location='/passerror'
      axios.get('http://localhost:5000/users/'+this.props.match.params.id)
       .then(async response => {
-        console.log(response.data.sections_next_semster)
+        console.log(response.data.sections_next_semester)
     
           
           this.setState({
-            listA:response.data.sections_next_semster.map(sections_next_semster => sections_next_semster)
+            listA:response.data.sections_next_semester.map(sections_next_semester => sections_next_semester)
           })
           console.log(this.state.listA) 
           this.setState({

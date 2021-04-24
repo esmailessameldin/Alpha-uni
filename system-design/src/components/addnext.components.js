@@ -47,7 +47,7 @@ export default class CreateExercise extends Component {
   
           }
   
-        axios.post('http://localhost:5000/section/deletesection/',user)
+        axios.post('http://localhost:5000/section/deletenextsection/',user)
       
             
        

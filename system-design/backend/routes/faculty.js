@@ -1,5 +1,8 @@
 const router = require('express').Router();
 let faculty = require('../models/faculty.js');
+let user =require("../models/user")
+let admins =require("../models/admin")
+const mongoose = require('mongoose');
 var x = 900000001;
 
 router.route('/login').post(async(req,res)=>{    
@@ -54,5 +57,30 @@ console.log(u)
     .catch(err => res.status(400).json('Error: ' + err));
 
 });
+router.route('/grade/:id').post(async(req,res)=>{
+    await mongoose.set('useFindAndModify', false);
+    var myString = req.params.id;
+    var array = myString.split(",");
+var userid=array[1]
+
+var facultyid=array[0]
+
+
+console.log(userid+" "+facultyid)
+const u= await user.findOne({id:userid})
+if(!u){
+    res.send("Student does not exist")
+    
+}
+const j=await faculty.findOne({id:facultyid})
+if(!j){
+    res.send("Teacher does not exist")
+}
+var grade=req.body.grade+","+facultyid+","+userid
+console.log(grade)
+const n= await admins.findOneAndUpdate({id:800000001},{$push: {grade_requests:grade}},{new:true})
+res.send("Grade has been submitted to sdmin for approval")
+
+})
 
 module.exports = router;
