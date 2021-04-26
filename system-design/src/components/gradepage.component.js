@@ -56,26 +56,10 @@ componentDidMount(){
 
 axios.get('http://localhost:5000/admins/').then(res=>{
 console.log(res.data)
- for(var i=0;i<res.data.length;i++){
-var array=res.data[i].split(",")
-this.state.requests2.push(array[2])
-}
-console.log(this.state.requests2)
-for(var i=0;i<res.data.length;i++){
-    var array = res.data[i].split(",");
-    for(var j=i+1;j<this.state.requests2.length;j++){
-        if(this.state.requests2[j]===array[2]){
-            this.state.requests.push(res.data[j])
-            this.state.requests2[j]=''
-        }
-    }
-}
-if(this.state.requests.length==0){
-    this.setState({
-        requests:res.data
-    })
-
-}
+ 
+this.setState({
+  requests:res.data
+})
 
 this.setState({
 loading:false
