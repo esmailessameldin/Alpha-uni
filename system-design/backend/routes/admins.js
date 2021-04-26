@@ -130,6 +130,8 @@ router.route('/handlegrade/:grade').post(async(req,res)=>{
     var classnumber = "failed"
     x["year"]="Spring 2020"
 
+    const l=await user.findOneAndUpdate({},{$pull:{grade_requests:grade}},{new:true})
+    
 
 var array = grade.split(",");
 console.log(array)
