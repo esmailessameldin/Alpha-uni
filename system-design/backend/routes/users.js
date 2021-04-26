@@ -60,6 +60,14 @@ router.route('/:id').get((req, res) => {
       .then(user => res.json(user))
       .catch(err => res.status(400).json('Error: ' + err));
   });
+  router.route('/get/:name').get((req, res) => {
+    var x=req.params.name
+    
+    console.log(x)
+       user.findOne({name:x})
+      .then(user => res.json(user))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
  router.route('/transcript/:id').get(async(req,res)=>{
      const u= await user.findOne({id:req.params.id})
      console.log(u.transcript)

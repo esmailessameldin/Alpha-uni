@@ -11,6 +11,7 @@ export default class CreateExercise extends Component {
    this.classes=this.classes.bind(this)
    this.newstudent=this.newstudent.bind(this)
    this.newfaculty=this.newfaculty.bind(this)
+   this.grade=this.grade.bind(this)
     this.state = {
      
      
@@ -42,7 +43,10 @@ export default class CreateExercise extends Component {
    }
  
 
-  
+  grade(e){
+    e.preventDefault()
+    window.location='/gradescreen'
+  }
 
  
 render() {
@@ -109,7 +113,9 @@ render() {
 
     
         </form>
-    
+      <button type="button" style={{position: 'absolute', left: '46%', top: '60%'}} onClick={this.grade}>
+      Check grade requests
+     </button>
     </div>
     
 

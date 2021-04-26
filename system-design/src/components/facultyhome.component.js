@@ -21,7 +21,9 @@ export default class CreateExercise extends Component {
       address:'',
       year:'',
       status:'',
-      enrolled:[]
+      enrolled:[],
+     grading:true,
+     userid:''
      
     }
   }
@@ -29,7 +31,16 @@ export default class CreateExercise extends Component {
     e.preventDefault();
     window.location='/adddrop/'+this.props.match.params.id
   }
-
+grade(e){
+  var array = e.split(" ");
+  var name =array[0]+" "+array[1]
+  console.log(array[0]+" "+array[1])
+  axios.get('http://localhost:5000/users/get/'+name)
+  .then(res=>{
+    console.log(res.data.id)
+    window.location='/grade/'+this.props.match.params.id+","+res.data.id
+  })
+}
   handleClickCalendar(e){
     e.preventDefault();
  window.location='/calendar/'+this.props.match.params.id
@@ -142,13 +153,33 @@ render() {
           <td>enrolled</td>
           <th>
            {this.state.enrolled.map((item, key) => {
-                    return (
+             if(this.state.grading){return(
+
+                   <form>
+                      <li key={key}>
+                        {item}
+                        {console.log(item)}
+                        <button type="button" style={{position: 'absolute', left: '89%'}} onClick={() => this.grade(item)}>
+      Grade
+     </button>
+                      </li>
+                     
+                      </form>
+
+             )
+            
+            }
+                    return (<form>
                       <li key={key}>
                         {item}
                         
                       </li>
+                     
+                      </form>
                     );
+                    
                   })}
+
                 </th>
 
         </tr>

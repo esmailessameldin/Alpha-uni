@@ -132,31 +132,30 @@ router.route('/handlegrade/:grade').post(async(req,res)=>{
 
 
 var array = grade.split(",");
-
+console.log(array)
 
 x["year"]="Spring 2021"
-const j= await students.findOne({id:array[1]})
-console.log(j.transcript.length)
-console.log(!j.transcript[j.transcript.length-1].year==="Spring 2021")
+const j= await students.findOne({name:array[2]})
+console.log(array[2])
 var boolenn=j.transcript[j.transcript.length-1].year==="Spring 2021"
 console.log(x)
  if(boolenn===false){
     console.log("done")
- const h=await students.findOneAndUpdate({id:array[1]},{$push:{transcript:x}},{new:true})
+ const h=await students.findOneAndUpdate({name:array[2]},{$push:{transcript:x}},{new:true})
 }
 
 console.log(j.transcript.length)
 if(!j.transcript[j.transcript.length-1].class_one){
-   const l=await students.findOneAndUpdate({id:array[1],"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_one":array[0]}},{new:true})
+   const l=await students.findOneAndUpdate({name:array[2],"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_one":array[0]}},{new:true})
  classnumber="first"
 }else if(!j.transcript[j.transcript.length-1].class_two){
-    const l=await students.findOneAndUpdate({id:array[1],"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_two":array[0]}},{new:true})
+    const l=await students.findOneAndUpdate({name:array[2],"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_two":array[0]}},{new:true})
    classnumber="second"
 }else if(!j.transcript[j.transcript.length-1].class_three){
-    const l=await students.findOneAndUpdate({id:array[1],"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_three":array[0]}},{new:true})
+    const l=await students.findOneAndUpdate({name:array[2],"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_three":array[0]}},{new:true})
    classnumber="third"
 }else if(!j.transcript[j.transcript.length-1].class_four){
-    const l=await students.findOneAndUpdate({id:array[1],"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_four":array[0]}},{new:true})
+    const l=await students.findOneAndUpdate({name:array[2],"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_four":array[0]}},{new:true})
    classnumber="fourth"
 }
 res.send("Grade for "+classnumber+" added")
@@ -164,5 +163,14 @@ res.send("Grade for "+classnumber+" added")
 
 
 })
+router.route('/').get(async(req,res)=>{
+const u = await user.findOne()
 
+var x=[]
+x=u.grade_requests
+x.sort()
+console.log(x)
+res.send(x)
+
+})
 module.exports = router;

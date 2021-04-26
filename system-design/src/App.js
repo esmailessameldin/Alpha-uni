@@ -17,6 +17,7 @@ import spring from "./components/spring.component"
 import admin from"./components/adminlogin.component"
 import adminhome from "./components/adminhome.component"
 import audit from "./components/audit.component"
+import grade from "./components/grading.components"
 import masterspring from "./components/masterspring.component"
 import updatefaculty from "./components/updatefaculty.component"
 import masterfall from "./components/masterfall.component"
@@ -26,6 +27,7 @@ import addfaculty from "./components/addfaculty.component"
 import addstudent from "./components/addstudent.components"
 import adminclasses from "./components/adminclasses.components"
 import studentupdate from "./components/studentupdate.component"
+import gradescreen from "./components/gradepage.component"
 import adminhomepage from "./components/adminhomepage.component"
 import adminfaculty from "./components/adminfaculty.component"
 import transcript from "./components/transcript.component"
@@ -62,6 +64,8 @@ function App() {
     <Route path="/updatefaculty/:id" exact component={updatefaculty}/>
     <Route path="/calendarnext/:id" exact component={calendar2} />
     <Route path="/adddropnext/:id" exact component={mark2}/>
+    <Route path="/grade/:id" exact component={grade}/>
+    <Route path="/gradescreen" exact component={gradescreen}/>
     
     </div>
     </Router>
