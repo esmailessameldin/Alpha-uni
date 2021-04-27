@@ -116,6 +116,9 @@ render() {
       <button type="button" style={{position: 'absolute', left: '46%', top: '60%'}} onClick={this.grade}>
       Check grade requests
      </button>
+     <button type="button" style={{position: 'absolute', left: '35%', top: '60%'}} onClick={this.grade}>
+     Add holds
+     </button>
     </div>
     
 

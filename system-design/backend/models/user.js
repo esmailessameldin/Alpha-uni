@@ -13,7 +13,9 @@ const studentSchema= new schema({
  year:{type:String,default:"Freshman"},
  status:{type:String},
  transcript:{type:[]},
- minor:{type:String}
+ minor:{type:String},
+ hold:{type:Boolean,default:false},
+ holdmessage:{type:String}
 });
 
 

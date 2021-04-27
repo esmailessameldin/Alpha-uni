@@ -18,6 +18,7 @@ import admin from"./components/adminlogin.component"
 import adminhome from "./components/adminhome.component"
 import audit from "./components/audit.component"
 import grade from "./components/grading.components"
+import hold from "./components/holds.components"
 import masterspring from "./components/masterspring.component"
 import updatefaculty from "./components/updatefaculty.component"
 import masterfall from "./components/masterfall.component"
@@ -66,6 +67,7 @@ function App() {
     <Route path="/adddropnext/:id" exact component={mark2}/>
     <Route path="/grade/:id" exact component={grade}/>
     <Route path="/gradescreen" exact component={gradescreen}/>
+    <Route path="/addhold" exact component={hold}/>
     
     </div>
     </Router>

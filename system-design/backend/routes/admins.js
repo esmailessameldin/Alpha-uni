@@ -175,4 +175,34 @@ console.log(x)
 res.send(x)
 
 })
+router.route('/addhold/:id').post(async(req,res)=>{
+    await mongoose.set('useFindAndModify', false);
+    
+    
+    
+    
+    var message=req.body.message
+    if(!message){
+        const u= await students.findOneAndUpdate({id:req.params.id},{
+            hold:false,
+            holdmessage:""
+           
+        },{new:true})
+        res.send("Hold removed !")
+return
+    }
+    console.log(message)
+const u= await students.findOneAndUpdate({id:req.params.id},{
+    hold:true,
+    holdmessage:message
+},{new:true})
+
+res.send("Hold added !")
+
+
+
+})
+
+
+
 module.exports = router;

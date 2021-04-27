@@ -22,7 +22,8 @@ export default class CreateExercise extends Component {
       address:'',
       year:'',
       status:'',
-      minor:''
+      minor:'',
+      hold:''
      
     }
   }
@@ -80,6 +81,17 @@ window.location='/transcript/'+this.props.match.params.id
             minor:response.data.minor
             
           })
+          if(!response.data.hold){
+                this.setState({
+                  hold:" Account clear"
+                })
+
+          }else{
+
+            this.setState({
+              hold:response.data.holdmessage
+            })
+          }
           console.log(this.state.name)
         
       })
@@ -148,10 +160,15 @@ render() {
           <td>{this.state.minor}</td>
         
         </tr>
+        <tr>
+          <td>Hold</td>
+          <td>{this.state.hold}</td>
+        
+        </tr>
        
       </tbody>
     </Table>
-              
+               <ul>  </ul>
                
     <form onClick={this. handClickLogout}>
     <Button  onClick={this. handClickLogout}    animated  style = {{width:"11vh",position: 'absolute', left: '29%', top: '79%',
