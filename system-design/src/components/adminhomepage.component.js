@@ -12,6 +12,7 @@ export default class CreateExercise extends Component {
    this.newstudent=this.newstudent.bind(this)
    this.newfaculty=this.newfaculty.bind(this)
    this.grade=this.grade.bind(this)
+   this.hold=this.hold.bind(this)
     this.state = {
      
      
@@ -47,7 +48,10 @@ export default class CreateExercise extends Component {
     e.preventDefault()
     window.location='/gradescreen'
   }
-
+hold(e){
+  e.preventDefault()
+  window.location='/addhold'
+}
  
 render() {
   
@@ -116,7 +120,7 @@ render() {
       <button type="button" style={{position: 'absolute', left: '46%', top: '60%'}} onClick={this.grade}>
       Check grade requests
      </button>
-     <button type="button" style={{position: 'absolute', left: '35%', top: '60%'}} onClick={this.grade}>
+     <button type="button" style={{position: 'absolute', left: '35%', top: '60%'}} onClick={this.hold}>
      Add holds
      </button>
     </div>

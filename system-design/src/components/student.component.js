@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Table}from 'react-bootstrap'
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 import { Button, Icon } from 'semantic-ui-react';
+const loading = () => (
+  <div>
+   <Segment style = {{position: 'absolute', left: '50%', top: '39%',
+    transform: 'translate(-50%, -50%)'}}>
+    <Dimmer active>
+      <Loader size='massive'>Loading data</Loader>
+    </Dimmer>
+
+    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+  </Segment>
+  </div>)
 
 export default class CreateExercise extends Component {
   constructor(props) {
@@ -23,7 +37,8 @@ export default class CreateExercise extends Component {
       year:'',
       status:'',
       minor:'',
-      hold:''
+      hold:'',
+      loading:true
      
     }
   }
@@ -83,16 +98,17 @@ window.location='/transcript/'+this.props.match.params.id
           })
           if(!response.data.hold){
                 this.setState({
-                  hold:" Account clear"
+                  hold:"Account clear"
                 })
 
           }else{
 
             this.setState({
-              hold:response.data.holdmessage
+              hold:response.data.holdmessage,
+              loading:false
             })
           }
-          console.log(this.state.name)
+          console.log(this.state.loading)
         
       })
       .catch((error) => {
@@ -108,8 +124,10 @@ window.location='/transcript/'+this.props.match.params.id
  
 render() {
   
-    return (
-      <div handClickLogout={this.handClickLogout}>
+  if(this.state.hold=="Account clear") {
+
+    return(
+<div handClickLogout={this.handClickLogout}>
       <Table striped bordered hover size="sm"style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',
       transform: 'translate(-50%, -50%)'}}>
       <thead>
@@ -224,6 +242,79 @@ render() {
     </Button>
     </form>
     
+  
+    </div>
+
+
+    )
+  }
+
+
+    return (
+      <div handClickLogout={this.handClickLogout}>
+      <Table striped bordered hover size="sm"style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',
+      transform: 'translate(-50%, -50%)'}}>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>{this.state.name}</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Email</td>
+          <td>{this.state.email}</td>
+        
+        </tr>
+        <tr>
+          <td>ID</td>
+          <td>{this.state.id}</td>
+        
+        </tr>
+        <tr>
+          <td>Major</td>
+          <td>{this.state.major}</td>
+        
+        </tr>
+        <tr>
+          <td>Birthday</td>
+          <td>{this.state.birthday}</td>
+        
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>{this.state.address}</td>
+        
+        </tr>
+        <tr>
+          <td>Year</td>
+          <td>{this.state.year}</td>
+        
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>{this.state.status}</td>
+        
+        </tr>
+        <tr>
+          <td>Minor</td>
+          <td>{this.state.minor}</td>
+        
+        </tr>
+        <tr>
+          <td>Hold</td>
+          <td>{this.state.hold}</td>
+        
+        </tr>
+       
+      </tbody>
+    </Table>
+               <ul>  </ul>
+    
+          
+    <li style = {{width:"100vh",position: 'absolute', left: '50%', top: '80%',
+      transform: 'translate(-50%, -50%)'}}> Your accounts has holds please make sure to clear your account to use the student functions </li>
   
     </div>
     
