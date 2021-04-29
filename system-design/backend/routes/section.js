@@ -28,7 +28,8 @@ router.route('/findbycrnnext/:id').post(async(req,res)=>{
     mongoose.set('useFindAndModify', false);
    var x= req.params.id
    var m=req.body.crn
- 
+ console.log(x)
+ console.log(m)
 
 const w =  await users.findOne({id:x})
 
@@ -42,7 +43,7 @@ if(w.status==="Full Time" && w.sections_next_semester.length===4){
   }
   const j=await nextsections.findOne({crn:m})
   const y= await faculty.findOne({class:j.name})
-  console.log(j)
+  console.log(y)
   if(!j){
     console.log("not found")
     return
@@ -254,4 +255,20 @@ res.send(false)
 
   })
 
+  router.route('/findbynextclass/:name').get((req, res) =>  {
+    var x=req.params.name
+    
+    console.log(x)
+       nextsections.find({name:x})
+      .then(nextsections => res.json(nextsections))
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
+
+
+  router.route('/find/:crn').get(async(req,res)=>{
+const u =await nextsections.findOne({crn:req.params.crn})
+console.log(u)
+res.send(u)
+
+  })
 module.exports = router;

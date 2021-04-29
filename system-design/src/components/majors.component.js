@@ -23,6 +23,10 @@ export default class CreateExercise extends Component {
     console.log(e);
     window.location = '/sections/'+e
   }
+  handleClick2(e) {
+    console.log(e);
+    window.location = '/nextsections/'+e
+  }
   addclass(e){
     e.preventDefault();
 
@@ -71,6 +75,7 @@ render() {
               <button type="button" style={{width:"25vh",position: 'absolute', left: '28%'}} onClick={() => this.handleClick(item)}>
                View sections
               </button>
+              
             </li>
           );
         })}
@@ -92,9 +97,12 @@ render() {
                     return (
                       <li key={key}>
                         {item}
-                        <button type="button" style={{width:"25vh",position: 'absolute', left: '28%'}} onClick={() => this.handleClick(item)}>
-                         View sections
+                        <button type="button" style={{position: 'absolute', left: '50%'}} onClick={() => this.handleClick(item)}>
+                         View current Semester sections
                         </button>
+                        <button type="button" style={{position: 'absolute', left: '68%'}} onClick={() => this.handleClick2(item)}>
+               View next Semester sections
+              </button>
                       </li>
                     );
                   })}

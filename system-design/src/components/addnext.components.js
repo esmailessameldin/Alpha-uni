@@ -17,7 +17,7 @@ export default class CreateExercise extends Component {
         crn2:'',
         id2:'',
         message:'',
-        open:false,
+        open:true,
         closed : (
           <div><Form id="form">
              <Form.Group onChange={this.onChangeID} style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',

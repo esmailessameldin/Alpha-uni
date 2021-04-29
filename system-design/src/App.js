@@ -24,6 +24,7 @@ import updatefaculty from "./components/updatefaculty.component"
 import masterfall from "./components/masterfall.component"
 import register from "./components/register.component"
 import mark from "./components/add.component"
+import newsections from "./components/newsemsterclasses.component"
 import addfaculty from "./components/addfaculty.component"
 import addstudent from "./components/addstudent.components"
 import adminclasses from "./components/adminclasses.components"
@@ -70,6 +71,7 @@ function App() {
     <Route path="/gradescreen" exact component={gradescreen}/>
     <Route path="/addhold" exact component={hold}/>
     <Route path="/addclass/:major" exact component={addclass}/>
+    <Route path="/nextsections/:name" exact component={newsections}/>
     
     </div>
     </Router>
