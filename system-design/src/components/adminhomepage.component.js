@@ -12,6 +12,7 @@ export default class CreateExercise extends Component {
    this.newstudent=this.newstudent.bind(this)
    this.newfaculty=this.newfaculty.bind(this)
    this.grade=this.grade.bind(this)
+   this.addclass = this.addclass.bind(this);
    this.hold=this.hold.bind(this)
     this.state = {
      
@@ -42,7 +43,11 @@ export default class CreateExercise extends Component {
     e.preventDefault()
     window.location='/addstudent'
    }
- 
+   addclass(e){
+    e.preventDefault();
+    window.location='/classes/'+800000001
+
+   }
 
   grade(e){
     e.preventDefault()
@@ -114,11 +119,13 @@ render() {
       <Button.Content hidden>
       </Button.Content>
     </Button>
-
-    
+ 
         </form>
       <button type="button" style={{position: 'absolute', left: '46%', top: '60%'}} onClick={this.grade}>
       Check grade requests
+     </button>
+     <button type="button" style={{position: 'absolute', left: '26%', top: '60%'}} onClick={this.addclass}>
+      Add class
      </button>
      <button type="button" style={{position: 'absolute', left: '35%', top: '60%'}} onClick={this.hold}>
      Add holds

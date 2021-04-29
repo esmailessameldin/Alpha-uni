@@ -4,6 +4,7 @@ let audit =require('../models/Degrees.js')
 let users =require('../models/user.js')
 let faculty=require('../models/faculty.js')
 let minor=require('../models/minor.js')
+let degrees=require('../models/Degrees')
 let nextsections=require('../models/nextsections')
 const mongoose=require('mongoose')
 router.route('/adds').post((req, res) => { 
@@ -198,11 +199,11 @@ router.route('/deletesection').post(async(req,res)=>{
 
 
 })
-router.route('/add').post((req, res) => { 
+router.route('/add/:major').post(async(req, res) => { 
+  mongoose.set('useFindAndModify', false);
+ var i=req.body.params
 
- 
-
-    const u = new sections({
+    const u = new nextsections({
         name:req.body.name,
         credit:req.body.credit,
         day:req.body.day,
@@ -214,7 +215,7 @@ router.route('/add').post((req, res) => {
         teacher:req.body.teacher,
         crn:req.body.crn
         });
-
+const x=await degrees.findOneAndUpdate({major:req.params.major},{$push:{classes:u.name}},{new:true})
 
   u .save()
     .then(() => res.json(u.name +' Section added!'))
@@ -236,6 +237,21 @@ const u=await sections.find()
 res.json(u)
   })
 
-  
+router.route('/findone').get(async(req,res)=>{
+
+const u =await nextsections.findOne({day:req.body.day,time:req.body.time,room:req.body.room})
+if(!u){
+res.send(true)
+
+}else{
+res.send(false)
+
+}
+
+
+
+
+
+  })
 
 module.exports = router;

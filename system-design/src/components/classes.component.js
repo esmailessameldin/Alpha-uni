@@ -10,7 +10,7 @@ import React, { Component } from "react";
 
           handleClick(e) {
             console.log(e);
-            window.location = "/majors/" + e;
+            window.location = "/majors/" + e+","+this.props.match.params.id;
           }
 
           render() {

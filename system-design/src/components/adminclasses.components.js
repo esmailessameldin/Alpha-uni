@@ -19,12 +19,16 @@ const loading = () => (
           constructor(props) {
             super(props);
             this.handleClick = this.handleClick.bind(this);
+        
             this.state = {
               students: [],
               loading:true
             };
           }
+ 
 
+
+        
 componentDidMount(){
 
 axios.get('http://localhost:5000/admins/viewallcourses').then(
@@ -93,6 +97,8 @@ setTimeout(function() {
                     );
                   })}
                 </ul>
+              
+
               </div>
             );
           }

@@ -32,6 +32,7 @@ import gradescreen from "./components/gradepage.component"
 import adminhomepage from "./components/adminhomepage.component"
 import adminfaculty from "./components/adminfaculty.component"
 import transcript from "./components/transcript.component"
+import addclass from "./components/addclass.components"
 function App() {
   return (
     <Router>
@@ -68,6 +69,7 @@ function App() {
     <Route path="/grade/:id" exact component={grade}/>
     <Route path="/gradescreen" exact component={gradescreen}/>
     <Route path="/addhold" exact component={hold}/>
+    <Route path="/addclass/:major" exact component={addclass}/>
     
     </div>
     </Router>
