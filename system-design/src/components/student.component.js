@@ -71,7 +71,7 @@ window.location='/transcript/'+this.props.match.params.id
    }
    onClick(e){
     e.preventDefault();
-    window.location='/classes/'+this.props.match.params.id
+    window.location='/departments'
 
    }
   componentDidMount() {
@@ -201,7 +201,7 @@ render() {
     <form onClick={this. onClick}>
     <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '36%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
-      <Button.Content  onClick={this.onClick} visible>Classes</Button.Content>
+      <Button.Content  onClick={this.onClick} visible>Courses</Button.Content>
       <Button.Content hidden>
       </Button.Content>
     </Button>

@@ -24,6 +24,7 @@ import updatefaculty from "./components/updatefaculty.component"
 import masterfall from "./components/masterfall.component"
 import register from "./components/register.component"
 import mark from "./components/add.component"
+import department from"./components/departments.component"
 import newsections from "./components/newsemsterclasses.component"
 import addfaculty from "./components/addfaculty.component"
 import addstudent from "./components/addstudent.components"
@@ -42,7 +43,7 @@ function App() {
     <div className="Pineapple">
     <Route path="/" exact component={login} />
     <Route path="/student/:id" exact component={studentscreen} />
-    <Route path="/classes/:id" exact component={classes} />
+    <Route path="/classes/:name" exact component={classes} />
     <Route path="/majors/:name" exact component={majors} />
     <Route path="/sections/:name" exact component={sections} />
     <Route path="/passerror" exact component={passerror} />
@@ -72,7 +73,7 @@ function App() {
     <Route path="/addhold" exact component={hold}/>
     <Route path="/addclass/:major" exact component={addclass}/>
     <Route path="/nextsections/:name" exact component={newsections}/>
-    
+    <Route path="/departments" exact component={department}/>
     </div>
     </Router>
 

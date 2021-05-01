@@ -35,12 +35,14 @@ const usersRouter = require('./routes/users');
 const facultyRouter = require('./routes/faculty');
 const sectionsRouter = require('./routes/section');
 const adminRouter = require('./routes/admins');
+const DepartmentRouter=require('./routes/department')
 
 app.use('/classes', classesRouter);
 app.use('/users', usersRouter);
 app.use('/faculty', facultyRouter);
 app.use('/section', sectionsRouter);
 app.use('/admins', adminRouter);
+app.use('/department', DepartmentRouter);
 
 if(process.env.NODE_ENV === 'production') {
    app.use( express.static( path.join( __dirname,'..', 'build')));

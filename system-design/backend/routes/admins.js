@@ -166,7 +166,7 @@ res.send("Grade for "+classnumber+" added")
 
 })
 router.route('/').get(async(req,res)=>{
-const u = await user.findOne()
+const u = await user.findOne() 
 
 var x=[]
 x=u.grade_requests
