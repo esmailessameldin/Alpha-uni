@@ -41,6 +41,7 @@ if(w.status==="Full Time" && w.sections_next_semester.length===4){
   return
   }
   const j=await nextsections.findOne({crn:m})
+  var sectiontimeanddate=j.day+j.time
   for(var i=0;i<w.transcript.length;i++){
     if(w.transcript[i].class_one){
        array = w.transcript[i].class_one.split(": Midterm");
@@ -84,6 +85,13 @@ if(y.enrolled[i]===w.name+" "+j.time){
   return
 
 }
+for(var i=0;i<w.sections.length;i++){
+  if(w.sections[i].day+w.sections[i].time===sectiontimeanddate){
+    res.send("Error: Time Conflict. You have a class during this time and days. Class not added.")
+    return
+  }
+  
+    }
 
 }
   const u= await nextsections.findOneAndUpdate({crn:m},{
