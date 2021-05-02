@@ -22,7 +22,6 @@ u .save()
   .catch(err => res.status(400).json('Error: ' + err));
 
 });
-
 router.route('/findbycrnnext/:id').post(async(req,res)=>{
   console.log("you are here")
     mongoose.set('useFindAndModify', false);
@@ -42,6 +41,33 @@ if(w.status==="Full Time" && w.sections_next_semester.length===4){
   return
   }
   const j=await nextsections.findOne({crn:m})
+  for(var i=0;i<w.transcript.length;i++){
+    if(w.transcript[i].class_one){
+       array = w.transcript[i].class_one.split(": Midterm");
+      if(j.name===array[0]){
+        res.send("You have already taken this course. You have not been enrolled.")
+      }
+    }
+    if(w.transcript[i].class_two){
+      array = w.transcript[i].class_two.split(": Midterm");
+     if(j.name===array[0]){
+       res.send("You have already taken this course. You have not been enrolled.")
+     }
+   }
+   if(w.transcript[i].class_three){
+    array = w.transcript[i].class_three.split(": Midterm");
+   if(j.name===array[0]){
+     res.send("You have already taken this course. You have not been enrolled.")
+   }
+ }
+ if(w.transcript[i].class_four){
+  array = w.transcript[i].class_four.split(": Midterm");
+ if(j.name===array[0]){
+   res.send("You have already taken this course. You have not been enrolled.")
+ }
+}
+    
+    }
   const y= await faculty.findOne({class:j.name})
   console.log(y)
   if(!j){
@@ -77,8 +103,6 @@ const k= await users.findOneAndUpdate({id:x},{
   res.send("section added")
 
 })
-
-
 router.route('/addminor').post((req, res) => { 
 
  
@@ -102,7 +126,6 @@ router.route('/viewaudit/:major').get(async(req,res)=>{
       .then(audit => res.json(audit.classes))
       .catch(err => res.status(400).json('Error: ' + err));
 });
-
 router.route('/viewminor/:minor').get(async(req,res)=>{
   var x=req.params.minor
   
@@ -116,9 +139,13 @@ router.route('/findbycrn/:id').post(async(req,res)=>{
     mongoose.set('useFindAndModify', false);
    var x= req.params.id
    var m=req.body.crn
+   var array= []
  
 
 const w =  await users.findOne({id:x})
+console.log(w.transcript)
+
+
 
 if(w.status==="Part Time" && w.sections.length===2){
 res.send("You have reached the maximum amount of classes that you are allowed to take based on your Status. No class has been added.")
@@ -129,6 +156,34 @@ if(w.status==="Full Time" && w.sections.length===4){
   return
   }
   const j=await sections.findOne({crn:m})
+  console.log(j.name)
+   for(var i=0;i<w.transcript.length;i++){
+    if(w.transcript[i].class_one){
+       array = w.transcript[i].class_one.split(": Midterm");
+      if(j.name===array[0]){
+        res.send("You have already taken this course. You have not been enrolled.")
+      }
+    }
+    if(w.transcript[i].class_two){
+      array = w.transcript[i].class_two.split(": Midterm");
+     if(j.name===array[0]){
+       res.send("You have already taken this course. You have not been enrolled.")
+     }
+   }
+   if(w.transcript[i].class_three){
+    array = w.transcript[i].class_three.split(": Midterm");
+   if(j.name===array[0]){
+     res.send("You have already taken this course. You have not been enrolled.")
+   }
+ }
+ if(w.transcript[i].class_four){
+  array = w.transcript[i].class_four.split(": Midterm");
+ if(j.name===array[0]){
+   res.send("You have already taken this course. You have not been enrolled.")
+ }
+}
+    
+    }
   const y= await faculty.findOne({class:j.name})
   console.log(j)
   if(!j){
@@ -223,7 +278,6 @@ const x=await degrees.findOneAndUpdate({major:req.params.major},{$push:{classes:
     .catch(err => res.status(400).json('Error: ' + err));
 
 });
-
 router.route('/findbyclass/:name').get((req, res) =>  {
     var x=req.params.name
     
@@ -231,13 +285,11 @@ router.route('/findbyclass/:name').get((req, res) =>  {
        sections.find({name:x})
       .then(sections => res.json(sections))
       .catch(err => res.status(400).json('Error: ' + err));
-  });
-
+});
   router.route('/all').get(async(req,res)=>{
 const u=await sections.find()
 res.json(u)
-  })
-
+})
 router.route('/findone').get(async(req,res)=>{
 
 const u =await nextsections.findOne({day:req.body.day,time:req.body.time,room:req.body.room})
@@ -253,8 +305,7 @@ res.send(false)
 
 
 
-  })
-
+})
   router.route('/findbynextclass/:name').get((req, res) =>  {
     var x=req.params.name
     
@@ -262,13 +313,11 @@ res.send(false)
        nextsections.find({name:x})
       .then(nextsections => res.json(nextsections))
       .catch(err => res.status(400).json('Error: ' + err));
-  });
-
-
+});
   router.route('/find/:crn').get(async(req,res)=>{
 const u =await nextsections.findOne({crn:req.params.crn})
 console.log(u)
 res.send(u)
 
-  })
+})
 module.exports = router;
