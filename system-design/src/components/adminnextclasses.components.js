@@ -32,7 +32,7 @@ const loading = () => (
         
 componentDidMount(){
 
-axios.get('http://localhost:5000/admins/viewallcourses').then(
+axios.get('http://localhost:5000/admins/viewallnextcourses').then(
     res=>{
         console.log(res.data[0].name)
        
@@ -89,7 +89,7 @@ setTimeout(function() {
                    <th>Room</th>
                    <th>Capacity</th>
                    <th>Students</th>
-                  
+                   
                  </tr>
                </thead>
                <tbody class="thead-light">
@@ -108,7 +108,8 @@ setTimeout(function() {
                    <th>{item.room}</th>
                    <th>{item.capacity}</th>
                    <th>{item.students}</th>
-                   
+                 
+                  
                   
                  
                  </tr>

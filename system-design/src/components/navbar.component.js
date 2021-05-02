@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+      <nav className="navbar navbar-dark bg-dark navbar-expand-xl" style={{width:"117%"}}>
         <Link to="/" className="navbar-brand">Alpha university</Link>
         <div className="collpase navbar-collapse">
         <ul className="navbar-nav mr-auto">

@@ -31,6 +31,7 @@ import addstudent from "./components/addstudent.components"
 import adminclasses from "./components/adminclasses.components"
 import studentupdate from "./components/studentupdate.component"
 import gradescreen from "./components/gradepage.component"
+import adminnextclasses from "./components/adminnextclasses.components"
 import adminhomepage from "./components/adminhomepage.component"
 import adminfaculty from "./components/adminfaculty.component"
 import transcript from "./components/transcript.component"
@@ -74,6 +75,7 @@ function App() {
     <Route path="/addclass/:major" exact component={addclass}/>
     <Route path="/nextsections/:name" exact component={newsections}/>
     <Route path="/departments" exact component={department}/>
+    <Route path="/adminnextclasses" exact component={adminnextclasses}/>
     </div>
     </Router>
 

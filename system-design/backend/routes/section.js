@@ -79,7 +79,7 @@ if(j.capacity==0){
   res.send("Maximum Capacity reached. No more students can enroll in this section. Section not added.")
   return
 }
-for(let i=0;i<y.enrolled.length;i++){
+for(var i=0;i<y.enrolled.length;i++){
 if(y.enrolled[i]===w.name+" "+j.time){
   res.send("You are already enrolled in this section. Section not added.")
   return

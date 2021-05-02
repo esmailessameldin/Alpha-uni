@@ -14,6 +14,7 @@ export default class CreateExercise extends Component {
    this.grade=this.grade.bind(this)
    this.addclass = this.addclass.bind(this);
    this.hold=this.hold.bind(this)
+   this.nextsemester=this.nextsemester.bind(this)
     this.state = {
      
      
@@ -57,7 +58,10 @@ hold(e){
   e.preventDefault()
   window.location='/addhold'
 }
- 
+ nextsemester(e){
+  e.preventDefault()
+  window.location='/adminnextclasses'
+ }
 render() {
   
     return (
@@ -129,6 +133,9 @@ render() {
      </button>
      <button type="button" style={{position: 'absolute', left: '35%', top: '60%'}} onClick={this.hold}>
      Add holds
+     </button>
+     <button type="button" style={{position: 'absolute', left: '60%', top: '60%'}} onClick={this.nextsemester}>
+    View next semester courses
      </button>
     </div>
     

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import {Table}from 'react-bootstrap'
 import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 const loading = () => (
     <div>
@@ -89,38 +90,75 @@ setTimeout(function() {
             
             return (
               <div>
-                <ul>
+                
+                   <Table  style= {{ width:'100%',left: '0%', top: '100%'}} >
+                    <thead class="table table-dark">
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Birthday</th>
+                        <th>Office building</th>
+                        <th>Office room number</th>
+                        <th>Class</th>
+                        <th>Enrolled</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody class="thead-light">
                   {this.state.students.map((item, key) => {
                     return (
-                    <div>
-                          <h5 key={key} style={{ color: 'navy' }}>{item.name}</h5>
-                         
-
-                           <li> ID: {item.id}</li>
-                           <li>  Email: {item.email}</li>
-                           <li> Birthday: {item.birthday}</li>
-                           <li>Address: {item.address}</li>
-                           <li> Office_Building: {item.office_building}</li>
-                           <li>Office_Room_Number:  {item.office_room_number}</li>
-                           <li> Class: {item.class}</li>
-                          
-                           <ul style={{color:'white'}}>     end    </ul>
-                           <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.smiteFaculty(item.id)}>
+                   
+              
+                      <tr>
+                        <th>{item.id}</th>
+                        <th>{item.name}</th>
+                        <th>{item.email}</th>
+                        <th>{item.address}</th>
+                        <th>{item.birthday}</th>
+                        <th>{item.office_building}</th>
+                        <th>{item.office_room_number}</th>
+                        <th>{item.class}</th>
+                        <th>{item.enrolled.map((item, key) => {
+            
+            
+            
+                    return (<form>
+                      <li key={key}>
+                        {item}
+                        
+                      </li>
+                     
+                      </form>
+                    );
+                     })}</th>
+                        <th> <button style= {{}} type="button"  onClick={() => this.updatefaculty(item.id)}>
+                         Update User
+                        </button></th>
+                        <th> <button  style= {{}}   type="button"  onClick={() => this.smiteFaculty(item.id)}>
                          Delete User
                         </button>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.updatefaculty(item.id)}>
-                         Update User
-                        </button>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        </div>
+                       </th>
+                       
+                       
+                      
+                      </tr>
+                   
+                
+                    
+                          
+                           
+                        
+                      
+                      
                     );
                   })}
-                </ul>
-              </div>
+                      </tbody>
+                  </Table>
+                  </div>
+            
             );
           }
         }

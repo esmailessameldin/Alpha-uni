@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import {Table}from 'react-bootstrap'
 import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+
 const loading = () => (
     <div>
      <Segment style = {{position: 'absolute', left: '50%', top: '39%',
@@ -14,12 +16,13 @@ const loading = () => (
       <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
     </Segment>
     </div>)
-        export default class CreateExercise extends Component {
+        export default class students extends Component {
             
           constructor(props) {
             super(props);
             this.smiteStudent=this.smiteStudent.bind(this);
             this.update=this.update.bind(this);
+            this.transcript=this.transcript.bind(this);
             this.state = {
               students: [],
               loading:true,
@@ -50,7 +53,10 @@ update(e){console.log(e)
  window.location="/studentupdate/"+studentid
   
 }
-
+transcript(e){
+ 
+  window.location='/transcript/'+e
+}
 componentDidMount(){
 
 axios.get('http://localhost:5000/admins/viewallstudents').then(
@@ -86,38 +92,69 @@ setTimeout(function() {
             
             return (
               <div>
-                <ul>
+                
+                   <Table  style= {{width:'116%',left: '0%', top: '100%'}} >
+                    <thead class="table table-dark">
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Major</th>
+                        <th>Minor</th>
+                        <th>Birthday</th>
+                        <th>Address</th>
+                        <th>Year</th>
+                        <th>Status</th>
+                        <th>Hold</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody class="thead-light">
                   {this.state.students.map((item, key) => {
                     return (
-                    <div>
-                          <h5 key={key} style={{ color: 'navy' }}>{item.name}</h5>
-                        
-                            <li>
-                           ID: {item.id} </li>
-                           <li> Email: {item.email}</li>
-                           <li>  Major: {item.major}</li>
-                           <li> Birthday: {item.birthday}</li>
-                           <li>Address: {item.address}</li>
-                           <li> Year: {item.year}</li>
-                           <li>Status:  {item.status}</li> 
-                           <ul style={{color:'white'}}>     end    </ul>
-                           <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.smiteStudent(item.id)}>
+                   
+              
+                      <tr>
+                        <th>{item.id}</th>
+                        <th>{item.name}</th>
+                        <th>{item.email}</th>
+                        <th>{item.major}</th>
+                        <th>{item.minor}</th>
+                        <th>{item.birtday}</th>
+                        <th>{item.address}</th>
+                        <th>{item.year}</th>
+                        <th>{item.status}</th>
+                        <th>{item.hold}</th>
+                        <th> <button style= {{}} type="button"  onClick={() => this.update(item.id)}>
+                         Update User
+                        </button></th>
+                        <th> <button  style= {{}}   type="button"  onClick={() => this.smiteStudent(item.id)}>
                          Delete User
                         </button>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        <button type="button" style={{position: 'absolute', left: '5%'}} onClick={() => this.update(item.id)}>
-                         Update User
-                        </button>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        <ul style={{color:'white'}}>     end    </ul>
-                        <ul style={{color:'white'}}>     end    </ul>
+                       </th>
+                       <th><button  style= {{}}   type="button"  onClick={() => this.transcript(item.id)}>
+                       View Transcript
+                        </button> </th>
+                       
+                       
                       
-                        </div>
+                      </tr>
+                   
+                
+                    
+                          
+                           
+                        
+                      
+                      
                     );
                   })}
-                </ul>
-              </div>
+                      </tbody>
+                  </Table>
+                  </div>
+            
             );
           }
         }
