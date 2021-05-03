@@ -46,7 +46,7 @@ export default class CreateExercise extends Component {
    }
    addclass(e){
     e.preventDefault();
-    window.location='/classes/'+800000001
+    window.location='/addclass'
 
    }
 

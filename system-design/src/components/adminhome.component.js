@@ -113,6 +113,11 @@ setTimeout(function() {
                     </thead>
                     <tbody class="thead-light">
                   {this.state.students.map((item, key) => {
+                    if(!item.hold){
+                      var h="Account clear"
+                    }else{
+                      var h=item.holdmessage
+                    }
                     return (
                    
               
@@ -122,11 +127,11 @@ setTimeout(function() {
                         <th>{item.email}</th>
                         <th>{item.major}</th>
                         <th>{item.minor}</th>
-                        <th>{item.birtday}</th>
+                        <th>{item.birthday}</th>
                         <th>{item.address}</th>
                         <th>{item.year}</th>
                         <th>{item.status}</th>
-                        <th>{item.hold}</th>
+                        <th>{h}</th>
                         <th> <button style= {{}} type="button"  onClick={() => this.update(item.id)}>
                          Update User
                         </button></th>

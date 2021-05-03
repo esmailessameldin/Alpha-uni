@@ -23,7 +23,14 @@ router.route('/login').post(async(req,res)=>{
             }
         }).catch(err=>console.log(err));
     })
-    
+    router.route('/getenrolled/:name').get(async(req,res)=>{
+const u=await faculty.findOne({name:req.params.name})
+console.log(u)
+res.send(u.enrolled)
+
+
+
+    })
  router.route('/:id').get((req, res) => {
         var x=req.params.id
         

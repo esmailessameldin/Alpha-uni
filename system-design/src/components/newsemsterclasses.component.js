@@ -28,7 +28,8 @@ export default class CreateExercise extends Component {
       .then(response => {
         console.log(response.data)
          this.state.names.push((response.data[0].name),("time: "+response.data[0].time),("day: "+response.data[0].day),("capacity: "+response.data[0].capacity),("students: "+response.data[0].students),("Building: "+response.data[0].building),("Room: "+response.data[0].room),("Teacher: "+response.data[0].teacher),("CRN: "+response.data[0].crn))
-         this.state.times.push((response.data[1].name),("time: "+response.data[1].time),("day: "+response.data[1].day),("capacity: "+response.data[1].capacity),("students: "+response.data[1].students),("Building: "+response.data[1].building),("Room: "+response.data[1].room),("Teacher: "+response.data[1].teacher),("CRN: "+response.data[1].crn))
+         if(response.data[1]){
+         this.state.times.push((response.data[1].name),("time: "+response.data[1].time),("day: "+response.data[1].day),("capacity: "+response.data[1].capacity),("students: "+response.data[1].students),("Building: "+response.data[1].building),("Room: "+response.data[1].room),("Teacher: "+response.data[1].teacher),("CRN: "+response.data[1].crn))}
         
       this.setState({
             

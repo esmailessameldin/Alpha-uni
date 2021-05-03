@@ -12,6 +12,7 @@ export default class CreateExercise extends Component {
     this.handeClickAdd=this.handeClickAdd.bind(this)
     this.handClickLogout = this.handClickLogout.bind(this);
     this.onClick = this. onClick.bind(this);
+    this.onClick2 = this. onClick2.bind(this);
     this.state = {
       name: '',
       email: '',
@@ -61,7 +62,12 @@ grade(e){
    }
    onClick(e){
     e.preventDefault();
-    window.location='/sections/'+this.state.status
+    window.location='/sections/'+this.state.status+","+this.state.id
+
+   }
+   onClick2(e){
+    e.preventDefault();
+    window.location='/nextsections/'+this.state.status
 
    }
   componentDidMount() {
@@ -149,40 +155,7 @@ render() {
           <td>{this.state.status}</td>
 
         </tr>
-        <tr>
-          <td>enrolled</td>
-          <th>
-           {this.state.enrolled.map((item, key) => {
-             if(this.state.grading){return(
-
-                   <form>
-                      <li key={key}>
-                        {item}
-                        {console.log(item)}
-                        <button type="button" style={{position: 'absolute', left: '89%'}} onClick={() => this.grade(item)}>
-      Grade
-     </button>
-                      </li>
-                     
-                      </form>
-
-             )
-            
-            }
-                    return (<form>
-                      <li key={key}>
-                        {item}
-                        
-                      </li>
-                     
-                      </form>
-                    );
-                    
-                  })}
-
-                </th>
-
-        </tr>
+       
        
       </tbody>
     </Table>
@@ -202,6 +175,14 @@ render() {
     <Button  onClick={this. onClick}    animated  style = {{width:"11vh",position: 'absolute', left: '20%', top: '79%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
       <Button.Content  onClick={this.onClick} visible>Classes</Button.Content>
+      <Button.Content hidden>
+      </Button.Content>
+    </Button>
+        </form>
+        <form onClick={this. onClick2}>
+    <Button  onClick={this. onClick2}    animated  style = {{position: 'absolute', left: '18%', top: '89%',
+        transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
+      <Button.Content  onClick={this.onClick2} visible>Next semester classes</Button.Content>
       <Button.Content hidden>
       </Button.Content>
     </Button>

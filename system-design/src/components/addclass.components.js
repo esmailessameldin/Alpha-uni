@@ -10,10 +10,9 @@ export default class Navbar extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeTime=this.onChangeTime.bind(this)
     this.onChangeCrn=this.onChangeCrn.bind(this)
-    this.onChangeName=this.onChangeName.bind(this)
     this.onChangeBuilding=this.onChangeBuilding.bind(this)
     this.onChangeRoom=this.onChangeRoom.bind(this)
-    this.onChangeTeacher=this.onChangeTeacher.bind(this)
+  
 
     this.state = { 
     name:'',
@@ -26,16 +25,13 @@ export default class Navbar extends Component {
     room:0,
     teacher:'',
     crn:'',
+    array:[],
     exists:false
 
     }
   }
   
-  onChangeName(e){
-    this.setState({
-        name:e.target.value
-    })
-}
+ 
   onChangeTime(e){
     this.setState({
         time:e.target.value
@@ -58,11 +54,7 @@ onChangeDay(e){
       room: e.target.value
     })
   }
-  onChangeTeacher(e) {
-    this.setState({
-      teacher: e.target.value
-    })
-  }
+ 
   onChangeCrn(e){
       this.setState({
 
@@ -72,85 +64,30 @@ onChangeDay(e){
  
   onSubmit(e) {
     e.preventDefault();
+    this.state.array=this.props.match.params.name.split(",")
 const test ={
-
+      name:this.state.array[0],
+    teacher:this.state.array[1],
     day:this.state.day,
     time:this.state.time,
     building:this.state.building,
     room:this.state.room,
+    crn:this.state.crn
 }
 console.log(test)
-axios.get('http://localhost:5000/section/findone',test)
+axios.post('http://localhost:5000/admins/addsections',test)
 .then(res=>{
-this.setState({
-
-exists:res.data
+alert(res.data)
 
 })
 
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-if(!this.state.exists){
-
-    const user = {
-        name:this.state.name,
-        credit:this.state.credits,
-        day:this.state.day,
-        time:this.state.time,
-        cap:this.state.capacity,
-        students:this.state.students,
-        building:this.state.building,
-        room:this.state.room,
-        teacher:this.state.teacher,
-        crn:this.state.crn
-
-      
-
-    }
-
-    console.log(user);
-
-    axios.post('http://localhost:5000/section/add/'+this.props.match.params.major, user)
-      .then(
-        alert("Update successful !"));
-
-    }else{
-
-        alert("The room is taken on that day and time try again")
-    }
 
   }
 render() {
     return (
         <div style = {{width:"100vh"}}>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group" style = {{width:"100vh",position: 'absolute', left: '50%', top: '16%',
-        transform: 'translate(-50%, -50%)'}}> 
-            <label>Name: </label>
-            <input  type="text"
-           
-                required
-                value={this.state.name}
-                onChange={this.onChangeName}
-                className="form-control"
-               
-                />
-          </div>
-          <div className="form-group" style = {{width:"100vh",position: 'absolute', left: '50%', top: '85%',
+          <div className="form-group" style = {{width:"100vh",position: 'absolute', left: '50%', top: '64%',
         transform: 'translate(-50%, -50%)'}}> 
             <label>Time: </label>
             <input  type="text"
@@ -162,7 +99,7 @@ render() {
                
                 />
           </div>
-          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '27.8%',
+          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '15.8%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>Day: </label>
             <input  input type="text" 
@@ -173,9 +110,7 @@ render() {
                 className="form-control"
                 />
           </div>
-    
-
-          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '38.8%',
+          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '27.8%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>Building: </label>
             <input  input type="text"
@@ -185,7 +120,7 @@ render() {
                 className="form-control"
                 />
           </div>
-          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '49.8%',
+          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '39.8%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>room: </label>
             <input  input type="text"
@@ -196,19 +131,7 @@ render() {
                 className="form-control"
                 />
           </div>
-
-          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '60.8%',
-        transform: 'translate(-50%, -50%)'}} className="form-group"> 
-            <label>Teacher: </label>
-            <input  input type="text"
-          
-                required
-                value={this.state.teacher}
-                onChange={this.onChangeTeacher}
-                className="form-control"
-                />
-          </div>
-          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '72.8%',
+          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '51.8%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>CRN: </label>
             <input  input type="text"
@@ -219,21 +142,10 @@ render() {
                 className="form-control"
                 />
           </div>
-
-
-
-
-
-
-
-
-
-
-
           <div>
-    <Button  animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '110.8%',
+    <Button  animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '77.8%',
         transform: 'translate(-50%, -50%)'}} type="submit" value="register" >
-      <Button.Content visible>Update</Button.Content>
+      <Button.Content visible>Submit</Button.Content>
       <Button.Content visible>
         <Icon name='arrow right' />
       </Button.Content>

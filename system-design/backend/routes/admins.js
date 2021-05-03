@@ -5,6 +5,7 @@ let nextsections=require('../models/nextsections')
 const { findOneAndDelete } = require('../models/user');
 const mongoose = require('mongoose');
 let faculty=require('../models/faculty')
+let classes=require('../models/class')
 let students=require('../models/user')
 var x = 800000001;
 var y=700000001;
@@ -52,7 +53,7 @@ res.send(u)
 router.route('/viewallnextcourses').get(async(req,res)=>{
     const u=await nextsections.find({})
     res.send(u)
-    })
+})
 router.route('/smitestudent').delete(async(req,res)=>{
 const u=await students.findOneAndDelete({id:req.body.id})
 console.log(u)
@@ -94,7 +95,7 @@ router.route('/updatefaculty/:id').post(async(req,res)=>{
  
  console.log(u)
  
- })
+})
 router.route('/add').post((req, res) => {
   
     const u = new students({
@@ -202,7 +203,59 @@ res.send("Hold added !")
 
 
 })
+router.route('/addclass').post(async(req,res)=>{
+
+    const u = new classes({
+           name:req.body.name,
+           teacher:req.body.teacher,
+           id:req.body.id,
+           major:req.body.major
+        
+        });
+ console.log(u)
+  u .save()
+    .then(() => res.json('Class added ! Click here to add sections'))
+    .catch(err => res.status(400).json('Error: ' + err));
 
 
+})
+router.route('/addsections').post(async(req,res)=>{
+    await mongoose.set('useFindAndModify', false);
+    const u = new nextsections({
+        name:req.body.name,
+        day:req.body.day,
+        time:req.body.time,
+        building:req.body.building,
+        room:req.body.room,
+        teacher:req.body.teacher,
+        crn:req.body.crn
+      
+     });
+    
+const l=await nextsections.findOne({day:u.day,time:u.time,room:u.room,building:u.building})
+if(l){
+res.send("There is already a class during this time in this room. Section not created.")
+return
+}
+const m=await  nextsections.findOne({crn:u.crn})
+if(m){
+    res.send("This CRN is already used. Please choose a different CRN.")
+    return
+}
+const teach=await faculty.findOne({name:u.teacher})
+if(!teach){
+    console.log(u.teacher)
+res.send("This teacher does not exist.")
+return
+}
+const final=await faculty.findOneAndUpdate({name:u.teacher},{$set:{class:u.name}},{new:true})
+console.log(u)
+u .save()
+ .then(() => res.json('Class added !'))
+ .catch(err => res.status(400).json('Error: ' + err));
+
+
+
+})
 
 module.exports = router;
