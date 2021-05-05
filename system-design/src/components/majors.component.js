@@ -65,31 +65,6 @@ export default class CreateExercise extends Component {
 
  
 render() {
-  if(this.state.id==800000001){
-    return ( <div>
-      <ul>
-        {this.state.names.map((item, key) => {
-          return (
-            <li key={key}>
-              {item}
-              <button type="button" style={{width:"25vh",position: 'absolute', left: '28%'}} onClick={() => this.handleClick(item)}>
-               View sections
-              </button>
-              
-            </li>
-          );
-        })}
-      </ul>
-      <button type="button" style = {{width:"25vh",position: 'absolute', left: '50%',top:'20%'}} onClick={ this.addclass}>
-                Click to add a course
-
-              </button>
-
-      
-    </div>
-)
-  }
-  
     return (
      <div>
                 <ul>

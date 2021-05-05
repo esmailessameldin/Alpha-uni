@@ -211,8 +211,13 @@ router.route('/addclass').post(async(req,res)=>{
            id:req.body.id,
            major:req.body.major
         
-        });
+});
  console.log(u)
+ const o= await faculty.findOne({name:u.teacher}) 
+ if(o.class){
+res.send("Teacher is currently teaching classes. Please enter a teacher who has no classes. Class not added.")
+return
+ }
   u .save()
     .then(() => res.json('Class added ! Click here to add sections'))
     .catch(err => res.status(400).json('Error: ' + err));
@@ -257,5 +262,41 @@ u .save()
 
 
 })
+router.route('/addsecondsection').post(async(req,res)=>{
 
+    await mongoose.set('useFindAndModify', false);
+    const u = new sections({
+        name:req.body.name,
+        day:req.body.day,
+        time:req.body.time,
+        building:req.body.building,
+        room:req.body.room,
+        teacher:req.body.teacher,
+        crn:req.body.crn
+      
+     });
+    
+const l=await sections.findOne({day:u.day,time:u.time,room:u.room,building:u.building})
+if(l){
+res.send("There is already a class during this time in this room. Section not created.")
+return
+}
+const m=await  sections.findOne({crn:u.crn})
+if(m){
+    res.send("This CRN is already used. Please choose a different CRN.")
+    return
+}
+const teach=await faculty.findOne({name:u.teacher})
+if(!teach){
+    console.log(u.teacher)
+res.send("This teacher does not exist.")
+return
+}
+
+console.log(u)
+u .save()
+ .then(() => res.json('Class added !'))
+ .catch(err => res.status(400).json('Error: ' + err));
+
+})
 module.exports = router;

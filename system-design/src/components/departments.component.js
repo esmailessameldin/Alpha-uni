@@ -19,7 +19,7 @@ export default class CreateExercise extends Component {
   
   handleClick(e) {
     console.log(e);
-    window.location = '/classes/'+e
+    window.location = '/classes/'+e+","+this.props.match.params.id
   }
   
 

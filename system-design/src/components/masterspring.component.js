@@ -1,26 +1,82 @@
-import {React, Component } from 'react';
-import {axios} from 'axios';
+import React, { Component } from 'react';
+import axios from 'axios';
 import {Table}from 'react-bootstrap'
+import { Button, Icon } from 'semantic-ui-react';
 import { List } from 'semantic-ui-react';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+const loading = () => (
+  <div>
+   <Segment style = {{position: 'absolute', left: '50%', top: '39%',
+    transform: 'translate(-50%, -50%)'}}>
+    <Dimmer active>
+      <Loader size='massive'>Loading data</Loader>
+    </Dimmer>
 
+    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+    <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+  </Segment>
+  </div>)
 
 export default class CreateExercise extends Component {
-
-
+     
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
-     apples:[{"name":"nono"},{"name":"ahaha"}]
-       
-   
-  }}
+      students: [],
+      loading:true
+    };
+  }
+
+
+
+
+componentDidMount(){
+
+axios.get('http://localhost:5000/admins/viewallcourses').then(
+res=>{
+console.log(res.data[0].name)
+
+this.setState({
+students:res.data
+})
+
+}
+) 
+setTimeout(function() { 
+console.log(this.state.students)
+
+this.setState({
+    
+    
+loading:false
+})
+console.log(this.state.loading)
+console.log(this.state.students[0].name)
+}.bind(this), 10000)
+
+
+
+}
+
+
+
+
+
+  handleClick(e) {
+    console.log(e);
+    window.location = "/majors/" + e;
+  }
 
   
-
+ 
 render() {
-  
-    return (
+  if(this.state.loading){
+    return loading()
+      
+}else return (
       <div><h1 style={{ color: 'navy',position: 'absolute', left: '32%' }}>Master Schedule Spring 2021</h1>
       <h2 style={{ color: 'navy', position: 'absolute', top: '20%', left: '28%', btm: '200%' }}>Priority Registration for Continuing Students:</h2>
       <h4 style={{ color: 'black', position: 'absolute', top: '50%', left: '5%', btm: '200%' }}>Review your academic record using Degree Works. Continuing students whose current academic standing is probation must seek academic advising. At or after your priority date, register on the WEB. Computers with internet access are available in the Library.  </h4>
@@ -39,7 +95,7 @@ render() {
     <tbody>
       <tr>
         <td>Juniors</td>
-        <td>Apr 8 2021 </td>
+        <td>Apr 8 2021</td>
       
       </tr>
       <tr>
@@ -121,28 +177,58 @@ render() {
 
   <h7 style={{ color: 'black', position: 'absolute', top: '275%', left: '2%', btm: '200%'}}>It should be noted that individual degree programs may require a higher GPA for courses in the major (see section on each academic department included in the catalog).  Students are advised to consult with their advisers regarding specific department requirements.</h7> 
   <h2 style={{ color: 'navy', position: 'absolute', top: '285%', left: '45%', btm: '200%'}}>Master Class List:</h2>   
-  <h6 style={{ color: 'black', position: 'absolute', top: '295%', left: '45%', btm: '200%'}}><List bulleted>
+  <h6 style={{ color: 'black', position: 'absolute', top: '293%', left: '45%', btm: '200%'}}><List bulleted>
   
-     
-  {this.state.apples.map(function(item) {return (
-  
-  <List.item key={item}>
-    
-    <li>{item.name } </li>
-    
-  
-  
-  
-  
-  
-  </List.item> );
-    })}
-
-
-
-
   </List></h6> 
-  
+  <div>
+                
+                <Table  style= {{position:'absolute',left: '0%', top: '300%'}} >
+                 <thead class="table table-dark">
+                   <tr>
+                     <th>Name</th>
+                     <th>Teacher</th>
+                     <th>Credits</th>
+                     <th>CRN</th>
+                     <th>Time</th>
+                     <th>Day</th>
+                     <th>Building</th>
+                     <th>Room</th>
+                    
+                    
+                   </tr>
+                 </thead>
+                 <tbody class="thead-light">
+               {this.state.students.map((item, key) => {
+                 return (
+                
+           
+                   <tr>
+                     <th>{item.name}</th>
+                     <th>{item.teacher}</th>
+                     <th>{item.credits}</th>
+                     <th>{item.crn}</th>
+                     <th>{item.time}</th>
+                     <th>{item.day}</th>
+                     <th>{item.building}</th>
+                     <th>{item.room}</th>
+                   
+                    
+                   
+                   </tr>
+                
+             
+                 
+                       
+                        
+                     
+                   
+                   
+                 );
+               })}
+                   </tbody>
+               </Table>
+               </div>
+         
      
       </div>
     

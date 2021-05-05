@@ -56,7 +56,9 @@ console.log(test)
 axios.post('http://localhost:5000/admins/addclass',test)
 .then(res=>{
 alert(res.data)
-
+if(res.data==="Teacher is currently teaching classes. Please enter a teacher who has no classes. Class not added."){
+  return
+}
 window.location='/addsection/'+this.state.name+","+this.state.teacher
 
 })

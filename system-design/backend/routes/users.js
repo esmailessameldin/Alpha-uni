@@ -6,9 +6,6 @@ let faculty=require('../models/faculty.js')
 let admin=require('../models/admin.js')
 const mongoose = require('mongoose');
 var x = 700000001;
-
-
-
 router.route('/add').post((req, res) => {
   
     const u = new user({
@@ -29,7 +26,6 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err)); 
     console.log(u)
 });
-
 router.route('/login').post(async(req,res)=>{
     let status=""
 
@@ -50,8 +46,6 @@ router.route('/login').post(async(req,res)=>{
         }
     }).catch(err=>console.log(err));
 })
-
-
 router.route('/:id').get((req, res) => {
     var x=req.params.id
     
@@ -59,7 +53,7 @@ router.route('/:id').get((req, res) => {
        user.findOne({id:x})
       .then(user => res.json(user))
       .catch(err => res.status(400).json('Error: ' + err));
-  });
+});
   router.route('/get/:name').get((req, res) => {
     var x=req.params.name
     
@@ -67,12 +61,12 @@ router.route('/:id').get((req, res) => {
        user.findOne({name:x})
       .then(user => res.json(user))
       .catch(err => res.status(400).json('Error: ' + err));
-  });
+});
  router.route('/transcript/:id').get(async(req,res)=>{
      const u= await user.findOne({id:req.params.id})
      console.log(u.transcript)
 res.json(u.transcript)
- })
+})
 
 
 

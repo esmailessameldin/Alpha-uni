@@ -1,8 +1,6 @@
 const router = require('express').Router();
 let classu = require('../models/class.js');
-
-
-
+let sections=require('../models/sections.js')
 router.route('/add').post((req, res) => {
     const u = new classu({
 
@@ -19,7 +17,6 @@ router.route('/add').post((req, res) => {
   .then(() => res.json('Class added!'))
   .catch(err => res.status(400).json('Error: ' + err));
 });
-
 router.route('/findbymajor/:name').get((req, res) =>  {
   var x=req.params.name
   
@@ -27,15 +24,12 @@ router.route('/findbymajor/:name').get((req, res) =>  {
      classu.find({major:x})
     .then(classu => res.json(classu))
     .catch(err => res.status(400).json('Error: ' + err));
-});
-
-  
+}); 
 router.route('/:id').delete((req, res) => {
   classu.findByIdAndDelete(req.params.id)
     .then(() => res.json('Class deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-
 router.route('/update/:id').post((req, res) => {
   classu.findById(req.params.id)
     .then(classu => {
@@ -50,5 +44,27 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch(err => res.status(400).json('Error: ' + err));
 });
+router.route('/findbyname').post(async(req,res)=>{
+  var t=req.body.name
+  console.log(t)
+const u =await classu.findOne({name:t})
+console.log(u)
+if(!u){
+  res.send("Class does not exist.Please try again.")
+  return
+}
+res.send(u)
 
+
+})
+router.route('/delete').post(async(req,res)=>{
+var h=req.body.name
+console.log(h)
+const u=await classu.findOneAndDelete({name:h})
+const j=await sections.findOneAndDelete({name:h})
+})
+router.route('/addsection').post(async(req,res)=>{
+var x=req.body.name
+
+})
 module.exports = router;

@@ -27,6 +27,7 @@ import mark from "./components/add.component"
 import department from"./components/departments.component"
 import newsections from "./components/newsemsterclasses.component"
 import addfaculty from "./components/addfaculty.component"
+import addsecondsection from "./components/addsecondsection"
 import addstudent from "./components/addstudent.components"
 import adminclasses from "./components/adminclasses.components"
 import studentupdate from "./components/studentupdate.component"
@@ -38,6 +39,7 @@ import transcript from "./components/transcript.component"
 import classadd from"./components/addcourse.component"
 import sectionadd from "./components/addclass.components"
 import facultyviewstu from "./components/facultystudent.component"
+import addsectionagain from "./components/addsection"
 function App() {
   return (
     <Router>
@@ -76,10 +78,12 @@ function App() {
     <Route path="/addhold" exact component={hold}/>
     <Route path="/addclass" exact component={classadd}/>
     <Route path="/nextsections/:name" exact component={newsections}/>
-    <Route path="/departments" exact component={department}/>
+    <Route path="/departments/:id" exact component={department}/>
     <Route path="/adminnextclasses" exact component={adminnextclasses}/>
     <Route path="/addsection/:name" exact component={sectionadd}/>
+    <Route path="/addsecondsection" exact component={addsecondsection}/>
     <Route path="/facultyviewstudent/:name" exact component={facultyviewstu}/>
+    <Route path="/addsection/:name" exact component={addsectionagain}/>
     </div>
     </Router>
 

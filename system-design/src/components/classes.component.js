@@ -13,8 +13,9 @@ import axios from 'axios';
 
           componentDidMount(){
             console.log("here")
+            var array=this.props.match.params.name.split(",")
             const user={
-              name:this.props.match.params.name
+              name:array[0]
             }
             console.log(user)
            axios.post('http://localhost:5000/department/findbyname',user)
@@ -27,7 +28,8 @@ import axios from 'axios';
             })}
           handleClick(e) {
             console.log(e);
-            window.location = "/majors/" + e+","+this.props.match.params.id;
+            var array=this.props.match.params.name.split(",")
+            window.location = "/majors/" + e+","+array[1];
           }
 
           render() {

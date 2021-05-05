@@ -9,6 +9,7 @@ export default class CreateExercise extends Component {
    this.students=this.students.bind(this)
    this.faculty=this.faculty.bind(this)
    this.classes=this.classes.bind(this)
+   this.secondSection=this.secondSection.bind(this)
    this.newstudent=this.newstudent.bind(this)
    this.newfaculty=this.newfaculty.bind(this)
    this.grade=this.grade.bind(this)
@@ -61,6 +62,10 @@ hold(e){
  nextsemester(e){
   e.preventDefault()
   window.location='/adminnextclasses'
+ }
+ secondSection(e){
+   e.preventDefault()
+   window.location='/addsecondsection'
  }
 render() {
   
@@ -136,6 +141,9 @@ render() {
      </button>
      <button type="button" style={{position: 'absolute', left: '60%', top: '60%'}} onClick={this.nextsemester}>
     View next semester courses
+     </button>
+     <button type="button" style={{position: 'absolute', left: '15%', top: '60%'}} onClick={this.secondSection}>
+     Search classes
      </button>
     </div>
     
