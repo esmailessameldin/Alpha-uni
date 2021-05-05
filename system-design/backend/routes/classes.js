@@ -1,6 +1,7 @@
 const router = require('express').Router();
 let classu = require('../models/class.js');
 let sections=require('../models/sections.js')
+let nextsections=require('../models/nextsections')
 router.route('/add').post((req, res) => {
     const u = new classu({
 
@@ -61,7 +62,7 @@ router.route('/delete').post(async(req,res)=>{
 var h=req.body.name
 console.log(h)
 const u=await classu.findOneAndDelete({name:h})
-const j=await sections.findOneAndDelete({name:h})
+const j=await nextsections.deleteMany({name:h})
 })
 router.route('/addsection').post(async(req,res)=>{
 var x=req.body.name

@@ -78,7 +78,7 @@ function App() {
     <Route path="/addhold" exact component={hold}/>
     <Route path="/addclass" exact component={classadd}/>
     <Route path="/nextsections/:name" exact component={newsections}/>
-    <Route path="/departments/:id" exact component={department}/>
+    <Route path="/departments" exact component={department}/>
     <Route path="/adminnextclasses" exact component={adminnextclasses}/>
     <Route path="/addsection/:name" exact component={sectionadd}/>
     <Route path="/addsecondsection" exact component={addsecondsection}/>
