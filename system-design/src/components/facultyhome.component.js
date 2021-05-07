@@ -13,6 +13,7 @@ export default class CreateExercise extends Component {
     this.handClickLogout = this.handClickLogout.bind(this);
     this.onClick = this. onClick.bind(this);
     this.onClick2 = this. onClick2.bind(this);
+    this.onClick3 = this. onClick3.bind(this);
     this.state = {
       name: '',
       email: '',
@@ -68,6 +69,11 @@ grade(e){
    onClick2(e){
     e.preventDefault();
     window.location='/nextsections/'+this.state.status
+
+   }
+   onClick3(e){
+    e.preventDefault();
+    window.location='/attendance/'+this.state.name
 
    }
   componentDidMount() {
@@ -187,6 +193,15 @@ render() {
       </Button.Content>
     </Button>
         </form>
+        <form onClick={this. onClick3}>
+    <Button  onClick={this. onClick3}    animated  style = {{position: 'absolute', left: '18%', top: '60%',
+        transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
+      <Button.Content  onClick={this.onClick3} visible>Take Attendance</Button.Content>
+      <Button.Content hidden>
+      </Button.Content>
+    </Button>
+        </form>
+ 
  
     </div>
     
