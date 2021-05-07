@@ -15,7 +15,9 @@ const studentSchema= new schema({
  transcript:{type:[]},
  minor:{type:String},
  hold:{type:Boolean,default:false},
- holdmessage:{type:String}
+ holdmessage:{type:String},
+ attendance:{type:[]},
+ absent_days:{type:Number}
 });
 
 

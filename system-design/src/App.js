@@ -40,6 +40,7 @@ import classadd from"./components/addcourse.component"
 import sectionadd from "./components/addclass.components"
 import facultyviewstu from "./components/facultystudent.component"
 import addsectionagain from "./components/addsection"
+import attendance from "./components/attendance"
 function App() {
   return (
     <Router>
@@ -84,6 +85,7 @@ function App() {
     <Route path="/addsecondsection" exact component={addsecondsection}/>
     <Route path="/facultyviewstudent/:name" exact component={facultyviewstu}/>
     <Route path="/addsection/:name" exact component={addsectionagain}/>
+    <Route path="/attendance/:name" exact component={attendance}/>
     </div>
     </Router>
 

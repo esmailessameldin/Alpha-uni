@@ -5,6 +5,7 @@ let sections=require('../models/sections.js')
 let faculty=require('../models/faculty.js')
 let admin=require('../models/admin.js')
 const mongoose = require('mongoose');
+
 var x = 700000001;
 router.route('/add').post((req, res) => {
   
@@ -67,8 +68,33 @@ router.route('/:id').get((req, res) => {
      console.log(u.transcript)
 res.json(u.transcript)
 })
+router.route('/generatearray').post(async(req,res)=>{
+    await mongoose.set('useFindAndModify', false);
 
 
+for(var i=0;i<30;i++){
+    const u= await user.updateMany({},{
+$push:{attendance:true}
+
+    },{new:true})
+    
+    
+}
+res.send("done !")
+})
+router.route('/updateattendance/:name').post(async(req,res)=>{
+    await mongoose.set('useFindAndModify', false);
+var k=req.body.array
+var v=0
+console.log(k)
+for(var i=0;i<k.length;i++){
+    if(!k[i]){
+         v=v+1
+    }
+}
+const u=await user.findOneAndUpdate({name:req.params.name},{$set:{attendance:k,absent_days:v}},{new:true})
+res.send("done")
+})
 
 
 module.exports = router;
