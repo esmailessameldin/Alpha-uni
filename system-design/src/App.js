@@ -43,6 +43,7 @@ import addsectionagain from "./components/addsection"
 import researcherlogin from "./components/researcherlogin"
 import researcherhomepage from "./components/researcherhomepage"
 import attendance from "./components/attendance"
+import timeslots from "./components/timeslots"
 function App() {
   return (
     <Router>
@@ -80,6 +81,7 @@ function App() {
     <Route path="/gradescreen" exact component={gradescreen}/>
     <Route path="/addhold" exact component={hold}/>
     <Route path="/addclass" exact component={classadd}/>
+    <Route path="/timeslots" exact component={timeslots}/>
     <Route path="/nextsections/:name" exact component={newsections}/>
     <Route path="/departments" exact component={department}/>
     <Route path="/adminnextclasses" exact component={adminnextclasses}/>

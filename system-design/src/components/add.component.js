@@ -40,11 +40,14 @@ export default class CreateExercise extends Component {
    
   }
   componentDidMount(){
+    console.log(this.state.open)
 axios.post('http://localhost:5000/admins/getopen')
 .then(res=>{
+  console.log(res)
   this.setState({
-    open:res.data
+    open:res.data.result
   })
+  console.log(this.state.open)
 })
   }
   Drop1stHandleClick(e){

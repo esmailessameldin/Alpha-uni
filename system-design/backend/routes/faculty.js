@@ -66,18 +66,34 @@ console.log(u)
 });
 router.route('/grade/:id').post(async(req,res)=>{
     await mongoose.set('useFindAndModify', false);
-    var k = req.params.id;
- 
-    console.log("here")
+ var k = req.params.id;
+ var grade=req.body.grade
+ var exists=false
+console.log("here")
 
-
-
-var grade=req.body.grade
 console.log(grade)
-const h=await students.findOneAndUpdate({name:k},{$push:{transcript:grade}},{new:true})
-
+const u=await user.findOne({id:k})
+for(var i=0;i<u.transcript.length;i++){
+if(u.transcript[i].year=="Spring 2021"){
+exists=true
+}}
+console.log(exists)
+if(!exists){
+const final={ year:"Spring 2021",
+class_one:grade}
+    const h=await user.findOneAndUpdate({id:k},{$push:{transcript:final}},{new:true})
+}else{
+if(!u.transcript[u.transcript.length-1].class_one ){
+    const l=await user.findOneAndUpdate({id:k,"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_one":grade}},{new:true})
+}else if(!u.transcript[u.transcript.length-1].class_two ){
+    const l=await user.findOneAndUpdate({id:k,"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_two":grade}},{new:true})
+}else if(!u.transcript[u.transcript.length-1].class_three ){
+    const l=await user.findOneAndUpdate({id:k,"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_three":grade}},{new:true})
+}else if(!u.transcript[u.transcript.length-1].class_four){
+    const l=await user.findOneAndUpdate({id:k,"transcript.year":"Spring 2021"},{$set:{"transcript.$.class_four":grade}},{new:true})
+}
+}
 res.send("Grade has been submitted")
-
 })
 
 module.exports = router;

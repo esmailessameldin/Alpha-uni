@@ -18,6 +18,7 @@ export default class CreateExercise extends Component {
    this.open=this.open.bind(this)
    this.opennext=this.opennext.bind(this)
    this.nextsemester=this.nextsemester.bind(this)
+   this.timeslots=this.timeslots.bind(this)
     this.state = {
      
      
@@ -57,6 +58,10 @@ export default class CreateExercise extends Component {
      axios.post('http://localhost:5000/admins/close').then(res=>{
        alert(res.data)
      })
+   }
+   timeslots(e){
+    e.preventDefault();
+     window.location='/timeslots'
    }
    opennext(e){
     e.preventDefault();
@@ -113,6 +118,14 @@ render() {
     </Button>
         </form>
  
+        <form onClick={this. timeslots}>
+    <Button  onClick={this. timeslots}    animated  style = {{position: 'absolute', left: '68%', top: '62%',
+        transform: 'translate(-50%, -50%)'}} type="Logout" value="Logout" >
+      <Button.Content  onClick={this.timeslots} visible>View Timeslots</Button.Content>
+      <Button.Content hidden>
+      </Button.Content>
+    </Button>
+    </form>
         <form onClick={this.classes}>
     <Button  onClick={this.classes}    animated  style = {{position: 'absolute', left: '60%', top: '50%',
         transform: 'translate(-50%, -50%)'}} type="click" value="classes" >
@@ -142,17 +155,14 @@ render() {
       </Button.Content>
     </Button>
  
-        </form>
-      <button type="button" style={{position: 'absolute', left: '46%', top: '60%'}} onClick={this.grade}>
-      Check grade requests
-     </button>
+        </form> 
      <button type="button" style={{position: 'absolute', left: '26%', top: '60%'}} onClick={this.addclass}>
       Add class
      </button>
      <button type="button" style={{position: 'absolute', left: '35%', top: '60%'}} onClick={this.hold}>
      Add holds
      </button>
-     <button type="button" style={{position: 'absolute', left: '60%', top: '60%'}} onClick={this.nextsemester}>
+     <button type="button" style={{position: 'absolute', left: '45%', top: '60%'}} onClick={this.nextsemester}>
     View next semester courses
      </button>
      <button type="button" style={{position: 'absolute', left: '15%', top: '60%'}} onClick={this.secondSection}>

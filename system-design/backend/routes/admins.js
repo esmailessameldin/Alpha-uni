@@ -301,19 +301,19 @@ u .save()
 })
 router.route('/getopen').post(async(req,res)=>{
 const u=await user.findOne({id: 800000001})
-console.log(u.open)
-res.send(user.open)
+console.log(u)
+res.send(200, {"result": u.open})
 
 
 
 })
 router.route('/getopennext').post(async(req,res)=>{
     const u=await user.findOne({id: 800000001})
-    res.send(user.opennext)
+    res.send(200, {"result": u.opennext})
     
     
     
-    })
+})
 router.route('/close').post(async(req,res)=>{
     await mongoose.set('useFindAndModify', false); 
     const u=await user.findOne({id: 800000001})
@@ -324,9 +324,8 @@ router.route('/close').post(async(req,res)=>{
         const o=await user.findOneAndUpdate({id:800000001},{open:true},{new:true})
         res.send("Students can now add or drop classes for this semester.")
     }
-    })
-
-    router.route('/closenext').post(async(req,res)=>{
+})
+router.route('/closenext').post(async(req,res)=>{
         await mongoose.set('useFindAndModify', false); 
         const u=await user.findOne({id: 800000001})
         if(u.opennext){
@@ -336,5 +335,9 @@ router.route('/close').post(async(req,res)=>{
             const o=await user.findOneAndUpdate({id:800000001},{opennext:true},{new:true})
             res.send("Students can add or drop classes for next semester.")
         }
-        })
+})
+router.route('/getadmin').post(async(req,res)=>{
+    const u=await user.findOne({id: 800000001})
+res.send(u)
+})
 module.exports = router;

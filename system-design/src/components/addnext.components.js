@@ -36,10 +36,12 @@ export default class CreateExercise extends Component {
    
   }
   componentDidMount(){
+    console.log(this.state.opennext)
     axios.post('http://localhost:5000/admins/getopennext')
     .then(res=>{
+      console.log(res.data)
       this.setState({
-        opennext:res.data
+        opennext:res.data.result
       })
     })
       }
