@@ -33,6 +33,7 @@ export default class Navbar extends Component {
     oldpassword:'',
     oldyear:'',
     oldmajor:'',
+    minor:''
 
     }
   }
@@ -47,6 +48,12 @@ export default class Navbar extends Component {
         address:e.target.value
     })
     console.log(this.state.address)
+}
+onChangeMinor(e){
+  this.setState({
+      minor:e.target.value
+  })
+  console.log(this.state.minor)
 }
 onChangeName(e){
     this.setState({
@@ -111,7 +118,8 @@ onChangeBirthday(e){
       status:this.state.status,
       major:this.state.major,
       address:this.state.address,
-      year:this.state.year
+      year:this.state.year,
+      minor:this.state.minor
 
     }
 
@@ -209,6 +217,19 @@ render() {
                 />
           </div>
 
+          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '82.8%',
+        transform: 'translate(-50%, -50%)'}} className="form-group"> 
+            <label>address: </label>
+            <input  input type="text"
+            placeholder={"The old address was "+this.state.oldaddress}
+                required
+                value={this.state.address}
+                onChange={this.onChangeAddress}
+                className="form-control"
+                />
+          </div>
+
+          
           <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '72.8%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>address: </label>
@@ -220,6 +241,7 @@ render() {
                 className="form-control"
                 />
           </div>
+
 
 
 

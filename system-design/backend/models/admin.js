@@ -10,5 +10,4 @@ const adminSchema= new schema({
   opennext:{type:Boolean,default:true}
 });
 
-
 module.exports= mongoose.model('admin', adminSchema);

@@ -77,7 +77,7 @@ function App() {
     <Route path="/updatefaculty/:id" exact component={updatefaculty}/>
     <Route path="/calendarnext/:id" exact component={calendar2} />
     <Route path="/adddropnext/:id" exact component={mark2}/>
-    <Route path="/grade/:id" exact component={grade}/>
+    <Route path="/grade/:name" exact component={grade}/>
     <Route path="/gradescreen" exact component={gradescreen}/>
     <Route path="/addhold" exact component={hold}/>
     <Route path="/addclass" exact component={classadd}/>

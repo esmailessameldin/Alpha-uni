@@ -6,6 +6,7 @@ export default class CreateExercise extends Component {
   constructor(props) {
     super(props);
   this.handleClick=this.handleClick.bind(this)
+  this.handleGrade=this.handleGrade.bind(this)
     this.state = {
         names:[],
         times:[],
@@ -33,7 +34,11 @@ export default class CreateExercise extends Component {
   }
     
 
+handleGrade(e){
+  
+  console.log(e)
 
+}
   componentDidMount() {
     console.log(this.props.match.params.name)
     this.state.array=this.props.match.params.name.split(",")
@@ -102,7 +107,7 @@ render() {
     <ul >  Enrolled </ul>
     <div>{this.state.enrolled3.map(function(item){return(<div> <h6 style={{ color: 'navy',  top: '50%', left: '5%' }}>{item}</h6><button type="button"   onClick={() =>  window.location='/facultyviewstudent/'+item}>
                        View info
-                        </button>  <button type="button" style={{ left: '89%'}} onClick={() => this.grade(item)}>
+                        </button>  <button type="button" style={{ left: '89%'}} onClick={()=>window.location='/grade/'+item}>
       Grade
      </button></div> )})}</div>
 
@@ -113,7 +118,7 @@ render() {
      <ul >  Enrolled </ul>
      <div>{this.state.enrolled2.map(function(item){return(<div> <h6 style={{ color: 'navy',  top: '50%', left: '5%' }}>{item}</h6><button type="button"   onClick={() =>  window.location='/facultyviewstudent/'+item}>
                        View info
-                        </button>   <button type="button" style={{ left: '89%'}} onClick={() => this.grade(item)}>
+                        </button>   <button type="button" style={{ left: '89%'}} onClick={()=>window.location='/grade/'+item}>
       Grade
      </button></div>)})}</div>
 

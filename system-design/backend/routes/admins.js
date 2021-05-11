@@ -74,7 +74,8 @@ const u=await students.findOneAndUpdate({id:req.params.id},{
     status:req.body.status,
     major:req.body.major,
     address:req.body.address,
-    year:req.body.year
+    year:req.body.year,
+    minor:req.body.minor
 },{new:true})
 
 console.log(u)

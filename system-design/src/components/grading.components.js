@@ -12,7 +12,8 @@ export default class CreateExercise extends Component {
     this.handleClick=this.handleClick.bind(this);
     this.onChangeGrade=this.onChangeGrade.bind(this)
     this.state = {
-       grade:''
+       grade:'',
+       id:''
       }
    
   }
@@ -23,7 +24,7 @@ export default class CreateExercise extends Component {
        
         grade:this.state.grade
       }
-      axios.post('http://localhost:5000/faculty/grade/'+this.props.match.params.id,user)
+      axios.post('http://localhost:5000/faculty/grade/'+this.state.id,user)
       .then(res=>{
 
           console.log(res.data)
@@ -39,7 +40,14 @@ export default class CreateExercise extends Component {
   }
 
   componentDidMount() {
-  
+    var array = this.props.match.params.name.split(" ")
+   console.log(array)
+   axios.get('http://localhost:5000/users/get/'+array[0]+" "+array[1])
+   .then(res=>{
+     console.log(res.data)
+     this.state.id=res.data.id
+     
+   })
   }
 
 
