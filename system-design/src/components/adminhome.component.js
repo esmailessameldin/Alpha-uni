@@ -23,6 +23,8 @@ const loading = () => (
             this.smiteStudent=this.smiteStudent.bind(this);
             this.update=this.update.bind(this);
             this.transcript=this.transcript.bind(this);
+            this.schedule=this.schedule.bind(this);
+            this.audit=this.audit.bind(this);
             this.state = {
               students: [],
               loading:true,
@@ -56,6 +58,18 @@ update(e){console.log(e)
 transcript(e){
  
   window.location='/transcript/'+e
+}
+schedule(e){
+
+  window.location='/calendar/'+e
+}
+audit(e){
+axios.get('http://localhost:5000/users/'+e).then(res=>{
+window.location='/audit/'+res.data.major+","+res.data.minor
+
+})
+
+
 }
 componentDidMount(){
 
@@ -109,6 +123,8 @@ setTimeout(function() {
                         <th></th>
                         <th></th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody class="thead-light">
@@ -141,6 +157,12 @@ setTimeout(function() {
                        </th>
                        <th><button  style= {{}}   type="button"  onClick={() => this.transcript(item.id)}>
                        View Transcript
+                        </button> </th>
+                        <th><button  style= {{}}   type="button"  onClick={() => this.audit(item.id)}>
+                       View Audit
+                        </button> </th>
+                        <th><button  style= {{}}   type="button"  onClick={() => this.schedule(item.id)}>
+                       View Schedule
                         </button> </th>
                        
                        

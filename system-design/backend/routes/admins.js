@@ -299,4 +299,42 @@ u .save()
  .catch(err => res.status(400).json('Error: ' + err));
 
 })
+router.route('/getopen').post(async(req,res)=>{
+const u=await user.findOne({id: 800000001})
+console.log(u.open)
+res.send(user.open)
+
+
+
+})
+router.route('/getopennext').post(async(req,res)=>{
+    const u=await user.findOne({id: 800000001})
+    res.send(user.opennext)
+    
+    
+    
+    })
+router.route('/close').post(async(req,res)=>{
+    await mongoose.set('useFindAndModify', false); 
+    const u=await user.findOne({id: 800000001})
+    if(u.open){
+        const o=await user.findOneAndUpdate({id:800000001},{open:false},{new:true})
+        res.send("Students can no longer add classes for this semester. They can only withdraw.")
+    }else{
+        const o=await user.findOneAndUpdate({id:800000001},{open:true},{new:true})
+        res.send("Students can now add or drop classes for this semester.")
+    }
+    })
+
+    router.route('/closenext').post(async(req,res)=>{
+        await mongoose.set('useFindAndModify', false); 
+        const u=await user.findOne({id: 800000001})
+        if(u.opennext){
+            const o=await user.findOneAndUpdate({id:800000001},{opennext:false},{new:true})
+            res.send("Students can no longer add or drop classes for next semester. ")
+        }else{
+            const o=await user.findOneAndUpdate({id:800000001},{opennext:true},{new:true})
+            res.send("Students can add or drop classes for next semester.")
+        }
+        })
 module.exports = router;

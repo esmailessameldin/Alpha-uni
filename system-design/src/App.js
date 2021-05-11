@@ -40,6 +40,8 @@ import classadd from"./components/addcourse.component"
 import sectionadd from "./components/addclass.components"
 import facultyviewstu from "./components/facultystudent.component"
 import addsectionagain from "./components/addsection"
+import researcherlogin from "./components/researcherlogin"
+import researcherhomepage from "./components/researcherhomepage"
 import attendance from "./components/attendance"
 function App() {
   return (
@@ -86,6 +88,8 @@ function App() {
     <Route path="/facultyviewstudent/:name" exact component={facultyviewstu}/>
     <Route path="/addsection/:name" exact component={addsectionagain}/>
     <Route path="/attendance/:name" exact component={attendance}/>
+    <Route path="/researcherlogin" exact component={researcherlogin}/>
+    <Route path="/researcherhomepage/:id" exact component={researcherhomepage}/>
     </div>
     </Router>
 

@@ -39,6 +39,14 @@ export default class CreateExercise extends Component {
       }
    
   }
+  componentDidMount(){
+axios.post('http://localhost:5000/admins/getopen')
+.then(res=>{
+  this.setState({
+    open:res.data
+  })
+})
+  }
   Drop1stHandleClick(e){
     e.preventDefault();
    

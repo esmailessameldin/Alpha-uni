@@ -22,17 +22,11 @@ export default class Navbar extends Component {
           <li className="navbar-item">
           <Link to="/masterfall" className="nav-link">Master Schedule Fall</Link>
           </li>
+          <li className="navbar-item">
+          <Link to="/departments" className="nav-link">Catalog</Link>
+          </li>
           
-          <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Catalog
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item href="https://www.oldwestbury.edu/academics/registrar/catalogs/undergraduate-catalog">Undergraduate Catalogs</Dropdown.Item>
-    <Dropdown.Item href="https://www.oldwestbury.edu/academics/registrar/catalogs/graduate-catalog">Graduate Catalogs</Dropdown.Item>
-  </Dropdown.Menu>
-    </Dropdown>
+        
     
         </ul>
       

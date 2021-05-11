@@ -12,7 +12,6 @@ export default class Navbar extends Component {
     this.faculty=this.faculty.bind(this)
     this.admin=this.admin.bind(this);
     this.onChangePassword=this.onChangePassword.bind(this)
-    this.researcher=this.researcher.bind(this)
 
     this.state = {
       email: '',
@@ -42,10 +41,6 @@ faculty(e){
 componentDidMount(){
   console.log(window.location.hostname)
 }
-researcher(e){
-  e.preventDefault();
-  window.location='/researcherlogin'
-}
   onSubmit(e) {
     e.preventDefault();
 
@@ -56,17 +51,17 @@ researcher(e){
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/login', user)
+    axios.post('http://localhost:5000/users/researcher', user)
       .then(res =>{ 
-        if(res.data==="user does not exist please try again"){
-          alert("User does not exist please try again")
+        if(res.data==="Researcher does not exist please try again"){
+          alert(res.data)
           return
         }
         else if(res.data==="wrong password"){
-          alert("Wrong password")
+          alert(res.data)
           return
         }else{
-          window.location='/student/'+res.data
+          window.location='/researcherhomepage/'+res.data
         }
       
       });
@@ -83,7 +78,7 @@ render() {
     return (
         <div style = {{width:"100vh"}}>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group" style = {{width:"100vh",position: 'absolute', left: '50%', top: '30%',
+          <div className="form-group" style = {{position: 'absolute', left: '40%', top: '50%',
         transform: 'translate(-50%, -50%)'}}> 
             <label>Email: </label>
             <input  type="text"
@@ -94,7 +89,7 @@ render() {
                
                 />
           </div>
-          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '50%',
+          <div  style = {{position: 'absolute', left: '60%', top: '50%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>Password: </label>
             <input  input type="password" name="password"
@@ -112,22 +107,7 @@ render() {
         <Icon name='arrow right' />
       </Button.Content>
     </Button>
-  <button onClick={this.register} type="button"  type="button"
-    style = {{position: 'absolute', left: '38%',top:'67.3%'}} >
-   Register 
- </button>
- <button onClick={this.faculty} type="button"  type="button"
-    style = {{position: 'absolute', left: '58%',top:'67.3%'}} >
-   Teacher login
- </button>
- <button onClick={this.admin} type="button"  type="button"
-    style = {{position: 'absolute', left: '70%',top:'67.3%'}} >
-   Admin login
- </button>
- <button onClick={this.researcher} type="button"  type="button"
-    style = {{position: 'absolute', left: '25%',top:'67.3%'}} >
-   Researcher login
- </button>
+  
   </div>
   
         </form>

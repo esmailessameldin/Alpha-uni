@@ -6,6 +6,7 @@ let faculty=require('../models/faculty.js')
 let minor=require('../models/minor.js')
 let degrees=require('../models/Degrees')
 let nextsections=require('../models/nextsections')
+let departments=require('../models/department')
 const mongoose=require('mongoose')
 router.route('/adds').post((req, res) => { 
 
@@ -337,4 +338,77 @@ console.log(u)
 res.send(u)
 
 })
+router.route('/getnumber').post(async(req,res)=>{
+  console.log("here")
+  var list1=[]
+  var list2=[]
+  var list3=[]
+  var studentssection=0
+  var studentsmajors=0
+  var studentsdepartments=0
+  
+const h=await departments.findOne({name:req.body.name})
+for(var i=0;i<h.majors.length;i++){
+const u=await degrees.findOne({major:h.majors[i]})
+studentsmajors=studentsmajors+studentssection
+var departmentsy={
+  "name":u.major,
+  "students":studentssection
+}
+console.log(departmentsy)
+list1.push(departmentsy)
+studentsdepartments=studentsdepartments+studentssection
+studentssection=0
+studentsmajors=0
+for(var j=0;j<u.classes.length;j++){
+  const z=await sections.find({name:u.classes[j]})
+  console.log(z)
+ if(!z[0]){
+  console.log("failed")
+ 
+  break
+ }else if(!z[1]){
+ console.log("failed 2")
+
+  break
+ }
+ studentssection=studentssection+z[0].students+z[1].students
+ console.log(studentssection)
+ 
+
+}
+}
+
+const final={
+  "name":h.name,
+  "students":studentsdepartments
+}
+list3.push(final)
+const u=await degrees.findOne({major:h.majors[0]})
+for(var j=0;j<u.classes.length;j++){
+  const z=await sections.find({name:u.classes[j]})
+ 
+ if(!z[0]){
+  console.log("failed")
+ 
+  break
+ }else if(!z[1]){
+ console.log("failed 2")
+
+  break
+ }
+ studentssection=studentssection+z[0].students+z[1].students
+ console.log(studentssection)
+ 
+
+}
+
+list1[0].students=studentssection
+
+
+list3.push(list1)
+res.send(list3)
+})
+
+
 module.exports = router;

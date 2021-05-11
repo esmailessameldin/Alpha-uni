@@ -66,28 +66,17 @@ console.log(u)
 });
 router.route('/grade/:id').post(async(req,res)=>{
     await mongoose.set('useFindAndModify', false);
-    var myString = req.params.id;
-    var array = myString.split(",");
+    var k = req.params.id;
+ 
     console.log("here")
-var userid=array[1]
-
-var facultyid=array[0]
 
 
-console.log(userid+" "+facultyid)
-const u= await user.findOne({id:userid})
-if(!u){
-    res.send("Student does not exist")
-    
-}
-const j=await faculty.findOne({id:facultyid})
-if(!j){
-    res.send("Teacher does not exist")
-}
-var grade=req.body.grade+","+j.name+","+u.name
+
+var grade=req.body.grade
 console.log(grade)
-const n= await admins.findOneAndUpdate({id:800000001},{$push: {grade_requests:grade}},{new:true})
-res.send("Grade has been submitted to admin for approval")
+const h=await students.findOneAndUpdate({name:k},{$push:{transcript:grade}},{new:true})
+
+res.send("Grade has been submitted")
 
 })
 

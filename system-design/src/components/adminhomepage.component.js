@@ -15,6 +15,8 @@ export default class CreateExercise extends Component {
    this.grade=this.grade.bind(this)
    this.addclass = this.addclass.bind(this);
    this.hold=this.hold.bind(this)
+   this.open=this.open.bind(this)
+   this.opennext=this.opennext.bind(this)
    this.nextsemester=this.nextsemester.bind(this)
     this.state = {
      
@@ -50,7 +52,18 @@ export default class CreateExercise extends Component {
     window.location='/addclass'
 
    }
-
+   open(e){
+    e.preventDefault();
+     axios.post('http://localhost:5000/admins/close').then(res=>{
+       alert(res.data)
+     })
+   }
+   opennext(e){
+    e.preventDefault();
+    axios.post('http://localhost:5000/admins/closenext').then(res=>{
+      alert(res.data)
+    })
+  }
   grade(e){
     e.preventDefault()
     window.location='/gradescreen'
@@ -144,6 +157,12 @@ render() {
      </button>
      <button type="button" style={{position: 'absolute', left: '15%', top: '60%'}} onClick={this.secondSection}>
      Search classes
+     </button>
+     <button type="button" style={{position: 'absolute', left: '15%', top: '70%'}} onClick={this.open}>
+    Open/Close the adding for this semester
+     </button>
+     <button type="button" style={{position: 'absolute', left: '45%', top: '70%'}} onClick={this.opennext}>
+     Open/Close the adding for next semester
      </button>
     </div>
     

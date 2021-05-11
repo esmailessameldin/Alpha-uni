@@ -17,7 +17,7 @@ export default class CreateExercise extends Component {
         crn2:'',
         id2:'',
         message:'',
-        open:true,
+        opennext:true,
         closed : (
           <div><Form id="form">
              <Form.Group onChange={this.onChangeID} style = {{width:"100vh",position: 'absolute', left: '50%', top: '39%',
@@ -35,6 +35,14 @@ export default class CreateExercise extends Component {
       }
    
   }
+  componentDidMount(){
+    axios.post('http://localhost:5000/admins/getopennext')
+    .then(res=>{
+      this.setState({
+        opennext:res.data
+      })
+    })
+      }
   Drop1stHandleClick(e){
     e.preventDefault();
    
@@ -98,14 +106,8 @@ onClickClasses(e){
   }
 
 
-
-
-
-  
-
- 
 render() {
-  if(!this.state.open){
+  if(!this.state.opennext){
     return this.state.closed
   }
   
