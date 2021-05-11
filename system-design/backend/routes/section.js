@@ -379,11 +379,8 @@ for(var j=0;j<u.classes.length;j++){
 }
 }
 
-const final={
-  "name":h.name,
-  "students":studentsdepartments
-}
-list3.push(final)
+
+
 const u=await degrees.findOne({major:h.majors[0]})
 for(var j=0;j<u.classes.length;j++){
   const z=await sections.find({name:u.classes[j]})
@@ -397,6 +394,7 @@ for(var j=0;j<u.classes.length;j++){
 
   break
  }
+ studentssection=0
  studentssection=studentssection+z[0].students+z[1].students
  console.log(studentssection)
  
@@ -404,9 +402,14 @@ for(var j=0;j<u.classes.length;j++){
 }
 
 list1[0].students=studentssection
-
-
+studentsdepartments=studentsdepartments+studentssection
+const final={
+  "name":h.name,
+  "students":studentsdepartments
+}
+list3.push(final)
 list3.push(list1)
+
 res.send(list3)
 })
 
