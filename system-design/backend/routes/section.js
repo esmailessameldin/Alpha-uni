@@ -7,6 +7,7 @@ let minor=require('../models/minor.js')
 let degrees=require('../models/Degrees')
 let nextsections=require('../models/nextsections')
 let departments=require('../models/department')
+let pre =require('../models/pre')
 const mongoose=require('mongoose')
 router.route('/adds').post((req, res) => { 
 
@@ -152,7 +153,11 @@ router.route('/findbycrn/:id').post(async(req,res)=>{
  
 
 const w =  await users.findOne({id:x})
+const student=await users.findOne({id:x})
 console.log(w.transcript)
+const prereq= await pre.find({})
+const sect=await sections.findOne({crn:m})
+
 
 
 
@@ -219,6 +224,95 @@ for(var i=0;i<w.sections.length;i++){
     return
   }
   
+    }
+
+
+
+    for(var i=0;i<prereq.length;i++){
+      if(prereq[i].name==sect.name){
+           for(var l=0;l<student.transcript.length;l++){
+             if(student.transcript[l].class_one){
+               var a=student.transcript[l].class_one
+               var array=a.split(" : Midterm")
+               array[0] = array[0].slice(0, -1);
+               console.log(array)
+              
+               for(var t=0;t<prereq[i].dependencies.length;t++){
+                console.log(prereq[i].dependencies[t]+" the prereq") 
+                 if(prereq[i].dependencies[t]===array[0]){
+                   
+                    var result=true
+                 }
+                 
+                 else{
+                   res.send("You have not taken one or more prerequisites for this class. Class not added.")
+                   return
+                 }
+               }
+             }
+             if(student.transcript[l].class_two){
+              var a=student.transcript[l].class_two
+              var array=a.split(" : Midterm")
+              array[0] = array[0].slice(0, -1);
+              console.log(array)
+             
+              for(var t=0;t<prereq[i].dependencies.length;t++){
+               console.log(prereq[i].dependencies[t]+" the prereq") 
+                if(prereq[i].dependencies[t]===array[0]){
+                  
+                   var result=true
+                }
+                
+                else{
+                  res.send("You have not taken one or more prerequisites for this class. Class not added.")
+                  return
+                }
+              }
+            }
+            if(student.transcript[l].class_three){
+              var a=student.transcript[l].class_three
+              var array=a.split(" : Midterm")
+              array[0] = array[0].slice(0, -1);
+              console.log(array)
+             
+              for(var t=0;t<prereq[i].dependencies.length;t++){
+               console.log(prereq[i].dependencies[t]+" the prereq") 
+                if(prereq[i].dependencies[t]===array[0]){
+                  
+                   var result=true
+                }
+                
+                else{
+                  res.send("You have not taken one or more prerequisites for this class. Class not added.")
+                  return
+                }
+              }
+            }
+            if(student.transcript[l].class_four){
+              var a=student.transcript[l].class_four
+              var array=a.split(" : Midterm")
+              array[0] = array[0].slice(0, -1);
+              console.log(array)
+             
+              for(var t=0;t<prereq[i].dependencies.length;t++){
+               console.log(prereq[i].dependencies[t]+" the prereq") 
+                if(prereq[i].dependencies[t]===array[0]){
+                  
+                   var result=true
+                }
+                
+                else{
+                  res.send("You have not taken one or more prerequisites for this class. Class not added.")
+                  return
+                }
+              }
+            }
+           }
+    
+    
+    
+    
+      }
     }
   const u= await sections.findOneAndUpdate({crn:m},{
    
@@ -412,6 +506,41 @@ list3.push(list1)
 
 res.send(list3)
 })
+router.route('/pre').post(async(req,res)=>{
+  var result=null
+const student=await users.findOne({name:"test"})
+const prereq=await pre.find({})
+const sect=await sections.findOne({name:"BU 4510   Intermediate Accounting II"})
+for(var i=0;i<prereq.length;i++){
+  if(prereq[i].name==sect.name){
+       for(var j=0;j<student.transcript.length;j++){
+         if(student.transcript[j].class_one){
+           var n=student.transcript[j].class_one
+           var array=n.split(" : Midterm")
+           array[0] = array[0].slice(0, -1);
+           console.log(array)
+          
+           for(var k=0;k<prereq[i].dependencies.length;k++){
+            console.log(prereq[i].dependencies[k]+" the prereq") 
+             if(prereq[i].dependencies[k]===array[0]){
+               
+               result=true
+             }else{
+               res.send("You have not taken one or more prerequisites for this class. Class not added.")
+               return
+             }
+           }
+         }
+       }
 
+
+
+
+  }
+}
+
+res.send("add success")
+
+})
 
 module.exports = router;

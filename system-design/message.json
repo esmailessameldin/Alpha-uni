@@ -1,0 +1,134 @@
+[
+{
+"name":"BU 3511Principles of Accounting II",
+"dependencies":["BU 3502Principles of Accounting I"]
+},
+{
+"name":"BU 4510   Intermediate Accounting II",
+"dependencies":["BU 3502Principles of Accounting I"]
+},
+{
+"name":"BU 4570 Federal Income Tax I",
+"dependencies":[" BU 4500 Intermediate Accounting I"]
+},
+{
+"name":"BU 5525 International Accounting",
+"dependencies":["BU 3502Principles of Accounting I"]
+},
+{
+"name":"BU 5540 Advanced Accounting",
+"dependencies":["BU 3502Principles of Accounting I"]
+},
+{
+"name":"BU 4762 Financial Management I",
+"dependencies":["BU 3502Principles of Accounting I"]
+},
+{
+"name":"CP 2130 Principles of Chemistry II",
+"dependencies":["CP 2120 Principles of Chemistry I","CP 2121 Principles of Chemistry Lab I"]
+},
+{
+"name":"CP 2131 Principles Chemistry Lab II",
+"dependencies":["CP 2120 Principles of Chemistry I","CP 2121 Principles of Chemistry Lab I"]
+},
+{
+"name":"CP 3310 Organic Chemistry II",
+"dependencies":["CP 3300 Organic Chemistry I","CP 3302 Organic Chemistry Lab I"]
+},
+{
+"name":"CP 3312 Organic Chemistry Lab II",
+"dependencies":["CP 3300 Organic Chemistry I","CP 3302 Organic Chemistry Lab I"]
+},
+{
+"name":"CP 5921 Seminar II",
+"dependencies":["CP 5920 Seminar I"]
+},
+{
+"name":"CP 4515 Biochemistry II",
+"dependencies":["CP 4510 Biochemistry I"]
+},
+{
+"name":"BS 2410 Basic Bio Sciences II",
+"dependencies":["BS 2400 Basic Bio Sciences I"]
+},
+{
+"name":"CP 2230 Structure of Physics II",
+"dependencies":["CP 2220 Structure of Physics I","CP 2221 Structure of Physics I Lab"]
+},
+{
+"name":"MA 2320 Calc & Analytic Geometry II",
+"dependencies":["MA 2310 Calc & Analytic Geometry I"]
+},
+{
+"name":"MA 3330  Calc & Analyt Geometry III",
+"dependencies":["MA 2310 Calc & Analytic Geometry I","MA 2320 Calc & Analytic Geometry II"]
+},
+{
+"name":"CS 2511 Computer Programming II",
+"dependencies":["CS 2510 Computer Programming I"]
+},
+{
+"name":"SY 4570 Research Methods II",
+"dependencies":["SY 4520 Research Methods I"]
+},
+{
+"name":"EL 3510  Lit Across Cultures II:Theory",
+"dependencies":["EL 3500  Lit Across Cultures I:Analysis"]
+},
+{
+"name":"EL 3610  US Literature II",
+"dependencies":["EL 3600 US Literature I"]
+},
+{
+"name":"EL 3810  Eng Lit II:Romantics - Present",
+"dependencies":["EL 3800 Eng Lit I:Beowulf-18th Century"]
+},
+{
+"name":"EL 3561 Literatures of Europe:Part II",
+"dependencies":["EL 3560  Literatures of Europe:Part I"]
+},
+{
+"name":"BS 2310  Anatomy&Physiology II Lecture",
+"dependencies":["BS 2300  Anatomy&Physiology I Lecture"]
+},
+{
+"name":"AS 2122 American People II",
+"dependencies":["AS 2112 American People I"]
+},
+{
+"name":"MA5120 Abstract Algebra I",
+"dependencies":["MA 2310 Calc & Analytic Geometry I","MA 2320 Calc & Analytic Geometry II","MA 3330  Calc & Analyt Geometry III"]
+},
+{
+"name":"MA5320 Advanced Calculus I",
+"dependencies":["MA 2310 Calc & Analytic Geometry I","MA 2320 Calc & Analytic Geometry II","MA 3330  Calc & Analyt Geometry III"]
+},
+{
+"name":"MA4920 Operations Research II",
+"dependencies":["MA4910 Operations Research I"]
+},
+{
+"name":"PY3120 Research Methods II: (Statistics)",
+"dependencies":["PY2010 Introduction to Psychology","PY3110 Research Methods I: (Orientation)"]
+},
+{
+"name":"PY4100 Research Methods III (Advanced Research Skills)",
+"dependencies":["PY2010 Introduction to Psychology","PY3110 Research Methods I: (Orientation)","PY3120 Research Methods II: (Statistics)"]
+},
+{
+"name":"ML2110 Intermediate Spanish Conversation II",
+"dependencies":["ML2100 Intermediate Spanish Conversation I"]
+},
+{
+"name":"VA4200 Art Tutorials II",
+"dependencies":["VA3200 Art Tutorials I"]
+},
+{
+"name":"VA5200 Art Tutorials III",
+"dependencies":["VA3200 Art Tutorials I","VA4200 Art Tutorials II"]
+},
+{
+"name":"VA4320 Graphic Design II",
+"dependencies":["VA2320 Graphic Design I"]
+}
+]
