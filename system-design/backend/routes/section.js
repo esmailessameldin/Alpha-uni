@@ -29,6 +29,7 @@ router.route('/findbycrnnext/:id').post(async(req,res)=>{
     mongoose.set('useFindAndModify', false);
    var x= req.params.id
    var m=req.body.crn
+   var sent =false
  console.log(x)
  console.log(m)
  const student=await users.findOne({id:x})
@@ -38,6 +39,7 @@ const sect=await sections.findOne({crn:m})
 
 
  setTimeout(function() {
+   if(!sent)
   res.send("Error: You have either already taken this class, or you have not finished the prerequisite(s) for this class. Class not added.")
   return res.end()
   
@@ -45,11 +47,15 @@ const sect=await sections.findOne({crn:m})
   const w =  await users.findOne({id:x})
 console.log("line 37")
 if(w.status==="Part Time" && w.sections_next_semester.length===2){
+  if(!sent)
 res.send("You have reached the maximum amount of classes that you are allowed to take based on your Status. No class has been added.")
+send=true
 return
 }
 if(w.status==="Full Time" && w.sections_next_semester.length===4){
+  if(!sent)
   res.send("You have reached the maximum amount of classes that you are allowed to take based on your Status. No class has been added.")
+  send=true
   return
   }
   const j=await nextsections.findOne({crn:m})
@@ -58,25 +64,33 @@ if(w.status==="Full Time" && w.sections_next_semester.length===4){
     if(w.transcript[i].class_one){
        array = w.transcript[i].class_one.split(": Midterm");
       if(j.name===array[0]){
+        if(!sent)
         res.send("You have already taken this course. You have not been enrolled.")
+        sent=true
       }
     }
     if(w.transcript[i].class_two){
       array = w.transcript[i].class_two.split(": Midterm");
      if(j.name===array[0]){
+      if(!sent)
        res.send("You have already taken this course. You have not been enrolled.")
+       sent=true
      }
    }
    if(w.transcript[i].class_three){
     array = w.transcript[i].class_three.split(": Midterm");
    if(j.name===array[0]){
+    if(!sent)
      res.send("You have already taken this course. You have not been enrolled.")
+     sent=true
    }
  }
  if(w.transcript[i].class_four){
   array = w.transcript[i].class_four.split(": Midterm");
  if(j.name===array[0]){
+  if(!sent)
    res.send("You have already taken this course. You have not been enrolled.")
+   sent=true
  }
 }
     
@@ -88,13 +102,17 @@ if(w.status==="Full Time" && w.sections_next_semester.length===4){
     return
   }
 if(j.capacity==0){
+  if(!sent)
   res.send("Maximum Capacity reached. No more students can enroll in this section. Section not added.")
+  sent=true
   return
 }
 console.log("line85")
 for(var i=0;i<y.enrolled.length;i++){
   if(y.enrolled[i]===w.name+" "+j.time){
+    if(!sent)
   res.send("You are already enrolled in this section. Section not added.")
+  sent=true
   return
 }
 
@@ -102,7 +120,9 @@ for(var i=0;i<y.enrolled.length;i++){
 }
 for(var i=0;i<w.sections.length;i++){
   if(w.sections[i].day+w.sections[i].time===sectiontimeanddate){
+    if(!sent)
     res.send("Error: Time Conflict. You have a class during this time and days. Class not added.")
+    sent=true
     return
   }
   
@@ -124,7 +144,9 @@ for(var i=0;i<w.sections.length;i++){
                  }
                  
                  else{
+                  if(!sent)
                    res.send("You have not taken one or more prerequisites for this class. Class not added.")
+                   sent=true
                    return
                  }
                }
@@ -143,7 +165,9 @@ for(var i=0;i<w.sections.length;i++){
                 }
                 
                 else{
+                  if(!sent)
                   res.send("You have not taken one or more prerequisites for this class. Class not added.")
+                  sent=true
                   return
                 }
               }
@@ -162,7 +186,9 @@ for(var i=0;i<w.sections.length;i++){
                 }
                 
                 else{
+                  if(!sent)
                   res.send("You have not taken one or more prerequisites for this class. Class not added.")
+                  sent=true
                   return
                 }
               }
@@ -181,7 +207,9 @@ for(var i=0;i<w.sections.length;i++){
                 }
                 
                 else{
+                  if(!sent)
                   res.send("You have not taken one or more prerequisites for this class. Class not added.")
+                  sent=true
                   return
                 }
               }
@@ -209,7 +237,9 @@ const k= await users.findOneAndUpdate({name:w.name},{
  console.log(u.name)
  console.log(w.name)
  console.log(n)
+ if(!sent)
   res.send("section added")
+  sent=true
 })
 router.route('/addminor').post((req, res) => { 
 
