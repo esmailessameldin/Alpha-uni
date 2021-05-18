@@ -20,7 +20,7 @@ const loading = () => (
           constructor(props) {
             super(props);
             this.handleClick = this.handleClick.bind(this);
-        
+       
             this.state = {
               students: [],
               loading:true
@@ -28,8 +28,6 @@ const loading = () => (
           }
  
 
-
-        
 componentDidMount(){
 
 axios.get('http://localhost:5000/admins/viewallcourses').then(
@@ -89,6 +87,7 @@ setTimeout(function() {
                    <th>Room</th>
                    <th>Capacity</th>
                    <th>Students</th>
+              
                   
                  </tr>
                </thead>
@@ -108,6 +107,7 @@ setTimeout(function() {
                    <th>{item.room}</th>
                    <th>{item.capacity}</th>
                    <th>{item.students}</th>
+         
                    
                   
                  

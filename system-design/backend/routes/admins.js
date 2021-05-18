@@ -341,4 +341,30 @@ router.route('/getadmin').post(async(req,res)=>{
     const u=await user.findOne({id: 800000001})
 res.send(u)
 })
+router.route('/updatesection/:crn').post(async(req,res)=>{
+    await mongoose.set('useFindAndModify', false);
+    var h=req.body.teacher
+    const o=await faculty.findOne({name:h})
+    console.log(o)
+    if(o){
+        if(o.class!==""){
+res.send("Teacher already teaching a class.Update failed ")
+return
+        }
+    }
+   
+ const u=await nextsections.findOneAndUpdate({crn:req.params.crn},{
+     name: req.body.name,
+     day: req.body.day,
+     time:req.body.time,
+     capacity:req.body.capacity,
+     students:req.body.students,
+     building:req.body.building,
+     room:req.body.room,
+     teacher:req.body.teacher
+ },{new:true})
+ 
+ console.log(u)
+ res.send("Update success")
+})
 module.exports = router;

@@ -38,7 +38,8 @@ export default class CreateExercise extends Component {
       status:'',
       minor:'',
       hold:'',
-      loading:true
+      loading:true,
+      advisor:''
      
     }
   }
@@ -95,6 +96,12 @@ window.location='/transcript/'+this.props.match.params.id
             status:response.data.status,
             minor:response.data.minor
             
+          }) 
+          axios.post('http://localhost:5000/users/getadvisor/'+this.state.major)
+          .then(res=>{
+            this.setState({
+              advisor:res.data
+            })
           })
           if(!response.data.hold){
                 this.setState({
@@ -181,6 +188,11 @@ render() {
         <tr>
           <td>Hold</td>
           <td>{this.state.hold}</td>
+        
+        </tr>
+        <tr>
+          <td>advisor</td>
+          <td>{this.state.advisor}</td>
         
         </tr>
        

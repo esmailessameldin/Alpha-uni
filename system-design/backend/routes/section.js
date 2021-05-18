@@ -35,7 +35,7 @@ router.route('/findbycrnnext/:id').post(async(req,res)=>{
  const student=await users.findOne({id:x})
 
 const prereq= await pre.find({})
-const sect=await sections.findOne({crn:m})
+const sect=await nextsections.findOne({crn:m})
 
 
  setTimeout(function() {
@@ -63,34 +63,44 @@ if(w.status==="Full Time" && w.sections_next_semester.length===4){
   for(var i=0;i<w.transcript.length;i++){
     if(w.transcript[i].class_one){
        array = w.transcript[i].class_one.split(": Midterm");
+       array[0] = array[0].slice(0, -1);
       if(j.name===array[0]){
-        if(!sent)
-        res.send("You have already taken this course. You have not been enrolled.")
-        sent=true
+        if(!sent){
+          res.send("You have already taken this course. You have not been enrolled.")
+          sent=true
+         return
+         }
       }
     }
     if(w.transcript[i].class_two){
       array = w.transcript[i].class_two.split(": Midterm");
      if(j.name===array[0]){
-      if(!sent)
-       res.send("You have already taken this course. You have not been enrolled.")
-       sent=true
+      if(!sent){
+        res.send("You have already taken this course. You have not been enrolled.")
+        sent=true
+       return
+       }
      }
    }
    if(w.transcript[i].class_three){
     array = w.transcript[i].class_three.split(": Midterm");
    if(j.name===array[0]){
-    if(!sent)
-     res.send("You have already taken this course. You have not been enrolled.")
-     sent=true
+    if(!sent){
+      res.send("You have already taken this course. You have not been enrolled.")
+      sent=true
+     return
+     }
    }
  }
  if(w.transcript[i].class_four){
   array = w.transcript[i].class_four.split(": Midterm");
  if(j.name===array[0]){
-  if(!sent)
+   if(!sent){
    res.send("You have already taken this course. You have not been enrolled.")
    sent=true
+  return
+  }
+   
  }
 }
     
@@ -119,13 +129,14 @@ for(var i=0;i<y.enrolled.length;i++){
 
 }
 for(var i=0;i<w.sections.length;i++){
-  if(w.sections[i].day+w.sections[i].time===sectiontimeanddate){
+  console.log(w.sections_next_semester[i].day+" "+w.sections_next_semester[i].time+" "+sectiontimeanddate)
+  if(w.sections_next_semester[i].day+w.sections_next_semester[i].time===sectiontimeanddate){
     if(!sent)
     res.send("Error: Time Conflict. You have a class during this time and days. Class not added.")
     sent=true
     return
   }
-  
+
     }
     for(var i=0;i<prereq.length;i++){
       if(prereq[i].name==sect.name){
@@ -635,40 +646,26 @@ list3.push(list1)
 res.send(list3)
 })
 router.route('/pre').post(async(req,res)=>{
-  var result=null
-const student=await users.findOne({name:"test"})
-const prereq=await pre.find({})
-const sect=await sections.findOne({name:"BU 4510   Intermediate Accounting II"})
-for(var i=0;i<prereq.length;i++){
-  if(prereq[i].name==sect.name){
-       for(var j=0;j<student.transcript.length;j++){
-         if(student.transcript[j].class_one){
-           var n=student.transcript[j].class_one
-           var array=n.split(" : Midterm")
-           array[0] = array[0].slice(0, -1);
-           console.log(array)
-          
-           for(var k=0;k<prereq[i].dependencies.length;k++){
-            console.log(prereq[i].dependencies[k]+" the prereq") 
-             if(prereq[i].dependencies[k]===array[0]){
-               
-               result=true
-             }else{
-               res.send("You have not taken one or more prerequisites for this class. Class not added.")
-               return
-             }
-           }
-         }
-       }
-
-
-
-
-  }
-}
-
-res.send("add success")
+  
+const u =await pre.find({})
+res.send(u)
 
 })
+router.route('/predelete/:name').post(async(req,res)=>{
+  mongoose.set('useFindAndModify', false);
+  var x=req.params.name
+  console.log(x)
+    const u=await pre.findOneAndDelete({name:x})
 
+})
+router.route('/addpre').post(async(req,res)=>{
+const u=new pre({
+name:req.body.name,
+dependencies:req.body.dependencies
+
+})
+console.log(u)
+u.save()
+res.send("done")
+})
 module.exports = router;

@@ -19,6 +19,7 @@ import adminhome from "./components/adminhome.component"
 import audit from "./components/audit.component"
 import grade from "./components/grading.components"
 import hold from "./components/holds.components"
+import prereq from "./components/prereqhomepage"
 import masterspring from "./components/masterspring.component"
 import updatefaculty from "./components/updatefaculty.component"
 import masterfall from "./components/masterfall.component"
@@ -44,6 +45,8 @@ import researcherlogin from "./components/researcherlogin"
 import researcherhomepage from "./components/researcherhomepage"
 import attendance from "./components/attendance"
 import timeslots from "./components/timeslots"
+import updatecourse from "./components/updatecourse"
+import preadd from "./components/prereqadd"
 function App() {
   return (
     <Router>
@@ -92,6 +95,9 @@ function App() {
     <Route path="/attendance/:name" exact component={attendance}/>
     <Route path="/researcherlogin" exact component={researcherlogin}/>
     <Route path="/researcherhomepage/:id" exact component={researcherhomepage}/>
+    <Route path="/prereq" exact component={prereq}/>
+    <Route path="/prereqadd" exact component={preadd}/>
+    <Route path="/updatecourse" exact component={updatecourse}/>
     </div>
     </Router>
 

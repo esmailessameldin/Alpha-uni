@@ -5,6 +5,7 @@ let sections=require('../models/sections.js')
 let faculty=require('../models/faculty.js')
 let admin=require('../models/admin.js')
 let researcher=require('../models/researcher.js')
+let advisors=require('../models/advisors.js')
 const mongoose = require('mongoose');
 
 var x = 700000001;
@@ -138,5 +139,13 @@ router.route('/registerresearcher').post(async(req,res)=>{
 router.route('/getinfo').post(async(req,res)=>{
 const u = await researcher.findOne({id:req.body.id})
 res.send(u)
+})
+router.route('/getadvisor/:major').post(async(req,res)=>{
+    var x=req.params.major
+    
+    console.log(x)
+       advisors.findOne({major:x})
+      .then(advisor => res.json(advisor.name))
+      .catch(err => res.status(400).json('Error: ' + err));
 })
 module.exports = router;

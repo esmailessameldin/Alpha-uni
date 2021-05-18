@@ -16,17 +16,29 @@ export default class CreateExercise extends Component {
    this.addclass = this.addclass.bind(this);
    this.hold=this.hold.bind(this)
    this.open=this.open.bind(this)
+   this.pre=this.pre.bind(this)
    this.opennext=this.opennext.bind(this)
    this.nextsemester=this.nextsemester.bind(this)
    this.timeslots=this.timeslots.bind(this)
+   this.updatecourse=this.updatecourse.bind(this)
     this.state = {
      
      
     }
   }
+  
+  updatecourse(e){
+    e.preventDefault()
+    window.location='/updatecourse'
+  }
+
   newfaculty(e){
     e.preventDefault()
     window.location='/addfaculty'
+  }
+  updatecours(e){
+    e.preventDefault()
+    window.location='/updatecourse'
   }
   
    students(e){
@@ -84,6 +96,10 @@ hold(e){
  secondSection(e){
    e.preventDefault()
    window.location='/addsecondsection'
+ }
+ pre(e){
+  e.preventDefault()
+  window.location='/prereq'
  }
 render() {
   
@@ -174,6 +190,13 @@ render() {
      <button type="button" style={{position: 'absolute', left: '45%', top: '70%'}} onClick={this.opennext}>
      Open/Close the adding for next semester
      </button>
+     <button type="button" style={{position: 'absolute',left:'70%',top:'70%'}} onClick={this.pre}>
+        View Prerequisites
+     </button>
+     <button type="button" style={{position: 'absolute',left:'84%',top:'70%'}} onClick={this.updatecourse}>
+        Update next semester class
+     </button>
+     
     </div>
     
 

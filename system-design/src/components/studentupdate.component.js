@@ -33,7 +33,9 @@ export default class Navbar extends Component {
     oldpassword:'',
     oldyear:'',
     oldmajor:'',
-    minor:''
+    minor:'',
+    oldminor:'',
+    advisor:''
 
     }
   }
@@ -96,7 +98,8 @@ onChangeBirthday(e){
             oldemail: response.data.email,
             oldpassword:response.data.password,
             oldyear:response.data.year,
-            oldmajor:response.data.major
+            oldmajor:response.data.major,
+            oldminor:response.data.minor
 
 
         })
@@ -217,7 +220,7 @@ render() {
                 />
           </div>
 
-          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '82.8%',
+          <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '110.8%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
             <label>address: </label>
             <input  input type="text"
@@ -232,12 +235,12 @@ render() {
           
           <div  style = {{width:"100vh",position: 'absolute', left: '50%', top: '72.8%',
         transform: 'translate(-50%, -50%)'}} className="form-group"> 
-            <label>address: </label>
+            <label>Minor: </label>
             <input  input type="text"
-            placeholder={"The old address was "+this.state.oldaddress}
+            placeholder={"The old address was "+this.state.oldminor}
                 required
-                value={this.state.address}
-                onChange={this.onChangeAddress}
+                value={this.state.minor}
+                onChange={this.onChangeMinor}
                 className="form-control"
                 />
           </div>
@@ -255,7 +258,7 @@ render() {
 
 
           <div>
-    <Button  animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '110.8%',
+    <Button  animated  style = {{width:"11vh",position: 'absolute', left: '50%', top: '120.8%',
         transform: 'translate(-50%, -50%)'}} type="submit" value="register" >
       <Button.Content visible>Update</Button.Content>
       <Button.Content visible>
